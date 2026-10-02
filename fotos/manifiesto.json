@@ -1,0 +1,2674 @@
+{
+ "orizon-sky-home": {
+  "code": "Dd9Q_FrnL2y",
+  "media_type": 8,
+  "product_type": "carousel_container",
+  "archivos": [
+   {
+    "archivo": "carrusel-01.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-02.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-03.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-04.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-05.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-06.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-07.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-08.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-09.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-10.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-11.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-12.jpg",
+    "ancho": 1200,
+    "alto": 1200
+   },
+   {
+    "archivo": "carrusel-13.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   },
+   {
+    "archivo": "carrusel-14.jpg",
+    "ancho": 1280,
+    "alto": 1280
+   }
+  ]
+ },
+ "conjunto-green-house": {
+  "code": "DdwV3XPylxJ",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 4254.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 7.2,
+    "nitidez": 7026.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 1230.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 1083.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 1125.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 36.0,
+    "nitidez": 1170.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 547.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 660.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 722.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 67.2,
+    "nitidez": 691.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 76.8,
+    "nitidez": 508.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 85.2,
+    "nitidez": 773.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 86.4,
+    "nitidez": 1316.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 93.6,
+    "nitidez": 1072.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 99.6,
+    "nitidez": 1538.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 109.2,
+    "nitidez": 1007.8,
+    "cara": false
+   }
+  ],
+  "video_bytes": 18783124
+ },
+ "edificio-montearroyo": {
+  "code": "DdwK1WlyE2b",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 900,
+    "alto": 1600
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 3.6,
+    "nitidez": 635.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 10.8,
+    "nitidez": 3019.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 728.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 1087.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 869.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 500.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 40.8,
+    "nitidez": 1359.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 46.8,
+    "nitidez": 520.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 48.0,
+    "nitidez": 414.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 57.6,
+    "nitidez": 1216.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 915.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 66.0,
+    "nitidez": 2013.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 72.0,
+    "nitidez": 2633.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 73.2,
+    "nitidez": 1050.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 81.6,
+    "nitidez": 1782.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 85.2,
+    "nitidez": 1018.3,
+    "cara": false
+   }
+  ],
+  "video_bytes": 15820983
+ },
+ "conjunto-casa-montana": {
+  "code": "DdwDnX7SlBm",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 237.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 7.2,
+    "nitidez": 2210.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 179.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 342.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 19.2,
+    "nitidez": 616.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 719.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 735.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 712.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 284.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 38.4,
+    "nitidez": 321.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 984.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 46.8,
+    "nitidez": 1299.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 49.2,
+    "nitidez": 1286.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 52.8,
+    "nitidez": 1741.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 1792.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 57.6,
+    "nitidez": 988.8,
+    "cara": false
+   }
+  ],
+  "video_bytes": 9470603
+ },
+ "ruitoque-park-house": {
+  "code": "Ddtmam4SeRY",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 3.6,
+    "nitidez": 641.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 2195.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 2483.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 1008.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 21.6,
+    "nitidez": 1182.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 1519.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 31.2,
+    "nitidez": 2336.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 37.2,
+    "nitidez": 882.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 42.0,
+    "nitidez": 1966.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 1400.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 50.4,
+    "nitidez": 816.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 1464.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 55.2,
+    "nitidez": 4371.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 61.2,
+    "nitidez": 2585.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 63.6,
+    "nitidez": 3812.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 66.0,
+    "nitidez": 4433.5,
+    "cara": false
+   }
+  ],
+  "video_bytes": 17850901
+ },
+ "conjunto-mansion-del-lago": {
+  "code": "Ddq1y5gSjNk",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 2150.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 4445.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 7.2,
+    "nitidez": 4489.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 1294.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 16.8,
+    "nitidez": 912.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 20.4,
+    "nitidez": 1343.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 3114.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 4369.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 28.8,
+    "nitidez": 1094.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 33.6,
+    "nitidez": 1356.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 905.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 38.4,
+    "nitidez": 703.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 861.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 288.1,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 367.5,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 48.0,
+    "nitidez": 434.5,
+    "cara": true
+   }
+  ],
+  "video_bytes": 12521756
+ },
+ "cabana-la-pradera": {
+  "code": "Ddj7g4wyy1C",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 1.2,
+    "nitidez": 809.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 861.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 2323.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 14.4,
+    "nitidez": 1502.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 1368.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 1202.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 783.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 33.6,
+    "nitidez": 689.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 40.8,
+    "nitidez": 798.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 46.8,
+    "nitidez": 867.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 48.0,
+    "nitidez": 2080.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 1722.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 538.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 63.6,
+    "nitidez": 1885.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 67.2,
+    "nitidez": 2607.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 69.6,
+    "nitidez": 2684.6,
+    "cara": false
+   }
+  ],
+  "video_bytes": 13654229
+ },
+ "valle-de-rocas": {
+  "code": "DdXH2h8yuD5",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 3696.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 13.2,
+    "nitidez": 1195.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 20.4,
+    "nitidez": 1909.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 1996.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 32.4,
+    "nitidez": 882.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 40.8,
+    "nitidez": 2472.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 1879.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 56.4,
+    "nitidez": 2295.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 58.8,
+    "nitidez": 5789.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 70.8,
+    "nitidez": 1947.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 72.0,
+    "nitidez": 1858.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 82.8,
+    "nitidez": 1295.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 88.8,
+    "nitidez": 2314.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 90.0,
+    "nitidez": 2348.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 99.6,
+    "nitidez": 1110.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 102.0,
+    "nitidez": 998.1,
+    "cara": false
+   }
+  ],
+  "video_bytes": 23704218
+ },
+ "la-gran-reserva-andalucia": {
+  "code": "DdMN9J7ybXa",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 2.4,
+    "nitidez": 808.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 2444.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 10.8,
+    "nitidez": 512.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 1458.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 19.2,
+    "nitidez": 1807.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 990.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 2191.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 33.6,
+    "nitidez": 695.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 1343.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 42.0,
+    "nitidez": 3007.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 45.6,
+    "nitidez": 1544.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 50.4,
+    "nitidez": 2093.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 1549.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 57.6,
+    "nitidez": 1750.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 396.5,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 64.8,
+    "nitidez": 297.8,
+    "cara": true
+   }
+  ],
+  "video_bytes": 12378259
+ },
+ "condominio-luxxe": {
+  "code": "DdJ6P2pSALe",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 1.2,
+    "nitidez": 852.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 5178.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 687.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 14.4,
+    "nitidez": 1043.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 767.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 2048.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 963.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 1116.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 962.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 406.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 46.8,
+    "nitidez": 320.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 50.4,
+    "nitidez": 627.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 668.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 56.4,
+    "nitidez": 1608.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 837.6,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 63.6,
+    "nitidez": 649.6,
+    "cara": true
+   }
+  ],
+  "video_bytes": 10563025
+ },
+ "conjunto-club-house-1": {
+  "code": "DcuYuqNsFEo",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 904.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 10804.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 6.0,
+    "nitidez": 11839.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 8953.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 1153.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 13.2,
+    "nitidez": 914.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 16.8,
+    "nitidez": 1020.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 19.2,
+    "nitidez": 679.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 21.6,
+    "nitidez": 2204.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 979.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 1136.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 634.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 31.2,
+    "nitidez": 165.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 33.6,
+    "nitidez": 5077.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 562.9,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 37.2,
+    "nitidez": 417.0,
+    "cara": true
+   }
+  ],
+  "video_bytes": 9474850
+ },
+ "terrazas-de-menzuly": {
+  "code": "DcjVDqqyjes",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 2076.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 6.0,
+    "nitidez": 2523.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 14.4,
+    "nitidez": 1470.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 1997.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 26.4,
+    "nitidez": 1299.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 807.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 2173.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 2765.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 51.6,
+    "nitidez": 2404.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 56.4,
+    "nitidez": 1732.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 62.4,
+    "nitidez": 1065.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 66.0,
+    "nitidez": 1419.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 74.4,
+    "nitidez": 1852.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 75.6,
+    "nitidez": 1324.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 81.6,
+    "nitidez": 1114.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 86.4,
+    "nitidez": 514.2,
+    "cara": false
+   }
+  ],
+  "video_bytes": 21460845
+ },
+ "cabana-buenavista": {
+  "code": "DcRsWkcyJLF",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 2.4,
+    "nitidez": 572.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 588.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 604.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 1984.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 20.4,
+    "nitidez": 4620.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 1502.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 28.8,
+    "nitidez": 1383.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 33.6,
+    "nitidez": 1755.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 36.0,
+    "nitidez": 823.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 1526.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 42.0,
+    "nitidez": 697.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 46.8,
+    "nitidez": 570.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 49.2,
+    "nitidez": 1897.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 55.2,
+    "nitidez": 732.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 56.4,
+    "nitidez": 864.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 742.7,
+    "cara": false
+   }
+  ],
+  "video_bytes": 10305141
+ },
+ "edificio-terrazo-48": {
+  "code": "DbWIeQsyXWb",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 2.4,
+    "nitidez": 1337.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 714.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 2064.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 13.2,
+    "nitidez": 816.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 16.8,
+    "nitidez": 771.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 20.4,
+    "nitidez": 2210.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 21.6,
+    "nitidez": 2412.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 466.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 31.2,
+    "nitidez": 1474.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 32.4,
+    "nitidez": 399.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 37.2,
+    "nitidez": 839.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 38.4,
+    "nitidez": 859.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 42.0,
+    "nitidez": 1439.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 2077.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 45.6,
+    "nitidez": 3266.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 48.0,
+    "nitidez": 794.2,
+    "cara": true
+   }
+  ],
+  "video_bytes": 10261210
+ },
+ "city-center": {
+  "code": "DbOIbp0O5db",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 436.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 7.2,
+    "nitidez": 6991.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 429.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 380.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 21.6,
+    "nitidez": 1347.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 25.2,
+    "nitidez": 2137.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 26.4,
+    "nitidez": 570.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 210.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 36.0,
+    "nitidez": 306.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 759.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 1000.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 1397.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 48.0,
+    "nitidez": 452.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 51.6,
+    "nitidez": 486.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 57.6,
+    "nitidez": 327.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 58.8,
+    "nitidez": 237.7,
+    "cara": false
+   }
+  ],
+  "video_bytes": 8660726
+ },
+ "hacienda-la-disculpa": {
+  "code": "Da0rBucyF-5",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 2.4,
+    "nitidez": 4653.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 3579.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 1756.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 18.0,
+    "nitidez": 1104.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 4519.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 34.8,
+    "nitidez": 6119.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 36.0,
+    "nitidez": 4644.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 44.4,
+    "nitidez": 6532.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 52.8,
+    "nitidez": 1768.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 56.4,
+    "nitidez": 1798.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 63.6,
+    "nitidez": 2036.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 67.2,
+    "nitidez": 3348.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 70.8,
+    "nitidez": 9086.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 76.8,
+    "nitidez": 5721.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 82.8,
+    "nitidez": 2574.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 84.0,
+    "nitidez": 2513.0,
+    "cara": false
+   }
+  ],
+  "video_bytes": 39525749
+ },
+ "edificio-vizcaya-gold": {
+  "code": "DZsHQ1RDsbI",
+  "media_type": 8,
+  "product_type": "carousel_container",
+  "archivos": [
+   {
+    "archivo": "carrusel-01.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-02.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-03.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-04.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-05.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-06.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-07.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-08.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-09.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   },
+   {
+    "archivo": "carrusel-10.jpg",
+    "ancho": 1200,
+    "alto": 1600
+   }
+  ]
+ },
+ "edificio-la-loma": {
+  "code": "DZKVUe4SdsP",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 1183.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 1264.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 1636.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 14.4,
+    "nitidez": 867.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 19.2,
+    "nitidez": 1593.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 688.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 27.6,
+    "nitidez": 690.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 28.8,
+    "nitidez": 860.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 32.4,
+    "nitidez": 267.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 38.4,
+    "nitidez": 389.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 40.8,
+    "nitidez": 485.5,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 43.2,
+    "nitidez": 546.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 49.2,
+    "nitidez": 605.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 50.4,
+    "nitidez": 1189.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 54.0,
+    "nitidez": 178.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 57.6,
+    "nitidez": 267.0,
+    "cara": false
+   }
+  ],
+  "video_bytes": 11686532
+ },
+ "ruitoque-villas": {
+  "code": "DZIfedoSDxl",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 7465.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 2.4,
+    "nitidez": 7552.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 4.8,
+    "nitidez": 7616.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 8.4,
+    "nitidez": 3173.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 4911.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 12.0,
+    "nitidez": 5286.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 1606.8,
+    "cara": true
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 16.8,
+    "nitidez": 2153.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 20.4,
+    "nitidez": 3868.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 5959.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 24.0,
+    "nitidez": 6494.9,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 26.4,
+    "nitidez": 5716.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 28.8,
+    "nitidez": 2007.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 2321.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 31.2,
+    "nitidez": 6760.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 32.4,
+    "nitidez": 6252.0,
+    "cara": false
+   }
+  ],
+  "video_bytes": 16818862
+ },
+ "conjunto-la-rinconada": {
+  "code": "DZFQiJpOg61",
+  "media_type": 2,
+  "product_type": "clips",
+  "archivos": [
+   {
+    "archivo": "portada.jpg",
+    "ancho": 720,
+    "alto": 1280
+   },
+   {
+    "archivo": "cuadro-01.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 0.0,
+    "nitidez": 2936.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-02.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 9.6,
+    "nitidez": 2350.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-03.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 15.6,
+    "nitidez": 765.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-04.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 19.2,
+    "nitidez": 1201.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-05.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 22.8,
+    "nitidez": 1198.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-06.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 30.0,
+    "nitidez": 787.3,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-07.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 31.2,
+    "nitidez": 682.8,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-08.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 39.6,
+    "nitidez": 2676.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-09.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 40.8,
+    "nitidez": 2842.4,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-10.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 49.2,
+    "nitidez": 1384.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-11.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 50.4,
+    "nitidez": 1465.6,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-12.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 55.2,
+    "nitidez": 2062.1,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-13.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 60.0,
+    "nitidez": 1650.0,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-14.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 68.4,
+    "nitidez": 1331.2,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-15.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 70.8,
+    "nitidez": 1971.7,
+    "cara": false
+   },
+   {
+    "archivo": "cuadro-16.jpg",
+    "ancho": 1080,
+    "alto": 1920,
+    "segundo": 74.4,
+    "nitidez": 3067.9,
+    "cara": false
+   }
+  ],
+  "video_bytes": 19019100
+ }
+}
