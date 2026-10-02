@@ -135,7 +135,7 @@ export const HomeHero: React.FC<{ animar?: boolean }> = ({ animar = true }) => {
               href={whatsappUrl('Hola Hugo, vi tu página web y quiero coordinar una visita.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-w-0 items-center gap-2.5 rounded-full border border-white/30 px-4 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 sm:px-6 sm:py-4"
+              className="hidden min-w-0 items-center gap-2.5 rounded-full border border-white/30 px-4 py-3.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-white/10 sm:px-6 sm:py-4 lg:inline-flex"
               aria-label="Coordina tu visita por WhatsApp"
             >
               <WhatsAppIcon className="h-4 w-4 shrink-0" />
@@ -152,7 +152,7 @@ export const HomeHero: React.FC<{ animar?: boolean }> = ({ animar = true }) => {
               href={MARCA.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-white"
+              className="hidden items-center gap-2 transition-colors hover:text-white lg:inline-flex"
             >
               <InstagramIcon className="h-4 w-4" /> @{MARCA.instagram.usuario}
             </a>

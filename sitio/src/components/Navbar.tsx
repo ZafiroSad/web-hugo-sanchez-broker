@@ -99,7 +99,7 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de Hugo Sánchez"
-              className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${
+              className={`hidden h-10 w-10 items-center justify-center rounded-full border transition-colors lg:flex ${
                 sobreOscuro ? 'border-white/20 hover:bg-white/10' : 'border-negro/12 hover:bg-negro/[0.05]'
               }`}
             >

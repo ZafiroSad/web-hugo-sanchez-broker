@@ -7,6 +7,7 @@ import {
   formatArea,
   formatCurrency,
   formatDate,
+  formatMillions,
   formatPricePerSqm,
   priceLabel,
   propertyUrl,
@@ -22,6 +23,7 @@ import { PropertyCover } from './PropertyCover';
 import { PropertyDossierModal } from './PropertyDossierModal';
 import { Galeria } from './Galeria';
 import { InstagramIcon, WhatsAppIcon } from './marca';
+import { BotonInstagram } from './FloatingInstagram';
 import { MARCA } from '../config/marca';
 
 const ESTADO_VISIBLE: Partial<Record<Property['status'], string>> = {
@@ -111,6 +113,11 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
   }
 
   const precio = priceLabel(property);
+  // En la barra del teléfono no cabe la cifra completa junto al botón: «$9.000 M»
+  const precioCorto =
+    property.priceOnRequest || !property.price
+      ? 'A consultar'
+      : `${formatMillions(property.price)}${property.operation === 'Arriendo' ? '/mes' : ''}`;
   const ficha = filasFicha(property);
   const comparando = compareIds.includes(property.id);
   const estado = ESTADO_VISIBLE[property.status];
@@ -146,7 +153,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
         <button
           type="button"
           onClick={() => navigate('propiedades')}
-          className="group my-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-taupe transition-colors hover:text-negro lg:my-6"
+          className="group my-3 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-taupe transition-colors hover:text-negro lg:my-6"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-500 ease-ios group-hover:-translate-x-1" />
           Propiedades
@@ -167,9 +174,9 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
           )}
         </motion.div>
 
-        <div className="mt-8 grid gap-12 lg:mt-12 lg:grid-cols-12 lg:gap-14">
+        <div className="mt-6 grid gap-12 lg:mt-12 lg:grid-cols-12 lg:gap-14">
           {/* Información */}
-          <div className="min-w-0 space-y-10 lg:col-span-7">
+          <div className="min-w-0 space-y-8 lg:col-span-7 lg:space-y-10">
             <motion.header
               initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -185,7 +192,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
                   </span>
                 )}
               </div>
-              <h1 className="mt-4 font-light uppercase leading-[1.14] tracking-[0.1em] text-[clamp(1.8rem,3.4vw,2.9rem)] text-negro">
+              <h1 className="mt-3 font-light uppercase leading-[1.14] tracking-[0.1em] text-[clamp(1.5rem,6.4vw,2.9rem)] text-negro sm:mt-4">
                 {property.name}
               </h1>
               <p className="mt-4 flex items-center gap-2 text-[13px] text-taupe">
@@ -193,8 +200,43 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
                 {property.sector}
                 {property.sector !== property.city ? `, ${property.city}` : ''}
               </p>
-              <p className="mt-6 max-w-2xl text-[17px] font-light leading-relaxed text-grafito">{property.headline}</p>
+              <p className="mt-4 max-w-2xl text-[15.5px] font-light leading-relaxed text-grafito sm:mt-6 sm:text-[17px]">
+                {property.headline}
+              </p>
             </motion.header>
+
+            {/* Teléfono: el precio y las acciones van justo después del nombre */}
+            <div className="rounded-2xl border border-negro/[0.08] bg-white p-5 shadow-[0_6px_24px_rgba(0,0,0,0.05)] lg:hidden">
+              <p className="versalitas text-[9px] text-taupe">
+                {property.operation === 'Arriendo' ? 'Canon de arriendo' : 'Valor de venta'}
+              </p>
+              <p className="mt-1.5 text-[26px] font-light tabular-nums text-negro">{precio.principal}</p>
+              {precio.detalle && <p className="versalitas mt-1 text-[9.5px] text-bronce">{precio.detalle}</p>}
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                {[
+                  { icono: Share2, texto: copiado ? 'Copiado' : 'Compartir', accion: compartir, activo: false },
+                  { icono: FileDown, texto: 'Ficha PDF', accion: () => setFichaAbierta(true), activo: false },
+                  {
+                    icono: comparando ? Check : Columns3,
+                    texto: comparando ? 'Comparando' : 'Comparar',
+                    accion: () => toggleCompareProperty(property.id),
+                    activo: comparando,
+                  },
+                ].map(({ icono: Icono, texto, accion, activo }) => (
+                  <button
+                    key={texto}
+                    type="button"
+                    onClick={accion}
+                    className={`flex flex-col items-center gap-1.5 rounded-xl border px-1 py-3 text-[9px] font-semibold uppercase tracking-[0.12em] transition-colors ${
+                      activo ? 'border-negro bg-negro text-white' : 'border-negro/[0.1] text-negro active:bg-stone-100'
+                    }`}
+                  >
+                    <Icono className={`h-4 w-4 ${activo ? 'text-oro' : ''}`} />
+                    {texto}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Ficha técnica */}
             {ficha.length > 0 && (
@@ -275,7 +317,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
             )}
 
             {/* Cierre */}
-            <motion.section {...revelar()} className="rounded-2xl bg-negro p-8 text-white sm:p-10">
+            <motion.section {...revelar()} className="rounded-2xl bg-negro p-6 text-white sm:p-10">
               <p className="font-script text-[clamp(1.7rem,3vw,2.4rem)] leading-tight text-oro">{MARCA.slogan}</p>
               <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-arena">
                 Escríbele a Hugo para coordinar tu visita a {titleCase(property.name)}. Te responde directamente por
@@ -302,8 +344,8 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
             </motion.section>
           </div>
 
-          {/* Precio y contacto, fijos al desplazar */}
-          <aside className="lg:col-span-5">
+          {/* Precio y contacto, fijos al desplazar (en el teléfono van arriba y en la barra de abajo) */}
+          <aside className="hidden lg:col-span-5 lg:block">
             <motion.div
               initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -367,16 +409,16 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
 
         {/* Relacionadas */}
         {relacionadas.length > 0 && (
-          <section className="mt-28 border-t border-negro/[0.08] pt-16">
+          <section className="mt-16 border-t border-negro/[0.08] pt-10 sm:mt-28 sm:pt-16">
             <motion.h2
               {...revelar()}
               className="font-light uppercase tracking-[0.1em] text-[clamp(1.5rem,2.6vw,2.2rem)] text-negro"
             >
               También te pueden interesar
             </motion.h2>
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+            <div className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-6 lg:grid-cols-3 lg:gap-8">
               {relacionadas.map((p, i) => (
-                <PropertyCard key={p.id} property={p} index={i} />
+                <PropertyCard key={p.id} property={p} index={i} densa />
               ))}
             </div>
           </section>
@@ -384,19 +426,25 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
       </div>
 
       {/* Barra fija en el teléfono */}
-      <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-negro/[0.08] bg-white/95 px-5 py-3 backdrop-blur-xl lg:hidden">
-        <div className="min-w-0">
-          <p className="truncate text-[9.5px] font-semibold uppercase tracking-[0.18em] text-taupe">{property.name}</p>
-          <p className="truncate text-[15px] font-medium tabular-nums text-negro">{precio.principal}</p>
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-negro/[0.08] bg-white/95 px-4 pb-[calc(0.65rem+env(safe-area-inset-bottom))] pt-2.5 backdrop-blur-xl lg:hidden">
+        <div className="mx-auto flex max-w-xl items-center gap-2.5">
+          <BotonInstagram className="h-11 w-11" />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[8.5px] font-semibold uppercase tracking-[0.16em] text-taupe">
+              {property.priceIsFrom ? 'Desde · ' : ''}
+              {property.name}
+            </p>
+            <p className="truncate text-[14px] font-medium tabular-nums text-negro min-[380px]:text-[15px]">{precioCorto}</p>
+          </div>
+          <a
+            href={enlaceVisita}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-negro px-3.5 text-[9.5px] font-semibold uppercase tracking-[0.1em] text-white min-[380px]:px-4 min-[380px]:tracking-[0.14em]"
+          >
+            <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
+          </a>
         </div>
-        <a
-          href={enlaceVisita}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-negro px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white"
-        >
-          <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
-        </a>
       </div>
 
       <PropertyDossierModal property={property} isOpen={fichaAbierta} onClose={() => setFichaAbierta(false)} />

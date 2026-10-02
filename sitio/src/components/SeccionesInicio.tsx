@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight, Check, Handshake, House, KeyRound } from 'lucide-react';
 import { BIO, CONFIANZA, MARCA, PILARES, PROCESO, RETRATO } from '../config/marca';
@@ -26,7 +26,7 @@ const Encabezado: React.FC<{
     <p className={`versalitas text-[10px] ${tono === 'oscuro' ? 'text-oro' : 'text-bronce'}`}>{antetitulo}</p>
     <h2
       className={`mt-4 font-light uppercase leading-[1.14] tracking-[0.1em] ${
-        medio ? 'text-[clamp(1.6rem,2.8vw,2.4rem)]' : 'text-[clamp(1.8rem,3.6vw,3rem)]'
+        medio ? 'text-[clamp(1.35rem,5.4vw,2.4rem)]' : 'text-[clamp(1.5rem,6.2vw,3rem)]'
       } ${tono === 'oscuro' ? 'text-white' : 'text-negro'}`}
     >
       {titulo}
@@ -36,6 +36,52 @@ const Encabezado: React.FC<{
 );
 
 const ICONOS = { casa: House, llave: KeyRound, trato: Handshake } as const;
+
+/**
+ * En el teléfono, una fila que se desliza con el dedo y asoma la siguiente
+ * pieza, con puntos que dicen dónde va; desde tableta, una rejilla normal.
+ * Así una sección de seis tarjetas ocupa una pantalla y no seis.
+ */
+const Deslizable: React.FC<{ items: React.ReactNode[]; ancho?: string; rejilla: string; separacion?: string }> = ({
+  items,
+  ancho = 'w-[82%]',
+  rejilla,
+  separacion = 'sm:gap-6',
+}) => {
+  const pista = useRef<HTMLDivElement>(null);
+  const [activo, setActivo] = useState(0);
+  const alDesplazar = () => {
+    const el = pista.current;
+    const primero = el?.firstElementChild as HTMLElement | null;
+    if (!el || !primero) return;
+    setActivo(Math.min(items.length - 1, Math.round(el.scrollLeft / (primero.offsetWidth + 12))));
+  };
+  return (
+    <>
+      <div
+        ref={pista}
+        onScroll={alDesplazar}
+        className={`sin-scroll -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-3 overflow-x-auto px-5 pb-1 sm:mx-0 sm:grid sm:snap-none sm:overflow-visible sm:px-0 sm:pb-0 ${separacion} ${rejilla}`}
+      >
+        {items.map((item, i) => (
+          <div key={i} className={`${ancho} shrink-0 snap-start *:h-full sm:w-auto`}>
+            {item}
+          </div>
+        ))}
+      </div>
+      {items.length > 1 && (
+        <div aria-hidden="true" className="mt-4 flex justify-center gap-1.5 sm:hidden">
+          {items.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${i === activo ? 'w-5 bg-negro' : 'w-1.5 bg-negro/20'}`}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
+};
 
 const botonOscuro =
   'group inline-flex items-center gap-3 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:bg-grafito';
@@ -54,7 +100,7 @@ export const Destacadas: React.FC = () => {
   };
 
   return (
-    <section id="propiedades" className="scroll-mt-16 bg-hueso pb-20 pt-7 sm:pb-28 sm:pt-14">
+    <section id="propiedades" className="scroll-mt-16 bg-hueso pb-14 pt-7 sm:pb-28 sm:pt-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 border-b border-negro/[0.08] pb-4 sm:pb-6">
           <div>
@@ -73,13 +119,14 @@ export const Destacadas: React.FC = () => {
           </a>
         </div>
 
-        <div className="mt-5 grid grid-cols-1 gap-6 sm:mt-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {destacadas.map((p, i) => (
-            <PropertyCard key={p.id} property={p} index={i} prioridad={i < 3} />
-          ))}
+        <div className="mt-5 sm:mt-8">
+          <Deslizable
+            rejilla="sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+            items={destacadas.map((p, i) => <PropertyCard key={p.id} property={p} index={i} prioridad={i < 2} />)}
+          />
         </div>
 
-        <div className="mt-12 flex justify-center">
+        <div className="mt-8 flex justify-center sm:mt-12">
           <a href="#/propiedades" onClick={verTodas} className={botonOscuro}>
             Ver todas las propiedades
             <ArrowRight className="h-4 w-4 transition-transform duration-500 ease-ios group-hover:translate-x-1" />
@@ -96,6 +143,7 @@ export const Destacadas: React.FC = () => {
 
 export const SobreHugo: React.FC = () => {
   const { publicProperties } = useProperties();
+  const [bioCompleta, setBioCompleta] = useState(false);
   const cifras = [
     ...CONFIANZA,
     {
@@ -106,9 +154,9 @@ export const SobreHugo: React.FC = () => {
   ];
 
   return (
-    <section id="sobre" className="scroll-mt-20 border-y border-negro/[0.06] bg-white py-20 sm:py-28">
-      <div className="mx-auto grid max-w-7xl items-start gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-14">
-        <motion.figure {...revelar()} className="relative mx-auto w-full max-w-[420px] lg:col-span-5 lg:mx-0">
+    <section id="sobre" className="scroll-mt-20 border-y border-negro/[0.06] bg-white py-16 sm:py-28">
+      <div className="mx-auto grid max-w-7xl items-start gap-14 px-5 sm:gap-16 sm:px-8 lg:grid-cols-12 lg:gap-14">
+        <motion.figure {...revelar()} className="relative mx-auto w-full max-w-[300px] sm:max-w-[420px] lg:col-span-5 lg:mx-0">
           <div className="aspect-[4/5] overflow-hidden rounded-2xl bg-stone-100">
             <Foto
               src={RETRATO}
@@ -128,19 +176,34 @@ export const SobreHugo: React.FC = () => {
         <div className="lg:col-span-7">
           <Encabezado medio antetitulo="Sobre Hugo" titulo="Te acompaño en la búsqueda de tu propiedad ideal o inversión" />
 
-          <motion.div {...revelar(0.08)} className="mt-8 max-w-2xl space-y-5 text-[15.5px] font-light leading-[1.8] text-grafito">
+          <motion.div
+            {...revelar(0.08)}
+            className="mt-6 max-w-2xl space-y-4 text-[15px] font-light leading-[1.75] text-grafito sm:mt-8 sm:space-y-5 sm:text-[15.5px] sm:leading-[1.8]"
+          >
             <p className="text-negro">{BIO.trayectoria}</p>
-            {BIO.larga.map((parrafo) => (
-              <p key={parrafo.slice(0, 20)}>{parrafo}</p>
+            {/* En el teléfono, los dos últimos párrafos esperan a «Leer más» */}
+            {BIO.larga.map((parrafo, i) => (
+              <p key={parrafo.slice(0, 20)} className={i > 0 && !bioCompleta ? 'hidden sm:block' : ''}>
+                {parrafo}
+              </p>
             ))}
           </motion.div>
+          {!bioCompleta && (
+            <button
+              type="button"
+              onClick={() => setBioCompleta(true)}
+              className="mt-4 inline-flex items-center gap-1.5 border-b border-negro/25 pb-0.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-negro sm:hidden"
+            >
+              Leer más
+            </button>
+          )}
 
-          <motion.blockquote {...revelar(0.14)} className="mt-10 border-l-2 border-oro/60 pl-6">
+          <motion.blockquote {...revelar(0.14)} className="mt-8 border-l-2 border-oro/60 pl-5 sm:mt-10 sm:pl-6">
             <p className="font-script text-[clamp(1.9rem,3.2vw,2.7rem)] leading-tight text-negro">{BIO.cita}</p>
             <footer className="versalitas mt-2 text-[10px] text-taupe">{MARCA.nombre}</footer>
           </motion.blockquote>
 
-          <motion.ul {...revelar(0.2)} className="mt-10 grid gap-3 text-[13px] text-grafito sm:grid-cols-2">
+          <motion.ul {...revelar(0.2)} className="mt-8 grid gap-3 text-[13px] text-grafito sm:mt-10 sm:grid-cols-2">
             {[
               'Cuenta verificada en Instagram',
               'Nominado por Horror Brokers Colombia (2025)',
@@ -157,34 +220,43 @@ export const SobreHugo: React.FC = () => {
       </div>
 
       {/* Lo que da confianza */}
-      <div className="mx-auto mt-20 max-w-7xl px-5 sm:px-8">
-        <dl className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <div className="mx-auto mt-14 max-w-7xl px-5 sm:mt-20 sm:px-8">
+        <dl className="grid grid-cols-2 gap-2.5 sm:gap-3 lg:grid-cols-4">
           {cifras.map((item, i) => (
             <motion.div
               key={item.etiqueta}
               {...revelar(i * 0.06)}
-              className="rounded-2xl border border-negro/[0.06] bg-hueso p-5 sm:p-6"
+              className="rounded-2xl border border-negro/[0.06] bg-hueso p-4 sm:p-6"
             >
               <dt className="sr-only">{item.etiqueta}</dt>
-              <dd className="text-[clamp(1.6rem,2.6vw,2.3rem)] font-light leading-none tabular-nums text-negro">{item.valor}</dd>
-              <dd className="versalitas mt-3 text-[9.5px] text-bronce">{item.etiqueta}</dd>
-              <dd className="mt-2 text-[12px] leading-snug text-taupe">{item.detalle}</dd>
+              <dd className="text-[clamp(1.5rem,2.6vw,2.3rem)] font-light leading-none tabular-nums text-negro">{item.valor}</dd>
+              <dd className="mt-2.5 text-[9px] font-semibold uppercase leading-snug tracking-[0.16em] text-bronce sm:mt-3 sm:text-[9.5px] sm:tracking-[0.24em]">
+                {item.etiqueta}
+              </dd>
+              <dd className="mt-2 hidden text-[12px] leading-snug text-taupe sm:block">{item.detalle}</dd>
             </motion.div>
           ))}
         </dl>
 
-        <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {PILARES.map((pilar, i) => (
-            <motion.div
-              key={pilar.titulo}
-              {...revelar(i * 0.06)}
-              className="rounded-2xl border border-negro/[0.06] bg-white p-6 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
-            >
-              <span className="text-[12px] font-light tabular-nums text-oro">0{i + 1}</span>
-              <h3 className="mt-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-negro">{pilar.titulo}</h3>
-              <p className="mt-3 text-[13.5px] font-light leading-relaxed text-grafito">{pilar.texto}</p>
-            </motion.div>
-          ))}
+        <div className="mt-2.5 sm:mt-3">
+          <Deslizable
+            ancho="w-[76%]"
+            separacion="sm:gap-3"
+            rejilla="sm:grid-cols-2 lg:grid-cols-4"
+            items={PILARES.map((pilar, i) => (
+              <motion.div
+                key={pilar.titulo}
+                {...revelar(i * 0.06)}
+                className="rounded-2xl border border-negro/[0.06] bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:p-6"
+              >
+                <span className="text-[12px] font-light tabular-nums text-oro">0{i + 1}</span>
+                <h3 className="mt-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-negro sm:mt-4 sm:text-[12.5px] sm:tracking-[0.18em]">
+                  {pilar.titulo}
+                </h3>
+                <p className="mt-2.5 text-[13.5px] font-light leading-relaxed text-grafito sm:mt-3">{pilar.texto}</p>
+              </motion.div>
+            ))}
+          />
         </div>
       </div>
     </section>
@@ -196,26 +268,31 @@ export const SobreHugo: React.FC = () => {
 /* ------------------------------------------------------------------ */
 
 export const ComoTrabajo: React.FC = () => (
-  <section className="bg-hueso py-20 sm:py-28">
+  <section className="bg-hueso py-16 sm:py-28">
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
       <Encabezado antetitulo="Así trabajo" titulo="Tres pasos, una sola persona contigo" />
-      <div className="mt-12 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-2.5 sm:mt-12 sm:gap-4 md:grid-cols-3">
         {PROCESO.map((paso, i) => {
           const Icono = ICONOS[paso.icono];
           return (
             <motion.div
               key={paso.titulo}
               {...revelar(i * 0.1)}
-              className="rounded-2xl border border-negro/[0.06] bg-white p-7 shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+              className="flex gap-4 rounded-2xl border border-negro/[0.06] bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.03)] sm:block sm:p-7"
             >
               <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-stone-100">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-stone-100 sm:h-12 sm:w-12">
                   <Icono className="h-5 w-5 text-bronce" strokeWidth={1.5} />
                 </span>
-                <span className="text-[12px] font-light tabular-nums text-piedra">Paso {i + 1}</span>
+                <span className="hidden text-[12px] font-light tabular-nums text-piedra sm:inline">Paso {i + 1}</span>
               </div>
-              <h3 className="mt-6 text-[13px] font-semibold uppercase tracking-[0.18em] text-negro">{paso.titulo}</h3>
-              <p className="mt-3 text-[14px] font-light leading-relaxed text-grafito">{paso.texto}</p>
+              <div className="min-w-0">
+                <p className="text-[10.5px] font-light tabular-nums text-piedra sm:hidden">Paso {i + 1}</p>
+                <h3 className="mt-0.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-negro sm:mt-6 sm:text-[13px] sm:tracking-[0.18em]">
+                  {paso.titulo}
+                </h3>
+                <p className="mt-2 text-[13.5px] font-light leading-relaxed text-grafito sm:mt-3 sm:text-[14px]">{paso.texto}</p>
+              </div>
             </motion.div>
           );
         })}
@@ -229,15 +306,15 @@ export const ComoTrabajo: React.FC = () => (
 /* ------------------------------------------------------------------ */
 
 export const Inversion: React.FC = () => (
-  <section id="inversion" className="scroll-mt-20 border-t border-negro/[0.06] bg-white py-20 sm:py-28">
+  <section id="inversion" className="scroll-mt-20 border-t border-negro/[0.06] bg-white py-16 sm:py-28">
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
       <Encabezado antetitulo="Inversión" titulo="Proyectos sobre planos e inversión en dólares">
-        <p className="mt-5 max-w-xl text-[15px] font-light leading-relaxed text-grafito">
+        <p className="mt-4 max-w-xl text-[14.5px] font-light leading-relaxed text-grafito sm:mt-5 sm:text-[15px]">
           Además de su portafolio de reventa, Hugo comercializa proyectos nuevos en Bucaramanga y en ciudad de Panamá.
         </p>
       </Encabezado>
 
-      <div className="mt-12 grid gap-6 lg:grid-cols-2">
+      <div className="mt-8 grid gap-4 sm:mt-12 sm:gap-6 lg:grid-cols-2">
         {INVERSION.map((linea, i) => (
           <motion.article
             key={linea.codigo}
@@ -245,7 +322,7 @@ export const Inversion: React.FC = () => (
             className="grid overflow-hidden rounded-2xl border border-negro/[0.08] bg-hueso sm:grid-cols-[minmax(0,0.85fr)_1fr]"
           >
             {linea.foto && (
-              <div className="relative aspect-[4/3] bg-stone-100 sm:aspect-auto">
+              <div className="relative aspect-[16/9] bg-stone-100 sm:aspect-auto">
                 <Foto
                   src={linea.foto}
                   alt={linea.titulo}
@@ -254,9 +331,9 @@ export const Inversion: React.FC = () => (
                 />
               </div>
             )}
-            <div className="p-7 sm:p-8">
+            <div className="p-5 sm:p-8">
               <p className="versalitas text-[10px] text-bronce">{linea.etiqueta}</p>
-              <h3 className="mt-3 text-[20px] font-light uppercase tracking-[0.1em] text-negro">{linea.titulo}</h3>
+              <h3 className="mt-2.5 text-[17px] font-light uppercase tracking-[0.1em] text-negro sm:mt-3 sm:text-[20px]">{linea.titulo}</h3>
               <p className="mt-4 text-[14px] font-light leading-relaxed text-grafito">{linea.texto}</p>
               <ul className="mt-5 space-y-3">
                 {linea.puntos.map((punto) => (
@@ -287,7 +364,7 @@ export const Inversion: React.FC = () => (
 /* ------------------------------------------------------------------ */
 
 export const Manifiesto: React.FC = () => (
-  <section className="relative isolate overflow-hidden bg-tinta py-28 text-white sm:py-36">
+  <section className="relative isolate overflow-hidden bg-tinta py-20 text-white sm:py-36">
     <Foto
       src="./fotos/orizon-sky-home/08.webp"
       alt=""
@@ -301,14 +378,14 @@ export const Manifiesto: React.FC = () => (
       </motion.p>
       <motion.p
         {...revelar(0.1)}
-        className="mt-8 font-extralight uppercase leading-[1.25] tracking-[0.1em] text-[clamp(1.6rem,4.4vw,3.6rem)]"
+        className="mt-6 font-extralight uppercase leading-[1.25] tracking-[0.1em] text-[clamp(1.35rem,5.6vw,3.6rem)] sm:mt-8"
       >
         El verdadero lujo en el sector inmobiliario es el acceso
       </motion.p>
-      <motion.p {...revelar(0.25)} className="mt-6 font-script text-[clamp(2.2rem,5vw,4rem)] text-oro">
+      <motion.p {...revelar(0.25)} className="mt-4 font-script text-[clamp(2rem,5vw,4rem)] text-oro sm:mt-6">
         y no todos lo tienen.
       </motion.p>
-      <motion.div {...revelar(0.35)} className="mt-10 flex justify-center">
+      <motion.div {...revelar(0.35)} className="mt-8 flex justify-center sm:mt-10">
         <FirmaHS className="text-5xl text-white/70" />
       </motion.div>
     </div>
@@ -320,16 +397,19 @@ export const Manifiesto: React.FC = () => (
 /* ------------------------------------------------------------------ */
 
 export const Cierres: React.FC = () => (
-  <section id="vendidas" className="scroll-mt-20 bg-hueso py-20 sm:py-28">
+  <section id="vendidas" className="scroll-mt-20 bg-hueso py-16 sm:py-28">
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
       <Encabezado antetitulo="Vendidas" titulo="Cada cierre, contado por Hugo">
-        <p className="mt-5 max-w-xl text-[15px] font-light leading-relaxed text-grafito">
+        <p className="mt-4 max-w-xl text-[14.5px] font-light leading-relaxed text-grafito sm:mt-5 sm:text-[15px]">
           Después de cada negocio, Hugo agradece a los propietarios y a los nuevos dueños. Estas son sus palabras.
         </p>
       </Encabezado>
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {CIERRES.map((cierre, i) => (
+      <div className="mt-8 sm:mt-12">
+        <Deslizable
+          ancho="w-[80%]"
+          rejilla="sm:grid-cols-2 lg:grid-cols-4"
+          items={CIERRES.map((cierre, i) => (
           <motion.figure
             key={cierre.codigo}
             {...revelar(i * 0.08)}
@@ -345,7 +425,7 @@ export const Cierres: React.FC = () => (
                 />
               </div>
             )}
-            <figcaption className="flex flex-1 flex-col p-6">
+            <figcaption className="flex flex-1 flex-col p-5 sm:p-6">
               <p className="versalitas text-[9.5px] text-bronce">{cierre.titulo}</p>
               <p className="mt-3 flex-1 text-[13.5px] font-light leading-relaxed text-grafito">«{cierre.texto}»</p>
               <a
@@ -359,7 +439,8 @@ export const Cierres: React.FC = () => (
               </a>
             </figcaption>
           </motion.figure>
-        ))}
+          ))}
+        />
       </div>
     </div>
   </section>
@@ -370,39 +451,39 @@ export const Cierres: React.FC = () => (
 /* ------------------------------------------------------------------ */
 
 export const VendeTuPropiedad: React.FC<{ onContacto: () => void }> = ({ onContacto }) => (
-  <section id="vender" className="scroll-mt-20 border-t border-negro/[0.06] bg-stone-100 py-20 sm:py-28">
-    <div className="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-12">
+  <section id="vender" className="scroll-mt-20 border-t border-negro/[0.06] bg-stone-100 py-16 sm:py-28">
+    <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:gap-12 sm:px-8 lg:grid-cols-12">
       <div className="lg:col-span-7">
         <Encabezado medio antetitulo="Para propietarios" titulo="¿Quieres que tu propiedad tenga alcance en venta y visual?">
-          <p className="mt-6 font-script text-[clamp(1.9rem,3.2vw,2.7rem)] leading-tight text-bronce">{MARCA.captacion}</p>
+          <p className="mt-4 font-script text-[clamp(1.75rem,3.2vw,2.7rem)] leading-tight text-bronce sm:mt-6">{MARCA.captacion}</p>
         </Encabezado>
       </div>
       <motion.div {...revelar(0.12)} className="lg:col-span-5">
-        <ul className="space-y-5">
+        <ul className="space-y-4 sm:space-y-5">
           {[
             'Tu propiedad recorrida por Hugo, fotografiada y publicada para una comunidad de 24,5 mil seguidores en Instagram.',
             'Una ficha completa, con áreas, espacios, administración y precio, como la de cada propiedad de esta página.',
             'Acompañamiento personal en cada visita, en la negociación y hasta el cierre.',
           ].map((punto) => (
-            <li key={punto} className="flex gap-4 text-[15px] font-light leading-relaxed text-grafito">
+            <li key={punto} className="flex gap-3.5 text-[14.5px] font-light leading-relaxed text-grafito sm:gap-4 sm:text-[15px]">
               <Check className="mt-1 h-4 w-4 shrink-0 text-oro" strokeWidth={2} />
               {punto}
             </li>
           ))}
         </ul>
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-col gap-2.5 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-3">
           <a
             href={whatsappUrl('Hola Hugo, quiero vender mi propiedad. Te cuento los detalles:')}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:bg-grafito"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.2em] text-white transition-colors hover:bg-grafito sm:tracking-[0.24em]"
           >
             <WhatsAppIcon className="h-4 w-4" /> Quiero vender mi propiedad
           </a>
           <button
             type="button"
             onClick={onContacto}
-            className="inline-flex items-center gap-2 rounded-full border border-negro/20 bg-white px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-negro transition-colors hover:bg-stone-50"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-negro/20 bg-white px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.2em] text-negro transition-colors hover:bg-stone-50 sm:tracking-[0.24em]"
           >
             Escríbeme
           </button>

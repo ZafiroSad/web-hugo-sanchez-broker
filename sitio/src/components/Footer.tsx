@@ -26,8 +26,8 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
 
   return (
     <footer className="relative border-t border-negro/[0.08] bg-white text-negro">
-      <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-16 sm:px-8 sm:pt-20">
-        <div className="grid gap-14 border-b border-negro/[0.06] pb-14 lg:grid-cols-12">
+      <div className="relative mx-auto max-w-7xl px-5 pb-8 pt-12 sm:px-8 sm:pb-10 sm:pt-20">
+        <div className="grid gap-10 border-b border-negro/[0.06] pb-10 sm:gap-14 sm:pb-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Logotipo tono="oscuro" />
             <p className="mt-7 max-w-sm font-script text-[30px] leading-tight text-bronce">{MARCA.slogan}</p>
@@ -35,13 +35,13 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
               href={whatsappUrl('Hola Hugo, vi tu página web y quiero coordinar una visita.')}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 inline-flex items-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:bg-grafito"
+              className="mt-8 hidden items-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:bg-grafito lg:inline-flex"
             >
               <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
             </a>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-7">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-9 sm:grid-cols-3 sm:gap-10 lg:col-span-7">
             <div>
               <p className="versalitas text-[9.5px] text-taupe">Navegación</p>
               <ul className="mt-5 space-y-3 text-[13px] font-light text-grafito">
@@ -53,7 +53,7 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
                 {enlace('Vende tu propiedad', 'inicio/vender')}
               </ul>
             </div>
-            <div>
+            <div className="order-last col-span-2 sm:order-none sm:col-span-1">
               <p className="versalitas text-[9.5px] text-taupe">Contacto</p>
               <ul className="mt-5 space-y-3 text-[13px] font-light text-grafito">
                 <li>

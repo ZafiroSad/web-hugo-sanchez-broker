@@ -82,7 +82,11 @@ function AppContent() {
   const enFicha = route.name === 'propiedad';
 
   return (
-    <div className="flex min-h-screen flex-col bg-hueso text-negro">
+    <div
+      className={`flex min-h-screen flex-col bg-hueso text-negro ${
+        enIntro || enFicha ? '' : 'pb-[calc(66px+env(safe-area-inset-bottom))] lg:pb-0'
+      }`}
+    >
       <AnimatePresence>{enIntro && <Intro key="intro" onEnter={() => navigate('inicio')} />}</AnimatePresence>
 
       <Navbar route={route} />
@@ -116,8 +120,8 @@ function AppContent() {
 
       <Footer onContacto={() => setContactoAbierto(true)} />
 
-      {!enIntro && <FloatingButtons elevado={enFicha} mostrarWhatsApp={!enFicha} />}
-      <PropertyComparisonBadge onOpenCompare={() => setComparadorAbierto(true)} elevado={enFicha} />
+      {!enIntro && <FloatingButtons enFicha={enFicha} />}
+      <PropertyComparisonBadge onOpenCompare={() => setComparadorAbierto(true)} />
       <PropertyComparisonModal
         isOpen={comparadorAbierto}
         onClose={() => setComparadorAbierto(false)}

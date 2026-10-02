@@ -4,10 +4,8 @@ import { Columns3, X } from 'lucide-react';
 import { useProperties } from '../context/PropertyContext';
 import { CURVA } from '../utils/motion';
 
-export const PropertyComparisonBadge: React.FC<{ onOpenCompare: () => void; elevado?: boolean }> = ({
-  onOpenCompare,
-  elevado = false,
-}) => {
+/** En el teléfono va encima de la barra fija de abajo; en el computador, abajo al centro. */
+export const PropertyComparisonBadge: React.FC<{ onOpenCompare: () => void }> = ({ onOpenCompare }) => {
   const { compareIds, clearCompare } = useProperties();
 
   return (
@@ -18,7 +16,7 @@ export const PropertyComparisonBadge: React.FC<{ onOpenCompare: () => void; elev
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
           transition={{ duration: 0.5, ease: CURVA.ios }}
-          className={`fixed left-1/2 z-40 -translate-x-1/2 ${elevado ? 'bottom-24' : 'bottom-6'}`}
+          className="fixed bottom-[calc(80px+env(safe-area-inset-bottom))] left-1/2 z-40 -translate-x-1/2 lg:bottom-6"
         >
           <div className="flex items-center gap-1 rounded-full bg-negro py-1.5 pl-5 pr-1.5 text-hueso shadow-2xl ring-1 ring-white/10">
             <button

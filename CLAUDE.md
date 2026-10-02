@@ -7,6 +7,20 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
+- **v0.5: vista de celular** (2026-10-02). Pedido: «haz que la vista de celular se vea mejor, más acorde».
+  La auditoría a 390 px mostró que el problema era de forma, no de color:
+  - Los botones flotantes tapaban textos y precios en todas las pantallas.
+  - Cada tarjeta ocupaba pantalla y media; el inicio medía 19 pantallas y el catálogo 18.
+  - Los títulos eran demasiado grandes y en la ficha el precio salía al final.
+
+  Lo que cambió:
+  - Barra fija abajo con Instagram y «Coordina tu visita».
+  - Destacadas, pilares y vendidas en carruseles deslizables con puntos.
+  - Catálogo en dos columnas con tarjetas compactas.
+  - Títulos más contenidos y «Leer más» en la bio.
+  - En la ficha, el precio y las acciones van debajo del nombre.
+
+  Ahora el inicio mide 10 pantallas, el catálogo 6 y la ficha 6. El computador no cambia.
 - **v0.4: gama de la beta y fotos en vez de videos** (2026-10-02), publicada en
   https://zafirosad.github.io/web-hugo-sanchez-broker/. Al ver la v0.3 el Señor Stick pidió: los colores
   de la beta, imágenes en lugar de videos («quita todos los videos») y no tener que bajar tanto para ver
@@ -112,6 +126,14 @@ sitio/          el sitio publicado (ver sitio/README.md)
 - Cada propiedad muestra sus fotos (`sitio/public/fotos/<id>/NN.webp` y `NN-800.webp`). La portada
   tipográfica (nombre sobre negro) queda solo para una propiedad nueva sin fotos.
 - Tarjetas en 4:5: casi todo el material de Hugo es vertical (cuadros de reel 9:16, carruseles 3:4 o 1:1).
+- **En el teléfono (v0.5), Instagram y WhatsApp van en una barra fija abajo, no flotando.** Los botones
+  flotantes tapaban textos y precios. En la ficha esa barra es la de la ficha: Instagram, precio corto
+  («$9.000 M», «$12 M/mes»; el «Desde» va en la línea del nombre) y «Coordina tu visita». Así cabe entero
+  hasta en pantallas de 360 px (verificado en las 20 fichas).
+- En el teléfono, las secciones de varias tarjetas (destacadas, pilares, vendidas) son carruseles
+  deslizables (`Deslizable` en `SeccionesInicio.tsx`). El catálogo y «También te pueden interesar» son
+  rejillas de dos columnas con `PropertyCard densa`. Desde tableta todo vuelve a rejilla.
+- El botón «Comparar» de las tarjetas solo aparece desde tableta; en el teléfono se compara desde la ficha.
 - Fuentes alojadas en el sitio (Montserrat y Pinyon Script, OFL); no se usa Google Fonts.
 - Las coordenadas del mapa son aproximadas por zona (`sitio/src/data/zonas.ts`) y se muestran como
   círculo. Montearroyo, La Gran Reserva, City Center y La Loma no tienen mapa (zona desconocida).

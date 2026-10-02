@@ -22,7 +22,7 @@ export const PropertyList: React.FC = () => {
   const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
 
   return (
-    <section className="min-h-screen bg-hueso pb-28 pt-[120px] sm:pt-[136px]">
+    <section className="min-h-screen bg-hueso pb-16 pt-[96px] sm:pb-28 sm:pt-[136px]">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <motion.header
           initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
@@ -31,10 +31,10 @@ export const PropertyList: React.FC = () => {
           className="max-w-3xl"
         >
           <p className="versalitas text-[10px] text-bronce">Book de propiedades</p>
-          <h1 className="mt-5 font-light uppercase leading-[1.08] tracking-[0.1em] text-[clamp(2.2rem,5vw,4.2rem)] text-negro">
+          <h1 className="mt-3 font-light uppercase leading-[1.08] tracking-[0.1em] text-[clamp(1.9rem,8vw,4.2rem)] text-negro sm:mt-5">
             Propiedades
           </h1>
-          <p className="mt-5 text-[15px] font-light leading-relaxed text-grafito">
+          <p className="mt-3 text-[14px] font-light leading-relaxed text-grafito sm:mt-5 sm:text-[15px]">
             {publicProperties.length} propiedades publicadas por Hugo en Bucaramanga y su área metropolitana, cada una con
             sus fotos, su ficha completa y su precio.
           </p>
@@ -45,7 +45,7 @@ export const PropertyList: React.FC = () => {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: CURVA.ios, delay: 0.1 }}
-          className="sin-scroll -mx-5 mt-10 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:flex-wrap sm:px-0"
+          className="sin-scroll -mx-5 mt-6 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:mt-10 sm:flex-wrap sm:px-0"
         >
           {['', ...sectors].map((s) => (
             <button
@@ -62,7 +62,7 @@ export const PropertyList: React.FC = () => {
         </motion.div>
 
         {/* Búsqueda, orden y filtros */}
-        <div className="mt-6 flex flex-col gap-3 border-b border-negro/10 pb-6 sm:flex-row sm:items-center">
+        <div className="mt-4 flex flex-col gap-2.5 border-b border-negro/10 pb-4 sm:mt-6 sm:gap-3 sm:pb-6 sm:flex-row sm:items-center">
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-piedra" />
             <input
@@ -115,7 +115,7 @@ export const PropertyList: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between py-5 text-[12px] text-taupe">
+        <div className="flex items-center justify-between py-3 text-[12px] text-taupe sm:py-5">
           <p>
             <span className="font-semibold text-negro">{filteredProperties.length}</span>{' '}
             {filteredProperties.length === 1 ? 'propiedad' : 'propiedades'}
@@ -142,9 +142,9 @@ export const PropertyList: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-6 pt-2 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          <div className="grid grid-cols-2 gap-2.5 pt-1 sm:gap-6 sm:pt-2 lg:grid-cols-3 lg:gap-8">
             {filteredProperties.map((p, i) => (
-              <PropertyCard key={p.id} property={p} index={i} prioridad={i < 3} />
+              <PropertyCard key={p.id} property={p} index={i} prioridad={i < 4} densa />
             ))}
           </div>
         )}
