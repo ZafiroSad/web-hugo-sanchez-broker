@@ -1,24 +1,32 @@
-name: Fotos de Instagram (sondeo)
+name: Fotos de Instagram
 
+# Descarga las fotos de cada propiedad desde su publicación de Instagram y las
+# deja en la rama fotos-instagram para elegirlas. No toca main ni el sitio.
 on:
   push:
     branches: [fotos-instagram]
+    paths:
+      - 'herramientas/fotos-instagram/**'
+      - '.github/workflows/fotos-instagram.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  sondear:
+  descargar:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - name: Sondear Instagram
-        run: python3 herramientas/fotos-instagram/sondear.py
-      - name: Guardar el sondeo en la rama
+      - name: Dependencias
+        run: pip install --quiet pillow numpy opencv-python-headless imageio-ffmpeg
+      - name: Descargar fotos
+        run: python3 herramientas/fotos-instagram/descargar.py
+      - name: Guardar las fotos en la rama
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add sondeo
-          git commit -m "Sondeo de Instagram" || echo "sin cambios"
+          git add fotos
+          git commit -m "Fotos de las propiedades desde Instagram" || echo "sin cambios"
           git push
