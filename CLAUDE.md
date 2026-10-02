@@ -7,11 +7,34 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
-- **v0.1 — investigación en curso** (2026-10-02).
-- Captura del feed de Instagram: en curso (1.404 publicaciones en total).
-- Investigación web (identidad, presencia digital, mercado y referentes): en curso
-  con un workflow de 3 frentes + crítico.
+- **v0.1 — investigación en curso** (2026-10-02). La sesión pasó a la nube.
+- Captura del feed de Instagram: **parcial, 606 de 1.404** publicaciones (las más recientes,
+  aprox. hasta fines de 2023) en `investigacion/datos/instagram-feed-parcial.json`.
+  Las ~800 restantes solo se pueden capturar desde el equipo local (Claude in Chrome con
+  la sesión de Instagram del Señor Stick); en la nube no hay acceso.
+- Investigación web: hecho `01-identidad-trayectoria.md`. Quedaron sin hacer
+  presencia digital (02), mercado y referentes (03) y verificación (04).
 - Beta de la página: pendiente de que el Señor Stick la entregue.
+
+## Observaciones visuales del feed (vistas en pantalla, 2026-10-02)
+- Formato dominante: reels verticales recorriendo la propiedad con Hugo en cámara.
+  De 606 publicaciones capturadas, 547 son reels.
+- Portadas con el nombre de la propiedad en blanco, centrado y en mayúsculas, sobre la foto
+  o video. Debajo va el tipo de inmueble en versalitas pequeñas (CASA, APARTAMENTO,
+  PENTHOUSE, LOTE) y a veces "HUGO SÁNCHEZ / BROKER INMOBILIARIO". Encima o detrás va la
+  firma manuscrita "HS" en blanco.
+- Evolución tipográfica de las portadas, de lo más antiguo a lo más reciente:
+  1. Sans geométrica gruesa (tipo Montserrat Bold/Black).
+  2. Serif de alto contraste en mayúsculas (tipo Playfair Display / Didone).
+  3. **Actual (2025-2026):** sans geométrica fina, mayúsculas con tracking amplio
+     (tipo Montserrat Light), con subtítulo en sans pequeña y bold.
+- Palabras de portada recurrentes: VENDIDO / VENDIDA, PRÓXIMAMENTE!! (en serif itálica),
+  BIENVENIDO, "COMO SIEMPRE ENCONTRANDO LAS…".
+- Zonas que más aparecen: Ruitoque Condominio, Lagos del Cacique, Cañaveral, Cabecera,
+  Mesa de los Santos, Piedecuesta y Floridablanca. Fuera de la zona: Cartagena, Barú y
+  Panamá (Santa María, Costa del Este).
+- Presencia personal: Hugo siempre en cámara, de negro o con colores neutros y con gafas.
+  También usa un avatar caricatura con polo negro y firma HS.
 
 ## Estructura
 ```
