@@ -97,9 +97,12 @@ export interface Property {
   specs: PropertySpecs;
   units?: PropertyUnit[];
 
-  /** Enlace del recorrido en video: reel de Instagram, YouTube o un .mp4. */
+  /**
+   * Enlace a su publicación de Instagram (reel o carrusel). El sitio no muestra
+   * videos: la ficha solo enlaza a la publicación.
+   */
   video?: string;
-  /** Fotografías opcionales (enlaces). Si no hay, la tarjeta usa la portada tipográfica. */
+  /** Fotos: ./fotos/<id>/01.webp… o enlaces. La primera es la portada; sin fotos, portada tipográfica. */
   images: string[];
 
   /** Fecha de la publicación original en Instagram (AAAA-MM-DD). */

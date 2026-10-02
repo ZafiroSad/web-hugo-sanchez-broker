@@ -15,8 +15,8 @@ import {
   Star,
   Trash2,
   Upload,
-  Video,
-  VideoOff,
+  Camera,
+  ImageOff,
 } from 'lucide-react';
 import { MARCA } from '../config/marca';
 import { esInventarioValido, useProperties } from '../context/PropertyContext';
@@ -209,7 +209,7 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
     { etiqueta: 'Arrendadas', valor: metrics.arrendadas },
     { etiqueta: 'Ocultas', valor: metrics.ocultas, nota: 'borradores' },
     { etiqueta: 'Destacadas', valor: metrics.destacadas, nota: 'salen primero en el inicio' },
-    { etiqueta: 'Sin video', valor: metrics.sinVideo, nota: metrics.sinVideo ? 'agrega su reel' : 'todas tienen video' },
+    { etiqueta: 'Sin fotos', valor: metrics.sinFotos, nota: metrics.sinFotos ? 'agrégales fotos' : 'todas tienen fotos' },
   ];
 
   const textoOrigen =
@@ -364,13 +364,14 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
                     {p.operation === 'Arriendo' && p.price && !p.priceOnRequest ? ' / mes' : ''}
                   </p>
                   <p className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-taupe">
-                    {p.video ? (
+                    {p.images.length > 0 ? (
                       <>
-                        <Video className="h-3.5 w-3.5 text-[#3c5a37]" /> Con video
+                        <Camera className="h-3.5 w-3.5 text-[#3c5a37]" /> {p.images.length}{' '}
+                        {p.images.length === 1 ? 'foto' : 'fotos'}
                       </>
                     ) : (
                       <>
-                        <VideoOff className="h-3.5 w-3.5 text-[#a2543f]" /> Sin video
+                        <ImageOff className="h-3.5 w-3.5 text-[#a2543f]" /> Sin fotos
                       </>
                     )}
                   </p>

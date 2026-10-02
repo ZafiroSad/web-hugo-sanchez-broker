@@ -5,17 +5,49 @@ import { ZONAS } from './zonas';
  * Las 20 propiedades más recientes de @hugosanchezmarzan (26 de mayo a
  * 1 de octubre de 2026), con los datos tal cual los publicó. Solo se quitaron
  * los emojis y se corrigieron las erratas («Está» por «Esta», «Valir» por
- * «Valor», etc.). Cada una enlaza a su reel original como recorrido en video.
+ * «Valor», etc.). Cada una enlaza a su publicación original y trae las fotos
+ * sacadas de esa misma publicación.
  *
  * Fuente: investigacion/datos/instagram-feed-parcial.json
+ * Fotos: herramientas/fotos/ (cuáles se eligieron y cómo se convierten)
  *
  * Si se cambia este arreglo, hay que subir SEED_VERSION para que los
  * navegadores con datos viejos guardados carguen los nuevos.
  */
-export const SEED_VERSION = '2026-10-02.1';
+export const SEED_VERSION = '2026-10-02.2';
 
 const reel = (code: string) => `https://www.instagram.com/reel/${code}/`;
 const post = (code: string) => `https://www.instagram.com/p/${code}/`;
+
+/**
+ * Cuántas fotos tiene cada propiedad en public/fotos/<id>/ (01.webp, 02.webp…).
+ * Salen de su publicación de Instagram: fotos del carrusel o cuadros del reel.
+ */
+const FOTOS: Record<string, number> = {
+  'orizon-sky-home': 10,
+  'conjunto-green-house': 7,
+  'edificio-montearroyo': 8,
+  'conjunto-casa-montana': 6,
+  'ruitoque-park-house': 7,
+  'conjunto-mansion-del-lago': 7,
+  'cabana-la-pradera': 7,
+  'valle-de-rocas': 9,
+  'la-gran-reserva-andalucia': 7,
+  'condominio-luxxe': 7,
+  'conjunto-club-house-1': 7,
+  'terrazas-de-menzuly': 9,
+  'cabana-buenavista': 8,
+  'edificio-terrazo-48': 8,
+  'city-center': 6,
+  'hacienda-la-disculpa': 6,
+  'edificio-vizcaya-gold': 9,
+  'edificio-la-loma': 7,
+  'ruitoque-villas': 4,
+  'conjunto-la-rinconada': 9,
+};
+
+const fotosDe = (id: string) =>
+  Array.from({ length: FOTOS[id] ?? 0 }, (_, i) => `./fotos/${id}/${String(i + 1).padStart(2, '0')}.webp`);
 
 type Semilla = Omit<Property, 'currency' | 'country' | 'locationPrecision' | 'images' | 'createdAt' | 'updatedAt' | 'coordinates'> & {
   images?: string[];
@@ -603,7 +635,7 @@ export const INITIAL_PROPERTIES: Property[] = SEMILLA.map((p) => {
     country: 'Colombia',
     coordinates: zona,
     locationPrecision: 'approximated',
-    images: p.images ?? [],
+    images: p.images ?? fotosDe(p.id),
     createdAt: fecha,
     updatedAt: fecha,
   };

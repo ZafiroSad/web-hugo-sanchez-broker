@@ -23,22 +23,25 @@
 }
 
 /*
- * Sistema visual de Hugo Sánchez (ver investigacion/ADN-MARCA.md).
- * Negro, hueso y neutros cálidos; la fotografía y el video ponen el color.
- * Montserrat para todo el texto y una cursiva caligráfica solo como acento.
+ * Sistema visual: la gama clara de la beta que eligió el Señor Stick. Fondo
+ * casi blanco, grises piedra, texto casi negro y un dorado de acento; las
+ * fotos de las propiedades ponen el color. Montserrat para todo el texto y una
+ * cursiva caligráfica solo como acento.
  */
 @theme {
   --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-script: 'Pinyon Script', 'Snell Roundhand', 'Apple Chancery', cursive;
 
-  --color-tinta: #0b0b0b;
-  --color-negro: #111111;
-  --color-grafito: #2b2926;
-  --color-taupe: #6e665e;
-  --color-piedra: #8c847a;
-  --color-arena: #d9d0c3;
-  --color-hueso: #f5f2ed;
-  --color-bronce: #8a6f4e;
+  /* Los nombres vienen de la primera versión; los valores son los de la beta. */
+  --color-tinta: #0c0a09; /* fondos oscuros: intro y velo de las fotos */
+  --color-negro: #1c1917; /* texto principal y botones */
+  --color-grafito: #44403c; /* texto de lectura */
+  --color-taupe: #78716c; /* etiquetas */
+  --color-piedra: #a8a29e; /* texto tenue */
+  --color-arena: #d6d3d1; /* texto claro sobre fondo oscuro */
+  --color-hueso: #fafafa; /* fondo de la página */
+  --color-bronce: #a07a36; /* dorado de la beta, legible en texto pequeño */
+  --color-oro: #c5a059; /* dorado de la beta, decorativo */
 
   /* Curvas del STICK VIDEO SYSTEM: la de las hojas de iOS y la exponencial. */
   --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
@@ -126,7 +129,7 @@
 /* Mapa */
 .leaflet-container {
   font-family: var(--font-sans) !important;
-  background-color: #ebe6de !important;
+  background-color: #f4f3f0 !important;
 }
 .leaflet-control-zoom {
   border: none !important;
@@ -136,19 +139,8 @@
 }
 .leaflet-control-zoom a {
   background-color: #ffffff !important;
-  color: #111111 !important;
-  border-color: #e7e2da !important;
-}
-
-/* Embed de Instagram: que nunca se salga de su marco */
-.instagram-media {
-  min-width: 0 !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  border-radius: 0 !important;
-  border: 0 !important;
-  box-shadow: none !important;
+  color: #1c1917 !important;
+  border-color: #e7e5e4 !important;
 }
 
 /* Al imprimir la ficha PDF solo se imprime la ficha */

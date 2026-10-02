@@ -48,7 +48,7 @@ export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: CURVA.ios }}
-        className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-[14px] bg-hueso p-7 shadow-2xl sm:rounded-[4px] sm:p-9"
+        className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-2xl bg-white p-7 shadow-2xl sm:rounded-2xl sm:p-9"
         onClick={(e) => e.stopPropagation()}
       >
         <button type="button" onClick={onClose} className="absolute right-4 top-4 p-2 text-taupe hover:text-negro" aria-label="Cerrar">

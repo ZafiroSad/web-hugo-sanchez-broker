@@ -14,16 +14,15 @@ import {
 import { ZONAS } from '../data/zonas';
 import { useProperties } from '../context/PropertyContext';
 import { parseCaption, parseNumberCO } from '../utils/caption';
-import { parseVideo } from '../utils/video';
 import { formatCurrency } from '../utils/formatters';
 import { InteractiveMap } from './InteractiveMap';
+import { Foto } from './Foto';
 import { PropertyCover } from './PropertyCover';
-import { VideoEmbed } from './VideoEmbed';
 
 /**
  * Formulario de una propiedad, ordenado como la ficha que Hugo escribe en
- * Instagram. El primer bloque permite pegar el texto de la publicación y el
- * enlace del reel para llenar casi todo de una vez.
+ * Instagram. El primer bloque permite pegar el texto de la publicación para
+ * llenar casi todo de una vez; las fotos van en su propio paso.
  */
 
 type Datos = Omit<Property, 'createdAt' | 'updatedAt'>;
@@ -244,7 +243,6 @@ export const PropertyEditor: React.FC<{
     () => Array.from(new Set([...Object.keys(ZONAS), ...properties.map((p) => p.sector)])).sort((a, b) => a.localeCompare(b, 'es')),
     [properties]
   );
-  const video = parseVideo(d.video);
 
   const llenarDesdeInstagram = () => {
     const r = parseCaption(texto);
@@ -486,27 +484,100 @@ export const PropertyEditor: React.FC<{
 
           <Bloque
             paso="Paso 5"
-            titulo="Recorrido en video"
-            ayuda="Pega el enlace del reel de Instagram (también sirve YouTube o un archivo .mp4). Es lo primero que ve el cliente en la ficha."
+            titulo="Fotos"
+            ayuda="La primera es la portada de la tarjeta. Las fotos del sitio viven en sitio/public/fotos/<id>/ y se escriben así: ./fotos/<id>/01.webp. También sirve el enlace de una foto publicada en internet."
           >
-            <input
-              value={d.video ?? ''}
-              onChange={(e) => fijar('video', e.target.value)}
-              placeholder="https://www.instagram.com/reel/…"
-              className={estiloCampo}
-            />
-            <p className="mt-2 text-[12px] text-taupe">
-              {!d.video
-                ? 'Sin video: la ficha mostrará la portada tipográfica.'
-                : video
-                  ? `Reconocido: ${video.kind === 'instagram' ? `reel de Instagram (${video.code})` : video.kind === 'youtube' ? 'video de YouTube' : 'archivo de video'}.`
-                  : 'No se reconoce el enlace. Usa el enlace del reel, de YouTube o de un .mp4.'}
-            </p>
-            {video && (
-              <div className="mt-6 max-w-[300px]">
-                <VideoEmbed key={d.video} url={d.video} title={d.name || 'Vista previa'} carga="clic" />
-              </div>
+            <div className="flex gap-2">
+              <input
+                value={nuevaFoto}
+                onChange={(e) => setNuevaFoto(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && nuevaFoto.trim()) {
+                    e.preventDefault();
+                    fijar('images', [...d.images, nuevaFoto.trim()]);
+                    setNuevaFoto('');
+                  }
+                }}
+                placeholder="./fotos/nueva-propiedad/01.webp o https://…/foto.jpg"
+                className={estiloCampo}
+              />
+              <button
+                type="button"
+                onClick={() => {
+                  if (nuevaFoto.trim()) fijar('images', [...d.images, nuevaFoto.trim()]);
+                  setNuevaFoto('');
+                }}
+                className="rounded-[3px] bg-negro px-4 text-hueso"
+                aria-label="Agregar foto"
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+            </div>
+            {d.images.length > 0 && (
+              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {d.images.map((img, i) => (
+                  <li key={img + i} className="overflow-hidden rounded-[3px] border border-negro/10">
+                    <Foto src={img} alt="" sizes="200px" className="aspect-[4/5] w-full bg-stone-100 object-cover" />
+                    <div className="flex items-center justify-between px-2 py-1.5 text-taupe">
+                      <span className="text-[10px]">{i === 0 ? 'Portada' : `Foto ${i + 1}`}</span>
+                      <span className="flex">
+                        <button
+                          type="button"
+                          disabled={i === 0}
+                          onClick={() => {
+                            const l = [...d.images];
+                            [l[i - 1], l[i]] = [l[i], l[i - 1]];
+                            fijar('images', l);
+                          }}
+                          className="p-1 disabled:opacity-30"
+                          aria-label="Mover antes"
+                        >
+                          <ArrowUp className="h-3.5 w-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          disabled={i === d.images.length - 1}
+                          onClick={() => {
+                            const l = [...d.images];
+                            [l[i + 1], l[i]] = [l[i], l[i + 1]];
+                            fijar('images', l);
+                          }}
+                          className="p-1 disabled:opacity-30"
+                          aria-label="Mover después"
+                        >
+                          <ArrowDown className="h-3.5 w-3.5" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => fijar('images', d.images.filter((_, j) => j !== i))}
+                          className="p-1 hover:text-[#a2543f]"
+                          aria-label="Quitar foto"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             )}
+            {d.images.length === 0 && (
+              <p className="mt-3 text-[12px] text-taupe">Sin fotos: la tarjeta mostrará el nombre sobre fondo oscuro.</p>
+            )}
+
+            <div className="mt-7 border-t border-negro/[0.06] pt-6">
+              <Campo
+                etiqueta="Publicación en Instagram (opcional)"
+                nota="Enlace del reel o de la publicación. En la ficha aparece como un enlace a Instagram, no como video."
+              >
+                <input
+                  value={d.video ?? ''}
+                  onChange={(e) => fijar('video', e.target.value)}
+                  placeholder="https://www.instagram.com/reel/…"
+                  className={estiloCampo}
+                />
+              </Campo>
+            </div>
           </Bloque>
 
           <Bloque paso="Paso 6" titulo="Textos">
@@ -557,77 +628,7 @@ export const PropertyEditor: React.FC<{
             </div>
           </Bloque>
 
-          <Bloque paso="Paso 8" titulo="Fotos (opcional)" ayuda="Enlaces a fotos de la propiedad. La primera se usa como portada; sin fotos se usa la portada tipográfica.">
-            <div className="flex gap-2">
-              <input
-                value={nuevaFoto}
-                onChange={(e) => setNuevaFoto(e.target.value)}
-                placeholder="https://…/foto.jpg"
-                className={estiloCampo}
-              />
-              <button
-                type="button"
-                onClick={() => {
-                  if (nuevaFoto.trim()) fijar('images', [...d.images, nuevaFoto.trim()]);
-                  setNuevaFoto('');
-                }}
-                className="rounded-[3px] bg-negro px-4 text-hueso"
-                aria-label="Agregar foto"
-              >
-                <Plus className="h-4 w-4" />
-              </button>
-            </div>
-            {d.images.length > 0 && (
-              <ul className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {d.images.map((img, i) => (
-                  <li key={img + i} className="overflow-hidden rounded-[3px] border border-negro/10">
-                    <img src={img} alt="" referrerPolicy="no-referrer" className="aspect-[4/3] w-full bg-arena object-cover" />
-                    <div className="flex items-center justify-between px-2 py-1.5 text-taupe">
-                      <span className="text-[10px]">{i === 0 ? 'Portada' : `Foto ${i + 1}`}</span>
-                      <span className="flex">
-                        <button
-                          type="button"
-                          disabled={i === 0}
-                          onClick={() => {
-                            const l = [...d.images];
-                            [l[i - 1], l[i]] = [l[i], l[i - 1]];
-                            fijar('images', l);
-                          }}
-                          className="p-1 disabled:opacity-30"
-                          aria-label="Mover antes"
-                        >
-                          <ArrowUp className="h-3.5 w-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          disabled={i === d.images.length - 1}
-                          onClick={() => {
-                            const l = [...d.images];
-                            [l[i + 1], l[i]] = [l[i], l[i + 1]];
-                            fijar('images', l);
-                          }}
-                          className="p-1 disabled:opacity-30"
-                          aria-label="Mover después"
-                        >
-                          <ArrowDown className="h-3.5 w-3.5" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => fijar('images', d.images.filter((_, j) => j !== i))}
-                          className="p-1 hover:text-[#a2543f]"
-                          aria-label="Quitar foto"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                        </button>
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Bloque>
-
-          <Bloque paso="Paso 9" titulo="Ubicación" ayuda="La zona aparece en la tarjeta y en los filtros. En el mapa público se muestra un círculo amplio, no la dirección.">
+          <Bloque paso="Paso 8" titulo="Ubicación" ayuda="La zona aparece en la tarjeta y en los filtros. En el mapa público se muestra un círculo amplio, no la dirección.">
             <div className="grid gap-5 sm:grid-cols-3">
               <Campo etiqueta="Zona *">
                 <input
@@ -687,16 +688,20 @@ export const PropertyEditor: React.FC<{
         {/* Vista previa */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <p className="versalitas text-[9.5px] text-taupe">Vista previa de la portada</p>
-          <div className="mt-3 aspect-[4/5] overflow-hidden rounded-[3px]">
-            <PropertyCover
-              property={{
-                id: d.id || d.name || 'nueva',
-                name: d.name.toUpperCase() || 'NOMBRE DE LA PROPIEDAD',
-                propertyType: d.propertyType,
-                sector: d.sector || 'Zona',
-                images: d.images,
-              }}
-            />
+          <div className="mt-3 aspect-[4/5] overflow-hidden rounded-2xl bg-stone-100">
+            {d.images[0] ? (
+              <Foto src={d.images[0]} alt="" sizes="320px" className="h-full w-full object-cover" />
+            ) : (
+              <PropertyCover
+                property={{
+                  id: d.id || d.name || 'nueva',
+                  name: d.name.toUpperCase() || 'NOMBRE DE LA PROPIEDAD',
+                  propertyType: d.propertyType,
+                  sector: d.sector || 'Zona',
+                  images: d.images,
+                }}
+              />
+            )}
           </div>
           <p className="mt-4 text-[15px] font-medium tabular-nums">
             {d.priceOnRequest ? 'Precio a consultar' : d.price ? `${d.priceIsFrom ? 'Desde ' : ''}${formatCurrency(d.price)}` : '—'}

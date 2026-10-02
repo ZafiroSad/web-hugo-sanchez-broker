@@ -49,7 +49,7 @@ const DOCUMENTOS: Record<LegalDocType, { titulo: string; cuerpo: React.ReactNode
           La ubicación en el mapa es aproximada por la seguridad de los propietarios. La dirección exacta se comparte al
           coordinar la visita.
         </p>
-        <p>Los videos y fotografías pertenecen a {MARCA.nombre} y a sus autores, y no pueden usarse sin autorización.</p>
+        <p>Las fotografías salen de las publicaciones de {MARCA.nombre}, pertenecen a él y a sus autores, y no pueden usarse sin autorización.</p>
       </>
     ),
   },
@@ -62,8 +62,8 @@ const DOCUMENTOS: Record<LegalDocType, { titulo: string; cuerpo: React.ReactNode
           para que funcione.
         </p>
         <p>
-          Los videos se muestran con el reproductor de Instagram, que puede usar sus propias cookies según las
-          políticas de Meta. El mapa usa teselas de CARTO y OpenStreetMap.
+          Las fotos se sirven desde este mismo sitio. Los enlaces a Instagram y WhatsApp abren esas aplicaciones, que
+          tienen sus propias políticas. El mapa usa teselas de CARTO y OpenStreetMap.
         </p>
       </>
     ),
@@ -80,7 +80,7 @@ export const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void; docTyp
   return (
     <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/60 p-4 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-[4px] bg-hueso p-7 shadow-2xl sm:p-9"
+        className="max-h-[85vh] w-full max-w-xl overflow-y-auto rounded-2xl bg-white p-7 shadow-2xl sm:p-9"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">

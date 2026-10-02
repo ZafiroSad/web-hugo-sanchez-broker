@@ -6,7 +6,7 @@ import { FirmaHS } from './marca';
  * La portada de una propiedad, con el mismo lenguaje de las portadas de sus
  * reels: el nombre en blanco, en mayúsculas espaciadas, y el tipo de inmueble
  * en versalitas. Si la propiedad tiene foto, el texto va sobre la foto; si no,
- * sobre un fondo negro con una luz cálida distinta para cada propiedad.
+ * sobre un fondo casi negro con una luz distinta para cada propiedad.
  */
 
 function semilla(texto: string): number {
@@ -45,6 +45,15 @@ export const PropertyCover: React.FC<{
   const y = 12 + ((h >> 4) % 46);
   const t = TAMANOS[size];
 
+  // En miniatura, con foto, basta la foto: el texto no se alcanza a leer.
+  if (imagen && size === 'mini') {
+    return (
+      <div className={`relative h-full w-full overflow-hidden bg-stone-100 ${className}`}>
+        <img src={imagen} alt="" loading="lazy" referrerPolicy="no-referrer" className="absolute inset-0 h-full w-full object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative h-full w-full overflow-hidden bg-negro text-hueso ${className}`}>
       {imagen ? (
@@ -63,9 +72,9 @@ export const PropertyCover: React.FC<{
           aria-hidden="true"
           className="absolute inset-0 transition-transform duration-[1600ms] ease-ios group-hover:scale-[1.06]"
           style={{
-            background: `radial-gradient(70% 55% at ${x}% ${y}%, rgba(217,208,195,0.17) 0%, transparent 68%),
-              radial-gradient(55% 45% at ${100 - x}% ${100 - y / 2}%, rgba(138,111,78,0.16) 0%, transparent 70%),
-              linear-gradient(165deg, #1b1916 0%, #121110 55%, #0b0b0b 100%)`,
+            background: `radial-gradient(70% 55% at ${x}% ${y}%, rgba(214,211,209,0.16) 0%, transparent 68%),
+              radial-gradient(55% 45% at ${100 - x}% ${100 - y / 2}%, rgba(197,160,89,0.15) 0%, transparent 70%),
+              linear-gradient(165deg, #1c1917 0%, #141210 55%, #0c0a09 100%)`,
           }}
         />
       )}

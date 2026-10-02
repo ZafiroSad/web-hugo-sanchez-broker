@@ -39,7 +39,7 @@ export const PropertyComparisonModal: React.FC<{
 
   return (
     <div className="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto bg-black/75 p-3 backdrop-blur-sm sm:items-center sm:p-6">
-      <div className="w-full max-w-5xl overflow-hidden rounded-[4px] bg-hueso shadow-2xl">
+      <div className="w-full max-w-5xl overflow-hidden rounded-2xl bg-white shadow-2xl">
         <div className="flex items-center justify-between border-b border-negro/10 px-6 py-5">
           <div>
             <p className="versalitas text-[9.5px] text-taupe">Comparar</p>

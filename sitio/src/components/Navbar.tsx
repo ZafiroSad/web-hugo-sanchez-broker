@@ -51,8 +51,8 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,color] duration-500 ease-ios ${
           sobreOscuro
-            ? 'border-b border-transparent bg-transparent text-hueso'
-            : 'border-b border-negro/[0.07] bg-hueso/90 text-negro backdrop-blur-xl'
+            ? 'border-b border-transparent bg-transparent text-white'
+            : 'border-b border-negro/[0.07] bg-white/95 text-negro backdrop-blur-xl'
         }`}
       >
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
@@ -110,7 +110,7 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
               target="_blank"
               rel="noopener noreferrer"
               className={`hidden items-center gap-2 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] transition-colors sm:inline-flex ${
-                sobreOscuro ? 'bg-white text-negro hover:bg-hueso' : 'bg-negro text-hueso hover:bg-grafito'
+                sobreOscuro ? 'bg-white text-negro hover:bg-stone-100' : 'bg-negro text-white hover:bg-grafito'
               }`}
             >
               <WhatsAppIcon className="h-3.5 w-3.5" /> Coordina tu visita
@@ -130,15 +130,14 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
       <AnimatePresence>
         {menuAbierto && (
           <motion.div
-            className="fixed inset-0 z-50 flex flex-col bg-tinta text-hueso lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col bg-white text-negro lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.45, ease: CURVA.ios }}
           >
-            <div aria-hidden="true" className="grano absolute inset-0 opacity-[0.06]" />
-            <div className="relative flex h-[72px] items-center justify-between px-5">
-              <Logotipo tono="claro" />
+            <div className="relative flex h-[72px] items-center justify-between border-b border-negro/[0.07] px-5">
+              <Logotipo tono="oscuro" />
               <button
                 type="button"
                 onClick={() => setMenuAbierto(false)}
@@ -167,16 +166,16 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
               ))}
             </nav>
             <div className="relative space-y-6 px-8 pb-10">
-              <p className="font-script text-2xl text-arena">{MARCA.slogan}</p>
+              <p className="font-script text-2xl text-bronce">{MARCA.slogan}</p>
               <a
                 href={whatsappUrl(MENSAJE_GENERAL)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-white py-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-negro"
+                className="flex w-full items-center justify-center gap-2 rounded-full bg-negro py-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-white"
               >
                 <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
               </a>
-              <div className="flex items-center gap-6 text-piedra">
+              <div className="flex items-center gap-6 text-taupe">
                 <a href={MARCA.instagram.url} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                   <InstagramIcon className="h-5 w-5" />
                 </a>

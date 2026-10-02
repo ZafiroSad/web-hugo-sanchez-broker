@@ -7,15 +7,24 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
-- **v0.3: sitio construido y publicado** (2026-10-02) en https://zafirosad.github.io/web-hugo-sanchez-broker/
-  La beta VÉLARO del Señor Stick se rehízo con la marca de Hugo
+- **v0.4: gama de la beta y fotos en vez de videos** (2026-10-02), publicada en
+  https://zafirosad.github.io/web-hugo-sanchez-broker/. Al ver la v0.3 el Señor Stick pidió: los colores
+  de la beta, imágenes en lugar de videos («quita todos los videos») y no tener que bajar tanto para ver
+  la primera propiedad. Lo que cambió:
+  - Paleta clara de la beta: fondo #FAFAFA, tarjetas blancas, grises piedra y dorado de acento.
+  - Ningún video en el sitio. Cada propiedad trae de 4 a 10 fotos reales sacadas de su publicación de
+    Instagram (ver «Fotos» abajo), con galería y visor a pantalla completa en la ficha.
+  - Inicio: la portada es más corta y las propiedades destacadas van justo debajo; en el computador la
+    portada ya muestra tres propiedades. En el teléfono la primera tarjeta asoma en la primera pantalla.
+  - «Sobre Hugo» con su retrato profesional (el del reel fijado del manifiesto, sin la frase encima).
+- **v0.3: sitio construido** (2026-10-02). La beta VÉLARO del Señor Stick se rehízo con la marca de Hugo
   en `sitio/` (React 19 + Vite 8 + Tailwind 4 + Motion). Ver `sitio/README.md`.
   - Intro animada (`#/`): «HUGO SÁNCHEZ» letra a letra, el nombre sube, el slogan se escribe en
     cursiva (Pinyon Script) y aparece el botón blanco «Conoce tu nuevo hogar». Movimiento con las
     curvas del STICK VIDEO SYSTEM (reel de Stick Industries).
-  - Vista principal: resumen de Hugo, cifras de confianza, Book de propiedades, proceso
-    casa-llave-apretón, inversión (Sumas y Panamá), manifiesto, vendidas y captación.
-  - 20 propiedades reales (26 may. a 1 oct. 2026), cada una con su reel de Instagram como video.
+  - Vista principal (orden de la v0.4): portada, propiedades destacadas, Sobre Hugo con cifras de
+    confianza, proceso casa-llave-apretón, inversión (Sumas y Panamá), manifiesto, vendidas y captación.
+  - 20 propiedades reales (26 may. a 1 oct. 2026), cada una con sus fotos y el enlace a su publicación.
   - Botón de Instagram en toda la página; WhatsApp «Coordina tu visita» con mensaje por propiedad.
   - Panel `#/admin` (PIN 1234) adaptado a la ficha de Hugo, con importación desde el texto de Instagram.
 - Despliegue: `.github/workflows/sitio-pages.yml` publica en GitHub Pages en cada cambio de `sitio/`
@@ -52,6 +61,8 @@ investigacion/
   datos/analizar_feed.py  estadísticas del feed (volver a correrlo con el feed completo)
   01..05-*.md   informes (identidad, presencia digital, mercado, verificación, análisis del feed)
   ADN-MARCA.md  síntesis final: el documento que manda al ajustar la beta
+herramientas/fotos/  selección (seleccion.json) y conversión (preparar.py) de las fotos del sitio
+sitio/          el sitio publicado (ver sitio/README.md)
 ```
 
 ## Datos clave confirmados (Instagram, 2026-10-02)
@@ -73,8 +84,10 @@ investigacion/
 - Repositorio `ZafiroSad/web-hugo-sanchez-broker` para continuar desde la nube. Nació privado y pasó a
   **público** el 2026-10-02 para publicar en GitHub Pages con el plan gratuito. Lo decidió el Señor Stick
   sabiendo que con eso queda a la vista `investigacion/` (análisis del cliente y de su competencia).
-- Paleta propuesta: negro #111111, grafito #2B2926, taupe #6E665E, piedra #8C847A, arena #D9D0C3,
-  hueso #F5F2ED, blanco; bronce #8A6F4E opcional y solo decorativo. Sin verde de WhatsApp.
+- **Paleta: la de la beta** (decisión del Señor Stick, 2026-10-02, al ver la v0.3): fondo #FAFAFA, blanco,
+  escala piedra (stone) de Tailwind, texto #1C1917 y dorado #C5A059 de acento (#A07A36 para texto pequeño).
+  Los nombres de color del código (`hueso`, `negro`, `taupe`…) se conservaron con los valores nuevos.
+  La paleta cálida de `ADN-MARCA.md` (taupe, arena, bronce #8A6F4E) quedó descartada. Sin verde de WhatsApp.
 - Tipografía: Montserrat 300 en mayúsculas con tracking amplio (títulos), Montserrat 600 (etiquetas),
   Montserrat 400 (cuerpo) y Playfair Display Italic como único acento.
 - Frases: manifiesto "El verdadero lujo… es el acceso"; lema "Como siempre, encontrando las mejores
@@ -94,10 +107,11 @@ investigacion/
 
 ## Decisiones del sitio (2026-10-02)
 - Rutas con hash (`#/propiedad/<id>`): funcionan en GitHub Pages y cada propiedad tiene enlace propio.
-- Las fichas usan portada tipográfica (nombre en mayúsculas sobre negro, como sus portadas de reel)
-  porque no hay fotos propias descargables; si se agregan fotos en el panel, se usan en la portada.
-- Videos con el embed oficial de Instagram; en las secciones del inicio cargan al pulsar, para no
-  meter seis embeds de golpe.
+- **Sin videos** (pedido del Señor Stick, v0.4): ni embeds de Instagram ni reproductores. La ficha solo
+  enlaza a la publicación («Publicación» en la tarjeta de precio) y las vendidas a su reel.
+- Cada propiedad muestra sus fotos (`sitio/public/fotos/<id>/NN.webp` y `NN-800.webp`). La portada
+  tipográfica (nombre sobre negro) queda solo para una propiedad nueva sin fotos.
+- Tarjetas en 4:5: casi todo el material de Hugo es vertical (cuadros de reel 9:16, carruseles 3:4 o 1:1).
 - Fuentes alojadas en el sitio (Montserrat y Pinyon Script, OFL); no se usa Google Fonts.
 - Las coordenadas del mapa son aproximadas por zona (`sitio/src/data/zonas.ts`) y se muestran como
   círculo. Montearroyo, La Gran Reserva, City Center y La Loma no tienen mapa (zona desconocida).
@@ -105,13 +119,31 @@ investigacion/
 - Se retiraron de la beta: datos y textos de VÉLARO, fotos de Unsplash, cifras inventadas, el
   formulario que no enviaba nada (ahora abre WhatsApp) y la sección SARLAFT.
 
+## Fotos (v0.4)
+- Instagram no responde desde la sesión en la nube, pero sí desde GitHub Actions. La rama
+  `fotos-instagram` tiene el flujo `.github/workflows/fotos-instagram.yml` y
+  `herramientas/fotos-instagram/descargar.py`: por cada publicación lee la ficha que Instagram da a los
+  rastreadores de enlaces (`facebookexternalhit`), baja las fotos del carrusel o el video del reel, y del
+  video saca 16 cuadros nítidos repartidos en el tiempo. Todo queda en `fotos/` de esa rama (crudo, ~70 MB).
+  El registro de cada corrida también va a la rama, porque los registros de Actions no se leen desde aquí.
+- La elección es a mano, en `herramientas/fotos/seleccion.json` (la primera es la portada), y
+  `herramientas/fotos/preparar.py <carpeta fotos de la rama>` las convierte a WebP en dos tamaños.
+- Fuera de la selección: cuadros con Hugo en cámara, con texto encima (áreas, nombres) y los **renders
+  conceptuales de IA** que Hugo mete en algunos reels con un aviso pequeño (City Center, Green House,
+  Ruitoque Villas). Presentar un render como foto de la propiedad sería engañoso.
+- El retrato de «Sobre Hugo» es la foto profesional en blanco y negro de su reel fijado (DSiET7kDs6X);
+  `preparar.py` le borra la frase escrita encima. Las vendidas usan cuadros de sus reels con el rótulo
+  «VENDIDO», de donde salen también los nombres (Aqua, Hispania, Germania, Buena Vista).
+- Las propiedades de la portada del inicio se eligen en `PORTADA` (`sitio/src/config/marca.ts`).
+
 ## Pendientes y problemas conocidos
 - Desde la nube no se puede cambiar la configuración del repositorio (visibilidad, Pages): el proxy
   lo bloquea y lo hace el Señor Stick en Settings. Sí se puede relanzar la publicación
   (`gh api -X POST repos/ZafiroSad/web-hugo-sanchez-broker/actions/runs/<id>/rerun`) y leer su estado.
   La dirección publicada (zafirosad.github.io) tampoco se puede abrir desde la nube.
-- Pedir a Hugo: vector de la firma HS (hoy es provisional, en cursiva), retrato, videos en alta
-  calidad, confirmación de cifras y credenciales, y revisión legal de los textos de datos y términos.
+- Pedir a Hugo: vector de la firma HS (hoy es provisional, en cursiva), las fotos originales de sus
+  propiedades (las del sitio son cuadros de video a 1080 px), el retrato en alta resolución,
+  confirmación de cifras y credenciales, y revisión legal de los textos de datos y términos.
 - Capturar las ~800 publicaciones anteriores a mayo de 2024 (solo desde el equipo local) y volver
   a correr `investigacion/datos/analizar_feed.py`.
 - Recibir la beta y ajustarla con `ADN-MARCA.md`.

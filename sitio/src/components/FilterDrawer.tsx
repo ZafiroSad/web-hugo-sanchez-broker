@@ -57,7 +57,7 @@ export const FilterDrawer: React.FC<{ isOpen: boolean; onClose: () => void }> = 
             transition={{ duration: 0.4 }}
           />
           <motion.aside
-            className="relative mt-auto flex h-[90vh] w-full flex-col rounded-t-[14px] bg-hueso shadow-2xl md:mt-0 md:h-full md:max-w-md md:rounded-none"
+            className="relative mt-auto flex h-[90vh] w-full flex-col rounded-t-2xl bg-white shadow-2xl md:mt-0 md:h-full md:max-w-md md:rounded-none"
             initial={{ x: '100%', opacity: 0.6 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: '100%', opacity: 0.6 }}

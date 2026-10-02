@@ -25,7 +25,7 @@ export const FloatingButtons: React.FC<{ elevado?: boolean; mostrarWhatsApp?: bo
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: CURVA.ios, delay: 0.6 }}
-        className={`group fixed left-4 z-30 flex h-12 items-center rounded-full bg-negro/90 px-1.5 text-hueso shadow-[0_10px_30px_-8px_rgba(0,0,0,0.45)] ring-1 ring-white/10 backdrop-blur-md transition-colors hover:bg-negro sm:left-6 ${abajo}`}
+        className={`group fixed left-4 z-30 flex h-12 items-center rounded-full bg-negro/90 px-1.5 text-white shadow-[0_10px_30px_-8px_rgba(0,0,0,0.45)] ring-1 ring-white/10 backdrop-blur-md transition-colors hover:bg-negro sm:left-6 ${abajo}`}
       >
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7]">
           <InstagramIcon className="h-[18px] w-[18px] text-white" />

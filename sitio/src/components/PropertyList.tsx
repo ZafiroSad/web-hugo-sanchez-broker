@@ -30,13 +30,13 @@ export const PropertyList: React.FC = () => {
           transition={{ duration: 1, ease: CURVA.ios }}
           className="max-w-3xl"
         >
-          <p className="versalitas text-[10px] text-taupe">Book de propiedades</p>
-          <h1 className="mt-5 font-extralight uppercase leading-[1.08] tracking-[0.1em] text-[clamp(2.2rem,5vw,4.2rem)] text-negro">
+          <p className="versalitas text-[10px] text-bronce">Book de propiedades</p>
+          <h1 className="mt-5 font-light uppercase leading-[1.08] tracking-[0.1em] text-[clamp(2.2rem,5vw,4.2rem)] text-negro">
             Propiedades
           </h1>
           <p className="mt-5 text-[15px] font-light leading-relaxed text-grafito">
-            {publicProperties.length} propiedades publicadas por Hugo en Bucaramanga y su área metropolitana. Cada una
-            con su recorrido en video.
+            {publicProperties.length} propiedades publicadas por Hugo en Bucaramanga y su área metropolitana, cada una con
+            sus fotos, su ficha completa y su precio.
           </p>
         </motion.header>
 
@@ -53,7 +53,7 @@ export const PropertyList: React.FC = () => {
               type="button"
               onClick={() => setFilters((prev) => ({ ...prev, sector: s }))}
               className={`shrink-0 rounded-full border px-4 py-2 text-[11.5px] transition-colors ${
-                filters.sector === s ? 'border-negro bg-negro text-hueso' : 'border-negro/12 bg-white/70 text-grafito hover:border-negro/40'
+                filters.sector === s ? 'border-negro bg-negro text-white' : 'border-negro/[0.1] bg-white text-grafito hover:border-negro/40'
               }`}
             >
               {s || 'Todas las zonas'}
@@ -70,7 +70,7 @@ export const PropertyList: React.FC = () => {
               value={filters.searchQuery}
               onChange={(e) => setFilters((prev) => ({ ...prev, searchQuery: e.target.value }))}
               placeholder="Buscar por nombre, zona o tipo…"
-              className="w-full rounded-full border border-negro/12 bg-white py-3 pl-11 pr-10 text-[13.5px] text-negro placeholder:text-piedra focus:border-negro focus:outline-none"
+              className="w-full rounded-full border border-negro/[0.1] bg-white py-3 pl-11 pr-10 text-[13.5px] text-negro placeholder:text-piedra focus:border-negro focus:outline-none"
             />
             {filters.searchQuery && (
               <button
@@ -90,7 +90,7 @@ export const PropertyList: React.FC = () => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as PropertySortOption)}
-                className="w-full cursor-pointer appearance-none rounded-full border border-negro/12 bg-white py-3 pl-10 pr-6 text-[12.5px] text-negro focus:border-negro focus:outline-none"
+                className="w-full cursor-pointer appearance-none rounded-full border border-negro/[0.1] bg-white py-3 pl-10 pr-6 text-[12.5px] text-negro focus:border-negro focus:outline-none"
               >
                 <option value="recientes">Más recientes</option>
                 <option value="precio_desc">Mayor precio</option>
@@ -102,12 +102,12 @@ export const PropertyList: React.FC = () => {
               type="button"
               onClick={() => setFiltrosAbiertos(true)}
               className={`inline-flex items-center gap-2 rounded-full border px-5 py-3 text-[12.5px] transition-colors ${
-                activeFilterCount > 0 ? 'border-negro bg-negro text-hueso' : 'border-negro/12 bg-white text-negro hover:border-negro/40'
+                activeFilterCount > 0 ? 'border-negro bg-negro text-white' : 'border-negro/[0.1] bg-white text-negro hover:border-negro/40'
               }`}
             >
               <SlidersHorizontal className="h-4 w-4" /> Filtros
               {activeFilterCount > 0 && (
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-hueso text-[10px] font-semibold text-negro">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-semibold text-negro">
                   {activeFilterCount}
                 </span>
               )}
@@ -128,7 +128,7 @@ export const PropertyList: React.FC = () => {
         </div>
 
         {filteredProperties.length === 0 ? (
-          <div className="rounded-[3px] border border-dashed border-negro/15 bg-white/60 px-6 py-24 text-center">
+          <div className="rounded-2xl border border-dashed border-negro/15 bg-white px-6 py-24 text-center">
             <p className="text-[20px] font-light uppercase tracking-[0.1em] text-negro">Sin resultados con estos filtros</p>
             <p className="mx-auto mt-3 max-w-md text-[13.5px] text-grafito">
               Hugo tiene más propiedades de las que publica. Escríbele y cuéntale qué buscas.
@@ -136,15 +136,15 @@ export const PropertyList: React.FC = () => {
             <button
               type="button"
               onClick={resetFilters}
-              className="mt-7 rounded-full bg-negro px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-hueso"
+              className="mt-7 rounded-full bg-negro px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-white"
             >
               Ver todas
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-x-8 gap-y-14 pt-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 pt-2 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {filteredProperties.map((p, i) => (
-              <PropertyCard key={p.id} property={p} index={i} />
+              <PropertyCard key={p.id} property={p} index={i} prioridad={i < 3} />
             ))}
           </div>
         )}

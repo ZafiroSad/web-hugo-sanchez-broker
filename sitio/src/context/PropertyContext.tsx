@@ -62,7 +62,7 @@ interface PropertyContextType {
     arrendadas: number;
     ocultas: number;
     destacadas: number;
-    sinVideo: number;
+    sinFotos: number;
     valorEnVenta: number;
   };
 }
@@ -240,7 +240,7 @@ export const PropertyProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       arrendadas: cuenta('Arrendado'),
       ocultas: cuenta('Oculto'),
       destacadas: properties.filter((p) => p.featured && p.status !== 'Oculto').length,
-      sinVideo: properties.filter((p) => !p.video).length,
+      sinFotos: properties.filter((p) => p.images.length === 0).length,
       valorEnVenta: properties
         .filter((p) => p.status === 'Disponible' && p.operation === 'Venta' && !p.priceOnRequest)
         .reduce((suma, p) => suma + (p.price ?? 0), 0),

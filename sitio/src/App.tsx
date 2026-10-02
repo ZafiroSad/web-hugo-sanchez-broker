@@ -99,8 +99,8 @@ function AppContent() {
             {(route.name === 'inicio' || route.name === 'intro') && (
               <>
                 <HomeHero animar={!enIntro} />
-                <SobreHugo />
                 <Destacadas />
+                <SobreHugo />
                 <ComoTrabajo />
                 <Inversion />
                 <Manifiesto />

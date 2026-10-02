@@ -46,8 +46,8 @@ export const Logotipo: React.FC<{ tono?: 'claro' | 'oscuro'; compacto?: boolean 
   tono = 'oscuro',
   compacto = false,
 }) => {
-  const color = tono === 'claro' ? 'text-hueso' : 'text-negro';
-  const secundario = tono === 'claro' ? 'text-arena/80' : 'text-taupe';
+  const color = tono === 'claro' ? 'text-white' : 'text-negro';
+  const secundario = tono === 'claro' ? 'text-arena' : 'text-taupe';
   return (
     <span className="flex items-center gap-3">
       <FirmaHS className={`text-[30px] ${color} -mt-1`} />

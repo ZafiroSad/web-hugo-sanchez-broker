@@ -20,7 +20,7 @@ import { MapaPerezoso } from './MapaPerezoso';
 import { PropertyCard } from './PropertyCard';
 import { PropertyCover } from './PropertyCover';
 import { PropertyDossierModal } from './PropertyDossierModal';
-import { VideoEmbed } from './VideoEmbed';
+import { Galeria } from './Galeria';
 import { InstagramIcon, WhatsAppIcon } from './marca';
 import { MARCA } from '../config/marca';
 
@@ -58,13 +58,13 @@ function filasFicha(p: Property): { etiqueta: string; valor: string }[] {
 
 const Chips: React.FC<{ titulo: string; items: string[] }> = ({ titulo, items }) =>
   items.length ? (
-    <motion.div {...revelar()} className="border-t border-negro/10 pt-8">
+    <motion.div {...revelar()} className="border-t border-negro/[0.08] pt-8">
       <h2 className="versalitas text-[10px] text-taupe">{titulo}</h2>
       <ul className="mt-5 flex flex-wrap gap-2">
         {items.map((item) => (
           <li
             key={item}
-            className="rounded-full border border-negro/12 bg-white/60 px-4 py-2 text-[12.5px] text-grafito"
+            className="rounded-full border border-negro/[0.08] bg-white px-4 py-2 text-[12.5px] text-grafito shadow-[0_1px_4px_rgba(0,0,0,0.03)]"
           >
             {item}
           </li>
@@ -102,7 +102,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
         <button
           type="button"
           onClick={() => navigate('propiedades')}
-          className="mt-8 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-hueso"
+          className="mt-8 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white"
         >
           Ver propiedades disponibles
         </button>
@@ -137,123 +137,77 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
     }
   };
 
+  const botonSecundario =
+    'inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-negro/[0.12] px-4 py-3.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-negro transition-colors hover:bg-negro/[0.04]';
+
   return (
-    <article className="bg-hueso pb-32 pt-[96px] sm:pt-[104px]">
+    <article className="bg-hueso pb-32 pt-[72px]">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <button
           type="button"
           onClick={() => navigate('propiedades')}
-          className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-taupe transition-colors hover:text-negro"
+          className="group my-4 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.24em] text-taupe transition-colors hover:text-negro lg:my-6"
         >
           <ArrowLeft className="h-4 w-4 transition-transform duration-500 ease-ios group-hover:-translate-x-1" />
           Propiedades
         </button>
 
-        <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
-          {/* Video del recorrido */}
-          <motion.div
-            className="lg:col-span-5"
-            initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1, ease: CURVA.ios }}
-          >
-            <div className="mx-auto max-w-[400px] lg:sticky lg:top-28">
-              {property.video ? (
-                <>
-                  <p className="versalitas mb-4 text-center text-[9.5px] text-taupe lg:text-left">Recorrido en video</p>
-                  <VideoEmbed url={property.video} title={titleCase(property.name)} carga="auto" />
-                </>
-              ) : (
-                <div className="aspect-[4/5] overflow-hidden rounded-[3px]">
-                  <PropertyCover property={property} size="hero" />
-                </div>
-              )}
+        {/* Fotos */}
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: CURVA.ios }}
+        >
+          {property.images.length > 0 ? (
+            <Galeria fotos={property.images} nombre={titleCase(property.name)} />
+          ) : (
+            <div className="aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[21/9]">
+              <PropertyCover property={property} size="hero" />
             </div>
-          </motion.div>
+          )}
+        </motion.div>
 
+        <div className="mt-8 grid gap-12 lg:mt-12 lg:grid-cols-12 lg:gap-14">
           {/* Información */}
-          <div className="space-y-10 lg:col-span-7">
+          <div className="min-w-0 space-y-10 lg:col-span-7">
             <motion.header
               initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 1, ease: CURVA.ios, delay: 0.08 }}
             >
               <div className="flex flex-wrap items-center gap-2">
-                <span className="versalitas text-[10px] text-taupe">
+                <span className="versalitas text-[10px] text-bronce">
                   {property.operation} · {property.propertyType}
                 </span>
                 {estado && (
-                  <span className="rounded-full bg-negro px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.2em] text-hueso">
+                  <span className="rounded-md bg-negro px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-white">
                     {estado}
                   </span>
                 )}
               </div>
-              <h1 className="mt-5 font-extralight uppercase leading-[1.14] tracking-[0.11em] text-[clamp(1.9rem,3.6vw,3.1rem)] text-negro">
+              <h1 className="mt-4 font-light uppercase leading-[1.14] tracking-[0.1em] text-[clamp(1.8rem,3.4vw,2.9rem)] text-negro">
                 {property.name}
               </h1>
               <p className="mt-4 flex items-center gap-2 text-[13px] text-taupe">
-                <MapPin className="h-4 w-4 shrink-0" strokeWidth={1.5} />
+                <MapPin className="h-4 w-4 shrink-0 text-oro" strokeWidth={1.75} />
                 {property.sector}
                 {property.sector !== property.city ? `, ${property.city}` : ''}
               </p>
-              <p className="mt-6 max-w-2xl text-[18px] font-light leading-relaxed text-grafito">{property.headline}</p>
+              <p className="mt-6 max-w-2xl text-[17px] font-light leading-relaxed text-grafito">{property.headline}</p>
             </motion.header>
-
-            {/* Precio y acciones */}
-            <motion.div
-              initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1, ease: CURVA.ios, delay: 0.16 }}
-              className="border-y border-negro/10 py-8"
-            >
-              <p className="text-[clamp(1.9rem,3.4vw,2.7rem)] font-light tabular-nums text-negro">{precio.principal}</p>
-              {precio.detalle && <p className="versalitas mt-2 text-[10px] text-bronce">{precio.detalle}</p>}
-
-              <div className="mt-8 flex flex-wrap gap-2.5">
-                <a
-                  href={enlaceVisita}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-hueso transition-colors hover:bg-grafito"
-                >
-                  <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
-                </a>
-                <button
-                  type="button"
-                  onClick={compartir}
-                  className="inline-flex items-center gap-2 rounded-full border border-negro/15 px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-negro transition-colors hover:bg-negro/[0.04]"
-                >
-                  <Share2 className="h-3.5 w-3.5" /> {copiado ? 'Enlace copiado' : 'Compartir'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setFichaAbierta(true)}
-                  className="inline-flex items-center gap-2 rounded-full border border-negro/15 px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-negro transition-colors hover:bg-negro/[0.04]"
-                >
-                  <FileDown className="h-3.5 w-3.5" /> Ficha PDF
-                </button>
-                <button
-                  type="button"
-                  onClick={() => toggleCompareProperty(property.id)}
-                  className={`inline-flex items-center gap-2 rounded-full border px-5 py-4 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors ${
-                    comparando ? 'border-negro bg-negro text-hueso' : 'border-negro/15 text-negro hover:bg-negro/[0.04]'
-                  }`}
-                >
-                  {comparando ? <Check className="h-3.5 w-3.5" /> : <Columns3 className="h-3.5 w-3.5" />}
-                  {comparando ? 'Comparando' : 'Comparar'}
-                </button>
-              </div>
-            </motion.div>
 
             {/* Ficha técnica */}
             {ficha.length > 0 && (
               <motion.section {...revelar()}>
                 <h2 className="versalitas text-[10px] text-taupe">Ficha técnica</h2>
-                <dl className="mt-6 grid grid-cols-2 gap-x-8 sm:grid-cols-3">
+                <dl className="mt-5 grid grid-cols-2 gap-2.5 sm:grid-cols-3">
                   {ficha.map((fila) => (
-                    <div key={fila.etiqueta + fila.valor} className="border-t border-negro/10 py-4">
-                      <dt className="text-[10.5px] uppercase tracking-[0.16em] text-taupe">{fila.etiqueta}</dt>
-                      <dd className="mt-1.5 text-[15px] font-medium tabular-nums text-negro">{fila.valor}</dd>
+                    <div
+                      key={fila.etiqueta + fila.valor}
+                      className="rounded-xl border border-negro/[0.06] bg-white px-4 py-3.5 shadow-[0_1px_4px_rgba(0,0,0,0.03)]"
+                    >
+                      <dt className="text-[10px] font-medium uppercase tracking-[0.14em] text-piedra">{fila.etiqueta}</dt>
+                      <dd className="mt-1 text-[15px] font-semibold tabular-nums text-negro">{fila.valor}</dd>
                     </div>
                   ))}
                 </dl>
@@ -262,25 +216,25 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
 
             {/* Unidades (conjuntos con varias casas) */}
             {property.units && property.units.length > 0 && (
-              <motion.section {...revelar()} className="border-t border-negro/10 pt-8">
+              <motion.section {...revelar()} className="border-t border-negro/[0.08] pt-8">
                 <h2 className="versalitas text-[10px] text-taupe">{property.units.length} unidades a la venta</h2>
-                <div className="mt-5 overflow-x-auto">
+                <div className="mt-5 overflow-x-auto rounded-xl border border-negro/[0.08] bg-white">
                   <table className="w-full min-w-[460px] text-left text-[13.5px]">
                     <thead>
-                      <tr className="text-[10px] uppercase tracking-[0.16em] text-taupe">
-                        <th className="py-3 pr-4 font-medium">Unidad</th>
-                        <th className="py-3 pr-4 font-medium">Área de lote</th>
-                        <th className="py-3 pr-4 font-medium">Área construida</th>
-                        <th className="py-3 text-right font-medium">Valor de venta</th>
+                      <tr className="bg-stone-50 text-[10px] uppercase tracking-[0.14em] text-taupe">
+                        <th className="px-4 py-3 font-medium">Unidad</th>
+                        <th className="px-4 py-3 font-medium">Área de lote</th>
+                        <th className="px-4 py-3 font-medium">Área construida</th>
+                        <th className="px-4 py-3 text-right font-medium">Valor de venta</th>
                       </tr>
                     </thead>
                     <tbody>
                       {property.units.map((u) => (
-                        <tr key={u.name} className="border-t border-negro/10 tabular-nums text-grafito">
-                          <td className="py-3.5 pr-4 font-medium text-negro">{u.name}</td>
-                          <td className="py-3.5 pr-4">{formatArea(u.plotArea)}</td>
-                          <td className="py-3.5 pr-4">{formatArea(u.builtArea)}</td>
-                          <td className="py-3.5 text-right font-medium text-negro">{formatCurrency(u.price)}</td>
+                        <tr key={u.name} className="border-t border-negro/[0.06] tabular-nums text-grafito">
+                          <td className="px-4 py-3.5 font-medium text-negro">{u.name}</td>
+                          <td className="px-4 py-3.5">{formatArea(u.plotArea)}</td>
+                          <td className="px-4 py-3.5">{formatArea(u.builtArea)}</td>
+                          <td className="px-4 py-3.5 text-right font-medium text-negro">{formatCurrency(u.price)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -294,22 +248,22 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
 
             {/* Descripción */}
             {parrafos.length > 0 && (
-              <motion.section {...revelar()} className="border-t border-negro/10 pt-8">
+              <motion.section {...revelar()} className="border-t border-negro/[0.08] pt-8">
                 <h2 className="versalitas text-[10px] text-taupe">En palabras de Hugo</h2>
                 <div className="mt-5 max-w-2xl space-y-4 text-[15.5px] font-light leading-[1.8] text-grafito">
                   {parrafos.map((parrafo) => (
                     <p key={parrafo.slice(0, 24)}>{parrafo}</p>
                   ))}
                 </div>
-                <p className="mt-6 text-[11px] text-taupe">Publicada el {formatDate(property.publishedAt)}</p>
+                <p className="mt-6 text-[11px] text-piedra">Publicada el {formatDate(property.publishedAt)}</p>
               </motion.section>
             )}
 
             {/* Ubicación */}
             {property.coordinates && (
-              <motion.section {...revelar()} className="border-t border-negro/10 pt-8">
+              <motion.section {...revelar()} className="border-t border-negro/[0.08] pt-8">
                 <h2 className="versalitas text-[10px] text-taupe">Ubicación</h2>
-                <div className="mt-5">
+                <div className="mt-5 overflow-hidden rounded-2xl">
                   <MapaPerezoso
                     coordinates={property.coordinates}
                     locationPrecision={property.locationPrecision}
@@ -321,11 +275,9 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
             )}
 
             {/* Cierre */}
-            <motion.section {...revelar()} className="rounded-[3px] bg-negro p-8 text-hueso sm:p-10">
-              <p className="font-script text-[clamp(1.7rem,3vw,2.4rem)] leading-tight text-arena">
-                {MARCA.slogan}
-              </p>
-              <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-piedra">
+            <motion.section {...revelar()} className="rounded-2xl bg-negro p-8 text-white sm:p-10">
+              <p className="font-script text-[clamp(1.7rem,3vw,2.4rem)] leading-tight text-oro">{MARCA.slogan}</p>
+              <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-arena">
                 Escríbele a Hugo para coordinar tu visita a {titleCase(property.name)}. Te responde directamente por
                 WhatsApp.
               </p>
@@ -334,7 +286,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
                   href={enlaceVisita}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-negro transition-colors hover:bg-hueso"
+                  className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-negro transition-colors hover:bg-stone-100"
                 >
                   <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
                 </a>
@@ -342,25 +294,87 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
                   href={MARCA.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-hueso transition-colors hover:bg-white/10"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition-colors hover:bg-white/10"
                 >
                   <InstagramIcon className="h-3.5 w-3.5" /> Más en Instagram
                 </a>
               </div>
             </motion.section>
           </div>
+
+          {/* Precio y contacto, fijos al desplazar */}
+          <aside className="lg:col-span-5">
+            <motion.div
+              initial={{ opacity: 0, y: 22, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              transition={{ duration: 1, ease: CURVA.ios, delay: 0.16 }}
+              className="rounded-2xl border border-negro/[0.08] bg-white p-6 shadow-[0_10px_40px_rgba(0,0,0,0.06)] sm:p-8 lg:sticky lg:top-24"
+            >
+              <p className="versalitas text-[9.5px] text-taupe">
+                {property.operation === 'Arriendo' ? 'Canon de arriendo' : 'Valor de venta'}
+              </p>
+              <p className="mt-2 text-[clamp(1.8rem,3vw,2.4rem)] font-light tabular-nums text-negro">{precio.principal}</p>
+              {precio.detalle && <p className="versalitas mt-2 text-[10px] text-bronce">{precio.detalle}</p>}
+
+              <a
+                href={enlaceVisita}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-7 flex w-full items-center justify-center gap-2.5 rounded-full bg-negro px-7 py-4 text-[10.5px] font-semibold uppercase tracking-[0.24em] text-white transition-colors hover:bg-grafito"
+              >
+                <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
+              </a>
+              <div className="mt-2.5 flex gap-2">
+                <button type="button" onClick={compartir} className={botonSecundario}>
+                  <Share2 className="h-3.5 w-3.5" /> {copiado ? 'Copiado' : 'Compartir'}
+                </button>
+                <button type="button" onClick={() => setFichaAbierta(true)} className={botonSecundario}>
+                  <FileDown className="h-3.5 w-3.5" /> Ficha PDF
+                </button>
+              </div>
+              <button
+                type="button"
+                onClick={() => toggleCompareProperty(property.id)}
+                className={`mt-2 ${botonSecundario} w-full ${comparando ? 'border-negro bg-negro text-white hover:bg-grafito' : ''}`}
+              >
+                {comparando ? <Check className="h-3.5 w-3.5 text-oro" /> : <Columns3 className="h-3.5 w-3.5" />}
+                {comparando ? 'En la comparación' : 'Comparar con otras'}
+              </button>
+
+              <div className="mt-6 flex items-center gap-3 border-t border-negro/[0.06] pt-5 text-[12px] text-taupe">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-negro font-script text-[17px] text-white">
+                  HS
+                </span>
+                <p className="min-w-0 leading-snug">
+                  <span className="block font-medium text-negro">Hugo Sánchez</span>
+                  Te atiende personalmente
+                </p>
+                {property.video && (
+                  <a
+                    href={property.video}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto inline-flex shrink-0 items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-negro hover:text-bronce"
+                    title="Ver la publicación en Instagram"
+                  >
+                    <InstagramIcon className="h-3.5 w-3.5" /> Publicación
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </aside>
         </div>
 
         {/* Relacionadas */}
         {relacionadas.length > 0 && (
-          <section className="mt-28 border-t border-negro/10 pt-16">
+          <section className="mt-28 border-t border-negro/[0.08] pt-16">
             <motion.h2
               {...revelar()}
-              className="font-extralight uppercase tracking-[0.1em] text-[clamp(1.5rem,2.6vw,2.2rem)] text-negro"
+              className="font-light uppercase tracking-[0.1em] text-[clamp(1.5rem,2.6vw,2.2rem)] text-negro"
             >
               También te pueden interesar
             </motion.h2>
-            <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
               {relacionadas.map((p, i) => (
                 <PropertyCard key={p.id} property={p} index={i} />
               ))}
@@ -370,7 +384,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
       </div>
 
       {/* Barra fija en el teléfono */}
-      <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-negro/10 bg-hueso/95 px-5 py-3 backdrop-blur-xl lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-negro/[0.08] bg-white/95 px-5 py-3 backdrop-blur-xl lg:hidden">
         <div className="min-w-0">
           <p className="truncate text-[9.5px] font-semibold uppercase tracking-[0.18em] text-taupe">{property.name}</p>
           <p className="truncate text-[15px] font-medium tabular-nums text-negro">{precio.principal}</p>
@@ -379,7 +393,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
           href={enlaceVisita}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-negro px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-hueso"
+          className="inline-flex shrink-0 items-center gap-2 rounded-full bg-negro px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-white"
         >
           <WhatsAppIcon className="h-4 w-4" /> Coordina tu visita
         </a>

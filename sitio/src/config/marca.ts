@@ -39,12 +39,25 @@ export const MARCA = {
   pinAdmin: '1234',
 } as const;
 
+/**
+ * Las propiedades de la portada del inicio: la del fondo (la foto a sangre en
+ * el teléfono) y las tres tarjetas del computador. Si alguna se vende o se
+ * borra, su lugar lo toma la más reciente con fotos.
+ */
+export const PORTADA = {
+  fondo: 'terrazas-de-menzuly',
+  tarjetas: ['terrazas-de-menzuly', 'valle-de-rocas', 'edificio-la-loma'],
+} as const;
+
+/** Retrato de Hugo para «Sobre Hugo»: el de su reel fijado del manifiesto, sin la frase escrita encima. */
+export const RETRATO = './fotos/hugo/01.webp';
+
 export const BIO = {
   corta:
     'Broker inmobiliario especializado en propiedades de lujo y comerciales en Bucaramanga y su área metropolitana.',
   trayectoria: 'Más de 20 años de trayectoria en los sectores financiero, constructor e inmobiliario.',
   larga: [
-    'Recorro personalmente cada propiedad y te la muestro en video, con su ficha completa y su precio, para que llegues a la visita sabiendo lo que vas a encontrar.',
+    'Recorro personalmente cada propiedad y te la muestro tal como es, con fotos reales, su ficha completa y su precio, para que llegues a la visita sabiendo lo que vas a encontrar.',
     'Hoy acompaño la compra y venta de casas campestres, apartamentos y lotes en Ruitoque, Lagos del Cacique y Cañaveral; comercializo proyectos sobre planos con Sumas Construcciones y oportunidades de inversión en dólares en ciudad de Panamá.',
     'Te acompaño en la búsqueda de tu propiedad ideal o de tu próxima inversión, desde la primera conversación hasta la entrega de las llaves.',
   ],
@@ -77,9 +90,9 @@ export const PILARES = [
       'Propiedades que no siempre llegan a los portales. El verdadero lujo es el acceso, y Hugo te lo abre.',
   },
   {
-    titulo: 'Cada propiedad, en video',
+    titulo: 'Recorrida por Hugo',
     texto:
-      'Hugo recorre cada inmueble frente a la cámara: ves los espacios reales antes de agendar la visita.',
+      'Hugo recorre cada inmueble en persona: aquí ves sus fotos reales y en su Instagram, el recorrido en video.',
   },
   {
     titulo: 'Ficha clara y precio a la vista',
@@ -98,7 +111,7 @@ export const PROCESO = [
   {
     icono: 'casa',
     titulo: 'Encontramos tu propiedad',
-    texto: 'Me cuentas qué buscas o qué quieres vender. Te muestro opciones reales, con video y ficha completa.',
+    texto: 'Me cuentas qué buscas o qué quieres vender. Te muestro opciones reales, con fotos y ficha completa.',
   },
   {
     icono: 'llave',

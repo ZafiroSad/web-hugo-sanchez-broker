@@ -1,0 +1,204 @@
+{
+  "_nota": "Fotos elegidas a mano de la descarga de Instagram (rama fotos-instagram, carpeta fotos/<id>/). La primera es la portada. 'cuadro-NN' sale del reel; 'carrusel-NN' es una foto publicada. Fuera: cuadros con Hugo en cámara, con texto encima o con renders de IA. 'hugo' es el retrato del reel fijado del manifiesto, sin la frase escrita encima; 'vendidas' e 'inversion' salen de los reels de esas secciones.",
+  "orizon-sky-home": [
+    "carrusel-13",
+    "carrusel-01",
+    "carrusel-05",
+    "carrusel-02",
+    "carrusel-06",
+    "carrusel-08",
+    "carrusel-09",
+    "carrusel-14",
+    "carrusel-07",
+    "carrusel-10"
+  ],
+  "conjunto-green-house": [
+    "cuadro-15",
+    "cuadro-05",
+    "cuadro-07",
+    "cuadro-14",
+    "cuadro-08",
+    "cuadro-11",
+    "cuadro-02"
+  ],
+  "edificio-montearroyo": [
+    "cuadro-02",
+    "cuadro-12",
+    "cuadro-05",
+    "cuadro-03",
+    "cuadro-13",
+    "cuadro-15",
+    "cuadro-06",
+    "cuadro-04"
+  ],
+  "conjunto-casa-montana": [
+    "cuadro-11",
+    "cuadro-06",
+    "cuadro-02",
+    "cuadro-14",
+    "cuadro-04",
+    "cuadro-15"
+  ],
+  "ruitoque-park-house": [
+    "cuadro-07",
+    "cuadro-05",
+    "cuadro-06",
+    "cuadro-09",
+    "cuadro-11",
+    "cuadro-10",
+    "cuadro-08"
+  ],
+  "conjunto-mansion-del-lago": [
+    "cuadro-07",
+    "cuadro-05",
+    "cuadro-02",
+    "cuadro-11",
+    "cuadro-12",
+    "cuadro-08",
+    "cuadro-10"
+  ],
+  "cabana-la-pradera": [
+    "cuadro-04",
+    "cuadro-02",
+    "cuadro-08",
+    "cuadro-09",
+    "cuadro-10",
+    "cuadro-12",
+    "cuadro-13"
+  ],
+  "valle-de-rocas": [
+    "cuadro-03",
+    "cuadro-05",
+    "cuadro-06",
+    "cuadro-07",
+    "cuadro-04",
+    "cuadro-13",
+    "cuadro-02",
+    "cuadro-09",
+    "cuadro-12"
+  ],
+  "la-gran-reserva-andalucia": [
+    "cuadro-02",
+    "cuadro-05",
+    "cuadro-06",
+    "cuadro-11",
+    "cuadro-12",
+    "cuadro-08",
+    "cuadro-13"
+  ],
+  "condominio-luxxe": [
+    "cuadro-05",
+    "cuadro-08",
+    "cuadro-04",
+    "cuadro-06",
+    "cuadro-02",
+    "cuadro-11",
+    "cuadro-13"
+  ],
+  "conjunto-club-house-1": [
+    "cuadro-05",
+    "cuadro-07",
+    "cuadro-14",
+    "cuadro-04",
+    "cuadro-09",
+    "cuadro-10",
+    "cuadro-02"
+  ],
+  "terrazas-de-menzuly": [
+    "cuadro-06",
+    "cuadro-04",
+    "cuadro-05",
+    "cuadro-11",
+    "cuadro-13",
+    "cuadro-12",
+    "cuadro-14",
+    "cuadro-08",
+    "cuadro-15"
+  ],
+  "cabana-buenavista": [
+    "cuadro-07",
+    "cuadro-11",
+    "cuadro-10",
+    "cuadro-04",
+    "cuadro-06",
+    "cuadro-05",
+    "cuadro-13",
+    "cuadro-08"
+  ],
+  "edificio-terrazo-48": [
+    "cuadro-04",
+    "cuadro-06",
+    "cuadro-05",
+    "cuadro-14",
+    "cuadro-09",
+    "cuadro-11",
+    "cuadro-01",
+    "cuadro-10"
+  ],
+  "city-center": [
+    "cuadro-02",
+    "cuadro-06",
+    "cuadro-03",
+    "cuadro-13",
+    "cuadro-04",
+    "cuadro-09"
+  ],
+  "hacienda-la-disculpa": [
+    "cuadro-09",
+    "cuadro-04",
+    "cuadro-10",
+    "cuadro-12",
+    "cuadro-13",
+    "cuadro-15"
+  ],
+  "edificio-vizcaya-gold": [
+    "carrusel-03",
+    "carrusel-02",
+    "carrusel-04",
+    "carrusel-10",
+    "carrusel-05",
+    "carrusel-09",
+    "carrusel-06",
+    "carrusel-01",
+    "carrusel-08"
+  ],
+  "edificio-la-loma": [
+    "cuadro-05",
+    "cuadro-06",
+    "cuadro-13",
+    "cuadro-08",
+    "cuadro-07",
+    "cuadro-09",
+    "cuadro-14"
+  ],
+  "ruitoque-villas": [
+    "cuadro-12",
+    "cuadro-06",
+    "cuadro-05",
+    "cuadro-04"
+  ],
+  "conjunto-la-rinconada": [
+    "cuadro-08",
+    "cuadro-12",
+    "cuadro-03",
+    "cuadro-06",
+    "cuadro-04",
+    "cuadro-13",
+    "cuadro-10",
+    "cuadro-05",
+    "cuadro-15"
+  ],
+  "hugo": [
+    "manifiesto/cuadro-01"
+  ],
+  "vendidas": [
+    "cierre-2026-09/cuadro-01",
+    "cierre-2026-04/cuadro-03",
+    "cierre-2025-12/cuadro-05",
+    "cierre-2025-06/cuadro-06"
+  ],
+  "inversion": [
+    "inversion-sumas/cuadro-03",
+    "inversion-panama/cuadro-14"
+  ]
+}

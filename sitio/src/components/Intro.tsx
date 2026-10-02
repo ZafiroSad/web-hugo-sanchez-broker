@@ -72,7 +72,7 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            'radial-gradient(52% 42% at 50% 47%, rgba(217,208,195,0.13) 0%, rgba(217,208,195,0.045) 45%, transparent 76%)',
+            'radial-gradient(52% 42% at 50% 47%, rgba(214,211,209,0.12) 0%, rgba(197,160,89,0.05) 45%, transparent 76%)',
         }}
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -129,7 +129,7 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
 
           <motion.div
             aria-hidden="true"
-            className="mt-7 h-px bg-gradient-to-r from-transparent via-arena/70 to-transparent"
+            className="mt-7 h-px bg-gradient-to-r from-transparent via-oro/70 to-transparent"
             initial={reducir ? false : { width: 0, opacity: 0 }}
             animate={{ width: 'min(440px, 64vw)', opacity: 1 }}
             transition={{ delay: 1.35, duration: 1.5, ease: CURVA.ios }}
@@ -138,7 +138,7 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
 
         {/* El slogan se escribe de izquierda a derecha */}
         <motion.p
-          className="mt-3 max-w-[16ch] text-balance px-4 py-3 font-script text-[clamp(1.85rem,4.7vw,3.5rem)] leading-[1.22] text-arena sm:max-w-none"
+          className="mt-3 max-w-[16ch] text-balance px-4 py-3 font-script text-[clamp(1.85rem,4.7vw,3.5rem)] leading-[1.22] text-oro sm:max-w-none"
           initial={reducir ? false : { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)', filter: 'blur(5px)' }}
           animate={
             fase >= 1
