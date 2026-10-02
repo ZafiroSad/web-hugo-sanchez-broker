@@ -101,7 +101,7 @@ def guardar_imagen(datos, ruta, lado_max=1600):
     return img.size
 
 
-def cuadros_del_video(video, carpeta, n=CUADROS_POR_REEL):
+def cuadros_del_video(video, carpeta, n=CUADROS_POR_REEL, caras=False):
     """Saca un cuadro cada 1,2 s, puntúa nitidez y caras, y elige n repartidos en el tiempo."""
     tmp = os.path.join('/tmp', 'cuadros', os.path.basename(carpeta))
     os.makedirs(tmp, exist_ok=True)
@@ -128,7 +128,7 @@ def cuadros_del_video(video, carpeta, n=CUADROS_POR_REEL):
     tramos = np.array_split(np.arange(len(utiles)), min(n, len(utiles)))
     elegidos = []
     for tramo in tramos:
-        opciones = sorted((utiles[j] for j in tramo), key=lambda p: (p['cara'], -p['nitidez']))
+        opciones = sorted((utiles[j] for j in tramo), key=lambda p: (p['cara'] != caras, -p['nitidez']))
         for p in opciones:
             if elegidos and float(np.abs(p['miniatura'] - elegidos[-1]['miniatura']).mean()) < 6:
                 continue  # casi igual al anterior
@@ -158,7 +158,7 @@ def video_mas_grande(item, carpeta):
     return ruta, len(mejor)
 
 
-def procesar(pid, code):
+def procesar(pid, code, caras=False):
     carpeta = os.path.join(SALIDA, pid)
     os.makedirs(carpeta, exist_ok=True)
     y = ficha(code)
@@ -193,21 +193,29 @@ def procesar(pid, code):
             ruta, peso = video_mas_grande(y, carpeta)
             registro['video_bytes'] = peso
             if ruta:
-                registro['archivos'] += cuadros_del_video(ruta, carpeta)
+                registro['archivos'] += cuadros_del_video(ruta, carpeta, caras=caras)
     return registro
 
 
 def main():
-    propiedades = json.load(open(os.path.join(AQUI, 'propiedades.json'), encoding='utf-8'))
+    piezas = {pid: {'code': code} for pid, code in
+              json.load(open(os.path.join(AQUI, 'propiedades.json'), encoding='utf-8')).items()}
+    ruta_extras = os.path.join(AQUI, 'extras.json')
+    if os.path.exists(ruta_extras):
+        piezas.update(json.load(open(ruta_extras, encoding='utf-8')))
     solo = set(sys.argv[1:])
     os.makedirs(SALIDA, exist_ok=True)
     ruta_manifiesto = os.path.join(SALIDA, 'manifiesto.json')
     manifiesto = json.load(open(ruta_manifiesto, encoding='utf-8')) if os.path.exists(ruta_manifiesto) else {}
-    for pid, code in propiedades.items():
+    for pid, pieza in piezas.items():
+        code = pieza['code']
         if solo and pid not in solo:
             continue
+        carpeta = os.path.join(SALIDA, pid)
+        if not solo and os.path.isdir(carpeta) and os.listdir(carpeta):
+            continue  # ya descargada en una corrida anterior
         try:
-            manifiesto[pid] = procesar(pid, code)
+            manifiesto[pid] = procesar(pid, code, pieza.get('caras', False))
         except Exception as e:  # noqa: BLE001
             manifiesto[pid] = {'code': code, 'error': repr(e)}
         r = manifiesto[pid]
