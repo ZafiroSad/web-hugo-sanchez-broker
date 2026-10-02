@@ -19,11 +19,18 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Dependencias
-        run: pip install --quiet pillow numpy opencv-python-headless imageio-ffmpeg
+        run: python -m pip install --quiet pillow numpy opencv-python-headless imageio-ffmpeg
       - name: Descargar fotos
-        run: python3 herramientas/fotos-instagram/descargar.py
+        # El registro va a la rama: desde la nube no se pueden leer los registros de Actions.
+        run: |
+          mkdir -p fotos
+          python herramientas/fotos-instagram/descargar.py 2>&1 | tee fotos/registro.txt
       - name: Guardar las fotos en la rama
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
