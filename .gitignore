@@ -1,0 +1,19 @@
+# Sistema
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Entorno y credenciales
+.env
+.env.*
+
+# Dependencias y compilados (para cuando exista la beta)
+node_modules/
+dist/
+build/
+.next/
+.vercel/
+
+# Temporales
+*.tmp
+*.log
