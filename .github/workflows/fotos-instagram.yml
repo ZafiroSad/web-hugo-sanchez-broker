@@ -1,0 +1,24 @@
+name: Fotos de Instagram (sondeo)
+
+on:
+  push:
+    branches: [fotos-instagram]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sondear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Sondear Instagram
+        run: python3 herramientas/fotos-instagram/sondear.py
+      - name: Guardar el sondeo en la rama
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add sondeo
+          git commit -m "Sondeo de Instagram" || echo "sin cambios"
+          git push
