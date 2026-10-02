@@ -7,15 +7,22 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
-- **v0.2 — investigación completa con la muestra disponible** (2026-10-02, sesión en la nube).
-- Captura del feed de Instagram: **parcial, 606 de 1.404** publicaciones, las más recientes:
-  **del 10 de mayo de 2024 al 1 de octubre de 2026** (la fecha se decodifica del código de cada
-  publicación). Las ~800 restantes son anteriores a mayo de 2024 y solo se pueden capturar desde
-  el equipo local (Claude in Chrome con la sesión de Instagram del Señor Stick).
-- Informes hechos: 01 identidad, 02 presencia digital, 03 mercado y referentes,
-  04 verificación, 05 análisis del feed y **ADN-MARCA.md** (síntesis que manda).
-- Beta de la página: pendiente de que el Señor Stick la entregue. Al recibirla, revisarla
-  con la lista de control de `ADN-MARCA.md` (sección 10).
+- **v0.3: sitio construido** (2026-10-02). La beta VÉLARO del Señor Stick se rehízo con la marca de Hugo
+  en `sitio/` (React 19 + Vite 8 + Tailwind 4 + Motion). Ver `sitio/README.md`.
+  - Intro animada (`#/`): «HUGO SÁNCHEZ» letra a letra, el nombre sube, el slogan se escribe en
+    cursiva (Pinyon Script) y aparece el botón blanco «Conoce tu nuevo hogar». Movimiento con las
+    curvas del STICK VIDEO SYSTEM (reel de Stick Industries).
+  - Vista principal: resumen de Hugo, cifras de confianza, Book de propiedades, proceso
+    casa-llave-apretón, inversión (Sumas y Panamá), manifiesto, vendidas y captación.
+  - 20 propiedades reales (26 may. a 1 oct. 2026), cada una con su reel de Instagram como video.
+  - Botón de Instagram en toda la página; WhatsApp «Coordina tu visita» con mensaje por propiedad.
+  - Panel `#/admin` (PIN 1234) adaptado a la ficha de Hugo, con importación desde el texto de Instagram.
+- Despliegue: `.github/workflows/sitio-pages.yml` publica en GitHub Pages en cada cambio de `sitio/`.
+  **Falta activar Pages en el repositorio** (Settings → Pages → Source: GitHub Actions). El repositorio
+  es privado: Pages en privado exige un plan de pago; si no, hay que hacerlo público o mover el sitio
+  a un repositorio público aparte.
+- Investigación: informes 01 a 05 y `ADN-MARCA.md`. El feed está capturado en parte (606 de 1.404);
+  lo que falta solo se puede capturar desde el equipo local.
 
 ## Observaciones visuales del feed (vistas en pantalla, 2026-10-02)
 - Formato dominante: reels verticales recorriendo la propiedad con Hugo en cámara.
@@ -83,7 +90,23 @@ investigacion/
 - En 2026 dejó los hashtags y bajó el volumen: tono más sobrio.
 - El teléfono aparece mal escrito en 12 publicaciones: en la web, una sola constante.
 
+## Decisiones del sitio (2026-10-02)
+- Rutas con hash (`#/propiedad/<id>`): funcionan en GitHub Pages y cada propiedad tiene enlace propio.
+- Las fichas usan portada tipográfica (nombre en mayúsculas sobre negro, como sus portadas de reel)
+  porque no hay fotos propias descargables; si se agregan fotos en el panel, se usan en la portada.
+- Videos con el embed oficial de Instagram; en las secciones del inicio cargan al pulsar, para no
+  meter seis embeds de golpe.
+- Fuentes alojadas en el sitio (Montserrat y Pinyon Script, OFL); no se usa Google Fonts.
+- Las coordenadas del mapa son aproximadas por zona (`sitio/src/data/zonas.ts`) y se muestran como
+  círculo. Montearroyo, La Gran Reserva, City Center y La Loma no tienen mapa (zona desconocida).
+- El panel guarda en el navegador; para publicar se exporta `propiedades.json` a `sitio/public/`.
+- Se retiraron de la beta: datos y textos de VÉLARO, fotos de Unsplash, cifras inventadas, el
+  formulario que no enviaba nada (ahora abre WhatsApp) y la sección SARLAFT.
+
 ## Pendientes y problemas conocidos
+- Activar GitHub Pages y decidir la visibilidad del repositorio (ver «Estado actual»).
+- Pedir a Hugo: vector de la firma HS (hoy es provisional, en cursiva), retrato, videos en alta
+  calidad, confirmación de cifras y credenciales, y revisión legal de los textos de datos y términos.
 - Capturar las ~800 publicaciones anteriores a mayo de 2024 (solo desde el equipo local) y volver
   a correr `investigacion/datos/analizar_feed.py`.
 - Recibir la beta y ajustarla con `ADN-MARCA.md`.
