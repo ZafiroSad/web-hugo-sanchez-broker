@@ -65,7 +65,7 @@ export const HomeHero: React.FC<{ animar?: boolean }> = ({ animar = true }) => {
         </motion.h1>
 
         <motion.p
-          className="mt-3 max-w-3xl font-script text-[clamp(1.75rem,3.3vw,2.9rem)] leading-[1.25] text-arena"
+          className="mt-3 max-w-3xl text-balance font-script text-[clamp(1.75rem,3.3vw,2.9rem)] leading-[1.25] text-arena"
           {...entrada(0.24)}
         >
           {MARCA.slogan}

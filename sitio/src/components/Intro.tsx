@@ -138,7 +138,7 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
 
         {/* El slogan se escribe de izquierda a derecha */}
         <motion.p
-          className="mt-3 max-w-[16ch] px-4 py-3 font-script text-[clamp(1.85rem,4.7vw,3.5rem)] leading-[1.22] text-arena sm:max-w-none"
+          className="mt-3 max-w-[16ch] text-balance px-4 py-3 font-script text-[clamp(1.85rem,4.7vw,3.5rem)] leading-[1.22] text-arena sm:max-w-none"
           initial={reducir ? false : { opacity: 0, clipPath: 'inset(0% 100% 0% 0%)', filter: 'blur(5px)' }}
           animate={
             fase >= 1
