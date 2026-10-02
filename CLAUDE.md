@@ -7,7 +7,8 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
-- **v0.3: sitio construido** (2026-10-02). La beta VÉLARO del Señor Stick se rehízo con la marca de Hugo
+- **v0.3: sitio construido y publicado** (2026-10-02) en https://zafirosad.github.io/web-hugo-sanchez-broker/
+  La beta VÉLARO del Señor Stick se rehízo con la marca de Hugo
   en `sitio/` (React 19 + Vite 8 + Tailwind 4 + Motion). Ver `sitio/README.md`.
   - Intro animada (`#/`): «HUGO SÁNCHEZ» letra a letra, el nombre sube, el slogan se escribe en
     cursiva (Pinyon Script) y aparece el botón blanco «Conoce tu nuevo hogar». Movimiento con las
@@ -17,10 +18,9 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
   - 20 propiedades reales (26 may. a 1 oct. 2026), cada una con su reel de Instagram como video.
   - Botón de Instagram en toda la página; WhatsApp «Coordina tu visita» con mensaje por propiedad.
   - Panel `#/admin` (PIN 1234) adaptado a la ficha de Hugo, con importación desde el texto de Instagram.
-- Despliegue: `.github/workflows/sitio-pages.yml` publica en GitHub Pages en cada cambio de `sitio/`.
-  **Falta activar Pages en el repositorio** (Settings → Pages → Source: GitHub Actions). El repositorio
-  es privado: Pages en privado exige un plan de pago; si no, hay que hacerlo público o mover el sitio
-  a un repositorio público aparte.
+- Despliegue: `.github/workflows/sitio-pages.yml` publica en GitHub Pages en cada cambio de `sitio/`
+  (Settings → Pages → Source: GitHub Actions). El repositorio es **público desde el 2026-10-02**:
+  con el plan gratuito, Pages solo funciona en repositorios públicos.
 - Investigación: informes 01 a 05 y `ADN-MARCA.md`. El feed está capturado en parte (606 de 1.404);
   lo que falta solo se puede capturar desde el equipo local.
 
@@ -70,7 +70,9 @@ investigacion/
 
 ## Decisiones tomadas
 - La investigación se guarda como datos crudos + informes + una síntesis única (`ADN-MARCA.md`).
-- Repositorio privado `ZafiroSad/web-hugo-sanchez-broker` para continuar desde la nube.
+- Repositorio `ZafiroSad/web-hugo-sanchez-broker` para continuar desde la nube. Nació privado y pasó a
+  **público** el 2026-10-02 para publicar en GitHub Pages con el plan gratuito. Lo decidió el Señor Stick
+  sabiendo que con eso queda a la vista `investigacion/` (análisis del cliente y de su competencia).
 - Paleta propuesta: negro #111111, grafito #2B2926, taupe #6E665E, piedra #8C847A, arena #D9D0C3,
   hueso #F5F2ED, blanco; bronce #8A6F4E opcional y solo decorativo. Sin verde de WhatsApp.
 - Tipografía: Montserrat 300 en mayúsculas con tracking amplio (títulos), Montserrat 600 (etiquetas),
@@ -104,7 +106,10 @@ investigacion/
   formulario que no enviaba nada (ahora abre WhatsApp) y la sección SARLAFT.
 
 ## Pendientes y problemas conocidos
-- Activar GitHub Pages y decidir la visibilidad del repositorio (ver «Estado actual»).
+- Desde la nube no se puede cambiar la configuración del repositorio (visibilidad, Pages): el proxy
+  lo bloquea y lo hace el Señor Stick en Settings. Sí se puede relanzar la publicación
+  (`gh api -X POST repos/ZafiroSad/web-hugo-sanchez-broker/actions/runs/<id>/rerun`) y leer su estado.
+  La dirección publicada (zafirosad.github.io) tampoco se puede abrir desde la nube.
 - Pedir a Hugo: vector de la firma HS (hoy es provisional, en cursiva), retrato, videos en alta
   calidad, confirmación de cifras y credenciales, y revisión legal de los textos de datos y términos.
 - Capturar las ~800 publicaciones anteriores a mayo de 2024 (solo desde el equipo local) y volver

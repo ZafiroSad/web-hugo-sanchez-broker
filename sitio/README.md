@@ -48,4 +48,6 @@ Cada propiedad enlaza a su reel de Instagram y se muestra con el embed oficial (
 
 ## Publicación
 
-`.github/workflows/sitio-pages.yml` compila y publica en GitHub Pages en cada cambio dentro de `sitio/`. En el repositorio, la opción Settings → Pages → Source debe estar en **GitHub Actions**.
+Publicado en **https://zafirosad.github.io/web-hugo-sanchez-broker/**.
+
+`.github/workflows/sitio-pages.yml` compila y publica en GitHub Pages en cada cambio dentro de `sitio/`. En el repositorio, la opción Settings → Pages → Source debe estar en **GitHub Actions**. Con el plan gratuito de GitHub, Pages solo funciona si el repositorio es público.
