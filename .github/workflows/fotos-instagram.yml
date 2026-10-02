@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Dependencias
-        run: python -m pip install --quiet pillow numpy opencv-python-headless imageio-ffmpeg
+        run: python -m pip install --quiet pillow numpy 'opencv-python-headless<5' imageio-ffmpeg
       - name: Descargar fotos
         # El registro va a la rama: desde la nube no se pueden leer los registros de Actions.
         run: |

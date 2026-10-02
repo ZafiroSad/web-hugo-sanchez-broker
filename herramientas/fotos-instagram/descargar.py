@@ -29,7 +29,10 @@ UA_BOTS = ['facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext
            'Twitterbot/1.0']
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 CUADROS_POR_REEL = 16
-CARAS = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+try:
+    CARAS = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+except AttributeError:  # OpenCV sin el detector clásico: se elige solo por nitidez
+    CARAS = None
 
 
 def pedir(url, ua=UA_NAV, intentos=3):
@@ -114,8 +117,8 @@ def cuadros_del_video(video, carpeta, n=CUADROS_POR_REEL):
         chico = cv2.resize(gris, (360, int(360 * gris.shape[0] / gris.shape[1])))
         nitidez = float(cv2.Laplacian(chico, cv2.CV_64F).var())
         brillo, contraste = float(chico.mean()), float(chico.std())
-        caras = CARAS.detectMultiScale(chico, scaleFactor=1.1, minNeighbors=6, minSize=(36, 36))
-        cara = bool(len(caras))
+        cara = bool(CARAS is not None and len(CARAS.detectMultiScale(chico, scaleFactor=1.1, minNeighbors=6,
+                                                                      minSize=(36, 36))))
         puntuados.append({'archivo': nombre, 'segundo': round(i * 1.2, 1), 'nitidez': round(nitidez, 1),
                           'brillo': round(brillo), 'contraste': round(contraste), 'cara': cara,
                           'miniatura': cv2.resize(chico, (24, 42)).astype(np.float32)})
