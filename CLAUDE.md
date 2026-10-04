@@ -7,6 +7,11 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
+- **2026-10-04: el trabajo vuelve al equipo local.** Todo está en GitHub: `main` (sitio publicado, v0.7)
+  y la rama `fotos-instagram` (fotos crudas que bajó GitHub Actions). En el equipo, antes de seguir:
+  `git pull`; para ver el sitio, `cd sitio`, `npm install` y `npm run dev`. Desde el equipo local ya se
+  puede hacer lo que la nube no dejaba: capturar las publicaciones viejas del feed y abrir la dirección
+  publicada.
 - **v0.7: entrada como la de Stick Industries y un inicio que no es lineal** (2026-10-04). Al ver la v0.6
   el Señor Stick pidió volver a una entrada simple: «que la primera pantalla sea como de Stick Industries,
   que salga el Hugo Sánchez, como siempre, encontrando las mejores propiedades para ti, y sale el botón.
@@ -136,7 +141,7 @@ sitio/          el sitio publicado (ver sitio/README.md)
 
 ## Decisiones tomadas
 - La investigación se guarda como datos crudos + informes + una síntesis única (`ADN-MARCA.md`).
-- Repositorio `ZafiroSad/web-hugo-sanchez-broker` para continuar desde la nube. Nació privado y pasó a
+- Repositorio `ZafiroSad/web-hugo-sanchez-broker`: es la fuente común entre el equipo local y la nube. Nació privado y pasó a
   **público** el 2026-10-02 para publicar en GitHub Pages con el plan gratuito. Lo decidió el Señor Stick
   sabiendo que con eso queda a la vista `investigacion/` (análisis del cliente y de su competencia).
 - **Paleta: la de la beta** (decisión del Señor Stick, 2026-10-02, al ver la v0.3): fondo #FAFAFA, blanco,
