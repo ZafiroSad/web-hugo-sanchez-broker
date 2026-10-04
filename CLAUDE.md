@@ -6,12 +6,19 @@ verificado, Bucaramanga) muestre sus propiedades. El Señor Stick está armando 
 de la página; esta carpeta guarda la investigación del cliente para ajustar esa beta
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
+## Cómo se trabaja
+Como las apps del Señor Stick (pedido suyo, 2026-10-04): en el equipo local, en este repositorio, con
+commits y push.
+- Antes de empezar, `git pull`. Para ver el sitio: `cd sitio`, `npm install` y `npm run dev`.
+- Antes de subir, verificar: `npm run lint`, `npm run build` y mirarlo en el navegador.
+- Commit en español y push a `main`: GitHub Actions publica solo en Pages
+  (https://zafirosad.github.io/web-hugo-sanchez-broker/) en un par de minutos.
+- Las fotos crudas de Instagram están en la rama `fotos-instagram`; solo hacen falta para volver a
+  preparar fotos.
+- GitHub es la fuente común: si algún día se trabaja desde la nube, se empieza y se termina con todo
+  subido a `main`.
+
 ## Estado actual
-- **2026-10-04: el trabajo vuelve al equipo local.** Todo está en GitHub: `main` (sitio publicado, v0.7)
-  y la rama `fotos-instagram` (fotos crudas que bajó GitHub Actions). En el equipo, antes de seguir:
-  `git pull`; para ver el sitio, `cd sitio`, `npm install` y `npm run dev`. Desde el equipo local ya se
-  puede hacer lo que la nube no dejaba: capturar las publicaciones viejas del feed y abrir la dirección
-  publicada.
 - **v0.7: entrada como la de Stick Industries y un inicio que no es lineal** (2026-10-04). Al ver la v0.6
   el Señor Stick pidió volver a una entrada simple: «que la primera pantalla sea como de Stick Industries,
   que salga el Hugo Sánchez, como siempre, encontrando las mejores propiedades para ti, y sale el botón.
