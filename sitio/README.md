@@ -16,10 +16,11 @@ npm run build    # genera dist/
 
 | Dirección | Vista |
 |---|---|
-| `#/` | Intro sobre blanco: «HUGO SÁNCHEZ», el slogan y la pregunta «¿Qué estás buscando?» (casas, apartamentos, invertir, vender o ver todo) |
-| `#/inicio` | Vista principal: portada, propiedades destacadas, Sobre Hugo, proceso, inversión, manifiesto, vendidas y captación |
-| `#/inicio/<sección>` | Baja a esa sección (`propiedades`, `sobre`, `inversion`, `vendidas`, `vender`); `#/inicio/propiedades/<categoría>` abre además esa pestaña |
+| `#/` | La puerta, como la de Stick Industries: hilos de luz sobre negro, «HUGO SÁNCHEZ», el slogan y el botón «Encontrar mi propiedad» |
+| `#/inicio` | El menú de inicio: historias de las destacadas y baldosas a cada capítulo; debajo, las destacadas con pestañas |
+| `#/hugo`, `#/inversion`, `#/vendidas`, `#/vender` | Los capítulos, cada uno en su página y con «Sigue explorando» al final |
 | `#/propiedades` | Catálogo con filtros por zona, tipo, operación, precio, habitaciones y área |
+| `#/propiedades/<categoría>` | El catálogo de una categoría: `casas`, `apartamentos`, `lotes`… |
 | `#/propiedad/<id>` | Ficha con galería de fotos y visor a pantalla completa. El enlace se puede compartir |
 | `#/admin` | Panel de administración. PIN en `src/config/marca.ts` |
 
@@ -27,8 +28,9 @@ npm run build    # genera dist/
 
 | Qué | Archivo |
 |---|---|
-| Teléfono, redes, slogan, textos de confianza, PIN, propiedades de la portada, retrato y respuestas de la intro (`ENTRADA`) | `src/config/marca.ts` |
-| Categorías del inventario (pestañas de Destacadas y opciones de la intro) | `src/data/categorias.ts` |
+| Teléfono, redes, slogan, textos de confianza, PIN, retrato y los capítulos del menú (`CAPITULOS`) | `src/config/marca.ts` |
+| Categorías del inventario (baldosa de propiedades y pestañas del catálogo y de Destacadas) | `src/data/categorias.ts` |
+| Los hilos de luz de la puerta (shader y color) | `src/components/Estela.tsx` |
 | Las 20 propiedades iniciales (datos reales de Instagram) y cuántas fotos tiene cada una | `src/data/propiedades.ts` |
 | Las fotos | `public/fotos/<id>/` (ver «Fotos») |
 | Cierres, manifiesto y líneas de inversión | `src/data/contenido.ts` |

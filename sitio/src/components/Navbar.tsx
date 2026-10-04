@@ -10,23 +10,15 @@ import { InstagramIcon, Logotipo, ThreadsIcon, TikTokIcon, WhatsAppIcon } from '
 const ENLACES = [
   { etiqueta: 'Inicio', ruta: 'inicio' },
   { etiqueta: 'Propiedades', ruta: 'propiedades' },
-  { etiqueta: 'Sobre Hugo', ruta: 'inicio/sobre' },
-  { etiqueta: 'Vendidas', ruta: 'inicio/vendidas' },
-  { etiqueta: 'Vende tu propiedad', ruta: 'inicio/vender' },
+  { etiqueta: 'Sobre Hugo', ruta: 'hugo' },
+  { etiqueta: 'Vendidas', ruta: 'vendidas' },
+  { etiqueta: 'Vende tu propiedad', ruta: 'vender' },
 ];
 
 const MENSAJE_GENERAL = 'Hola Hugo, vi tu página web y quiero coordinar una visita.';
 
 export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
-  const [desplazado, setDesplazado] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
-
-  useEffect(() => {
-    const alDesplazar = () => setDesplazado(window.scrollY > 40);
-    alDesplazar();
-    window.addEventListener('scroll', alDesplazar, { passive: true });
-    return () => window.removeEventListener('scroll', alDesplazar);
-  }, []);
 
   useEffect(() => setMenuAbierto(false), [route]);
 
@@ -37,24 +29,15 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
     };
   }, [menuAbierto]);
 
-  // Sobre la portada oscura del inicio la barra es transparente y clara.
-  const sobreOscuro = route.name === 'inicio' && !desplazado;
-
   const activo = (ruta: string) => {
     if (ruta === 'propiedades') return route.name === 'propiedades' || route.name === 'propiedad';
-    if (ruta === 'inicio') return route.name === 'inicio' && !route.section;
-    return route.name === 'inicio' && `inicio/${route.section}` === ruta;
+    if (ruta === 'inicio') return route.name === 'inicio';
+    return route.name === 'capitulo' && route.id === ruta;
   };
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-40 transition-[background-color,border-color,color] duration-500 ease-ios ${
-          sobreOscuro
-            ? 'border-b border-transparent bg-transparent text-white'
-            : 'border-b border-negro/[0.07] bg-white/95 text-negro backdrop-blur-xl'
-        }`}
-      >
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-negro/[0.07] bg-white/95 text-negro backdrop-blur-xl">
         <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
           <a
             href="#/inicio"
@@ -65,7 +48,7 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
             aria-label="Hugo Sánchez, ir al inicio"
             className="transition-opacity hover:opacity-75"
           >
-            <Logotipo tono={sobreOscuro ? 'claro' : 'oscuro'} />
+            <Logotipo tono="oscuro" />
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Principal">
@@ -99,9 +82,7 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de Hugo Sánchez"
-              className={`hidden h-10 w-10 items-center justify-center rounded-full border transition-colors lg:flex ${
-                sobreOscuro ? 'border-white/20 hover:bg-white/10' : 'border-negro/12 hover:bg-negro/[0.05]'
-              }`}
+              className="hidden h-10 w-10 items-center justify-center rounded-full border border-negro/12 transition-colors hover:bg-negro/[0.05] lg:flex"
             >
               <InstagramIcon className="h-[17px] w-[17px]" />
             </a>
@@ -109,9 +90,7 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
               href={whatsappUrl(MENSAJE_GENERAL)}
               target="_blank"
               rel="noopener noreferrer"
-              className={`hidden items-center gap-2 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] transition-colors sm:inline-flex ${
-                sobreOscuro ? 'bg-white text-negro hover:bg-stone-100' : 'bg-negro text-white hover:bg-grafito'
-              }`}
+              className="hidden items-center gap-2 rounded-full bg-negro px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-white transition-colors hover:bg-grafito sm:inline-flex"
             >
               <WhatsAppIcon className="h-3.5 w-3.5" /> Coordina tu visita
             </a>

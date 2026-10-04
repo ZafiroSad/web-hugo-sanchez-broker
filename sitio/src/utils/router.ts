@@ -4,17 +4,33 @@ import { useEffect, useState } from 'react';
  * Rutas con hash (#/…): GitHub Pages no reescribe direcciones, y así cada
  * propiedad tiene un enlace propio que se puede mandar por WhatsApp.
  *
- *   #/                    la intro animada
- *   #/inicio              la vista principal (con #/inicio/<sección> baja a esa sección;
- *                         #/inicio/propiedades/<categoría> abre además esa pestaña)
- *   #/propiedades         el catálogo
- *   #/propiedad/<id>      la ficha de una propiedad
- *   #/admin               el panel de administración
+ *   #/                       la puerta de entrada
+ *   #/inicio                 el menú de inicio (#/inicio/propiedades/<categoría> baja a
+ *                            Destacadas con esa pestaña abierta)
+ *   #/hugo, #/inversion,     los capítulos, cada uno en su página. Las direcciones viejas
+ *   #/vendidas, #/vender     (#/inicio/sobre, #/inicio/vender…) llevan a su capítulo
+ *   #/propiedades[/<cat>]    el catálogo, entero o de una categoría (casas, apartamentos…)
+ *   #/propiedad/<id>         la ficha de una propiedad
+ *   #/admin                  el panel de administración
  */
+export const CAPITULOS_RUTA = ['hugo', 'inversion', 'vendidas', 'vender'] as const;
+export type CapituloId = (typeof CAPITULOS_RUTA)[number];
+
+/** Las secciones que antes vivían en el inicio y ahora son capítulos. */
+const SECCION_A_CAPITULO: Record<string, CapituloId> = {
+  sobre: 'hugo',
+  inversion: 'inversion',
+  vendidas: 'vendidas',
+  vender: 'vender',
+};
+
+const esCapitulo = (valor: string): valor is CapituloId => (CAPITULOS_RUTA as readonly string[]).includes(valor);
+
 export type Route =
   | { name: 'intro' }
   | { name: 'inicio'; section?: string; filtro?: string }
-  | { name: 'propiedades' }
+  | { name: 'propiedades'; categoria?: string }
+  | { name: 'capitulo'; id: CapituloId }
   | { name: 'propiedad'; id: string }
   | { name: 'admin' };
 
@@ -24,16 +40,19 @@ export function parseHash(hash: string): Route {
   switch (primero) {
     case '':
       return { name: 'intro' };
-    case 'inicio':
+    case 'inicio': {
+      const capitulo = segundo ? SECCION_A_CAPITULO[segundo] : undefined;
+      if (capitulo) return { name: 'capitulo', id: capitulo };
       return { name: 'inicio', section: segundo || undefined, filtro: tercero || undefined };
+    }
     case 'propiedades':
-      return { name: 'propiedades' };
+      return { name: 'propiedades', categoria: segundo || undefined };
     case 'propiedad':
       return segundo ? { name: 'propiedad', id: decodeURIComponent(segundo) } : { name: 'propiedades' };
     case 'admin':
       return { name: 'admin' };
     default:
-      return { name: 'inicio' };
+      return esCapitulo(primero) ? { name: 'capitulo', id: primero } : { name: 'inicio' };
   }
 }
 

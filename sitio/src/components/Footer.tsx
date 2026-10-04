@@ -47,10 +47,10 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
               <ul className="mt-5 space-y-3 text-[13px] font-light text-grafito">
                 {enlace('Inicio', 'inicio')}
                 {enlace('Propiedades', 'propiedades')}
-                {enlace('Sobre Hugo', 'inicio/sobre')}
-                {enlace('Vendidas', 'inicio/vendidas')}
-                {enlace('Inversión', 'inicio/inversion')}
-                {enlace('Vende tu propiedad', 'inicio/vender')}
+                {enlace('Sobre Hugo', 'hugo')}
+                {enlace('Vendidas', 'vendidas')}
+                {enlace('Inversión', 'inversion')}
+                {enlace('Vende tu propiedad', 'vender')}
               </ul>
             </div>
             <div className="order-last col-span-2 sm:order-none sm:col-span-1">

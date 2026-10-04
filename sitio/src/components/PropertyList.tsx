@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpDown, Search, SlidersHorizontal, X } from 'lucide-react';
 import { useProperties, type PropertySortOption } from '../context/PropertyContext';
+import { CATEGORIAS, enCategoria, esCategoria } from '../data/categorias';
+import { navigate } from '../utils/router';
 import { CURVA } from '../utils/motion';
 import { FilterDrawer } from './FilterDrawer';
 import { PropertyCard } from './PropertyCard';
 
-/** El catálogo completo: su «Book de propiedades». */
-export const PropertyList: React.FC = () => {
+/**
+ * El catálogo completo: su «Book de propiedades». Con #/propiedades/<categoría>
+ * abre en esa pestaña (casas, apartamentos…); las pestañas cambian la dirección,
+ * así cada categoría tiene su enlace.
+ */
+export const PropertyList: React.FC<{ categoria?: string }> = ({ categoria: pedida }) => {
   const {
-    filteredProperties,
+    filteredProperties: filtradas,
     publicProperties,
     filters,
     setFilters,
@@ -20,6 +26,13 @@ export const PropertyList: React.FC = () => {
     sectors,
   } = useProperties();
   const [filtrosAbiertos, setFiltrosAbiertos] = useState(false);
+  const categoria = esCategoria(pedida) ? pedida : undefined;
+  const filteredProperties = categoria ? filtradas.filter((p) => enCategoria(p, categoria)) : filtradas;
+  const pestanas = [
+    { id: undefined, nombre: 'Todas', total: publicProperties.length },
+    ...CATEGORIAS.map((c) => ({ id: c.id, nombre: c.nombre, total: publicProperties.filter((p) => enCategoria(p, c.id)).length })),
+  ].filter((t) => t.total > 0);
+  const nombreCategoria = CATEGORIAS.find((c) => c.id === categoria)?.nombre;
 
   return (
     <section className="min-h-screen bg-hueso pb-16 pt-[96px] sm:pb-28 sm:pt-[136px]">
@@ -32,20 +45,44 @@ export const PropertyList: React.FC = () => {
         >
           <p className="versalitas text-[10px] text-bronce">Book de propiedades</p>
           <h1 className="titular mt-3 font-light leading-[1.04] text-[clamp(2.1rem,9vw,4.4rem)] text-negro sm:mt-5">
-            Propiedades
+            {nombreCategoria ?? 'Propiedades'}
           </h1>
           <p className="mt-3 text-[14px] font-light leading-relaxed text-grafito sm:mt-5 sm:text-[15px]">
-            {publicProperties.length} propiedades publicadas por Hugo en Bucaramanga y su área metropolitana, cada una con
-            sus fotos, su ficha completa y su precio.
+            {categoria
+              ? `${publicProperties.filter((p) => enCategoria(p, categoria)).length} de las ${publicProperties.length} propiedades publicadas por Hugo`
+              : `${publicProperties.length} propiedades publicadas por Hugo`}{' '}
+            en Bucaramanga y su área metropolitana, cada una con sus fotos, su ficha completa y su precio.
           </p>
         </motion.header>
+
+        {/* Categorías: cada una con su dirección */}
+        <div role="tablist" aria-label="Tipo de propiedad" className="sin-scroll -mx-5 mt-6 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:mt-9 sm:px-0">
+          {pestanas.map((t) => {
+            const activa = t.id === categoria;
+            return (
+              <button
+                key={t.id ?? 'todas'}
+                type="button"
+                role="tab"
+                aria-selected={activa}
+                onClick={() => navigate(t.id ? `propiedades/${t.id}` : 'propiedades')}
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2 text-[12.5px] transition-colors duration-300 ${
+                  activa ? 'bg-negro text-white' : 'bg-stone-200/70 text-grafito hover:bg-stone-200'
+                }`}
+              >
+                {t.nombre}
+                <span className={`text-[10.5px] tabular-nums ${activa ? 'text-white/55' : 'text-taupe'}`}>{t.total}</span>
+              </button>
+            );
+          })}
+        </div>
 
         {/* Zonas rápidas */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: CURVA.ios, delay: 0.1 }}
-          className="sin-scroll -mx-5 mt-6 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:mt-10 sm:flex-wrap sm:px-0"
+          className="sin-scroll -mx-5 mt-3 flex gap-2 overflow-x-auto px-5 sm:mx-0 sm:mt-4 sm:flex-wrap sm:px-0"
         >
           {['', ...sectors].map((s) => (
             <button

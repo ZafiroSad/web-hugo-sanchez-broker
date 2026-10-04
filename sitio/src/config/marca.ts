@@ -7,7 +7,7 @@
  * confirmado queda fuera hasta que el cliente lo apruebe.
  */
 
-import type { CategoriaId } from '../data/categorias';
+import type { CapituloId } from '../utils/router';
 
 export const MARCA = {
   nombre: 'Hugo Sánchez',
@@ -41,56 +41,53 @@ export const MARCA = {
   pinAdmin: '1234',
 } as const;
 
-/**
- * Las propiedades de la portada del inicio: la del fondo (la foto a sangre en
- * el teléfono) y las tres tarjetas del computador. Si alguna se vende o se
- * borra, su lugar lo toma la más reciente con fotos.
- */
-export const PORTADA = {
-  fondo: 'terrazas-de-menzuly',
-  tarjetas: ['terrazas-de-menzuly', 'valle-de-rocas', 'edificio-la-loma'],
-} as const;
-
-/**
- * La pregunta de la intro, «¿Qué estás buscando?». Cada respuesta lleva a un
- * lugar distinto del inicio, así la visita no empieza siempre por el mismo
- * sitio. Las de categoría van a «Propiedades destacadas» con esa pestaña
- * abierta, dicen cuántas hay y muestran la foto de la primera propiedad que se
- * verá al llegar.
- */
-export interface OpcionEntrada {
-  id: string;
-  titulo: string;
-  categoria?: CategoriaId;
-  detalle?: string;
-  destino?: string;
-  foto?: string;
-  pie?: string;
-}
-
-export const ENTRADA: OpcionEntrada[] = [
-  { id: 'casas', titulo: 'Casas', categoria: 'casas' },
-  { id: 'apartamentos', titulo: 'Apartamentos', categoria: 'apartamentos' },
-  {
-    id: 'invertir',
-    titulo: 'Invertir',
-    detalle: 'Sobre planos y en dólares',
-    destino: 'inicio/inversion',
-    foto: './fotos/inversion/02.webp',
-    pie: 'Inversión en dólares · Panamá',
-  },
-  {
-    id: 'vender',
-    titulo: 'Vender mi propiedad',
-    detalle: 'Te ayudo a venderla',
-    destino: 'inicio/vender',
-    foto: './fotos/vendidas/01.webp',
-    pie: 'Aqua · vendida en septiembre de 2026',
-  },
-];
-
 /** Retrato de Hugo para «Sobre Hugo»: el de su reel fijado del manifiesto, sin la frase escrita encima. */
 export const RETRATO = './fotos/hugo/01.webp';
+
+/**
+ * Los capítulos del sitio. El inicio es un menú: cada capítulo tiene su
+ * baldosa ahí y su propia página (#/<id>), y al final de cada página «Sigue
+ * explorando» lleva a los demás. Así nadie tiene que recorrer el sitio de
+ * arriba abajo para llegar a lo que busca. Sin foto, la baldosa va en negro.
+ */
+export interface Capitulo {
+  id: CapituloId;
+  etiqueta: string;
+  titulo: string;
+  /** Título de la pestaña del navegador. */
+  pagina: string;
+  foto?: string;
+  /** Punto de la foto que se conserva al recortarla (object-position). */
+  encuadre?: string;
+}
+
+export const CAPITULOS: Capitulo[] = [
+  {
+    id: 'hugo',
+    etiqueta: 'Sobre Hugo',
+    titulo: 'Más de 20 años de trayectoria',
+    pagina: 'Sobre Hugo',
+    foto: RETRATO,
+    encuadre: '50% 16%',
+  },
+  {
+    id: 'inversion',
+    etiqueta: 'Inversión',
+    titulo: 'Sobre planos y en dólares',
+    pagina: 'Inversión',
+    foto: './fotos/inversion/02.webp',
+  },
+  {
+    id: 'vendidas',
+    etiqueta: 'Vendidas',
+    titulo: 'Cada cierre, contado por Hugo',
+    pagina: 'Vendidas',
+    foto: './fotos/vendidas/01.webp',
+    // El rótulo «VENDIDO» del cuadro va a media altura: se muestra la parte de abajo para que no choque con el título.
+    encuadre: '50% 100%',
+  },
+  { id: 'vender', etiqueta: 'Para propietarios', titulo: 'Vende tu propiedad con Hugo', pagina: 'Vende tu propiedad' },
+];
 
 export const BIO = {
   corta:

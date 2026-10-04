@@ -7,7 +7,32 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
-- **v0.6: intro en blanco, tipografía nueva y una primera elección** (2026-10-04). Pedido: «al inicio la
+- **v0.7: entrada como la de Stick Industries y un inicio que no es lineal** (2026-10-04). Al ver la v0.6
+  el Señor Stick pidió volver a una entrada simple: «que la primera pantalla sea como de Stick Industries,
+  que salga el Hugo Sánchez, como siempre, encontrando las mejores propiedades para ti, y sale el botón.
+  Encontrar mi propiedad o algo así. Que uno le dé y ahí sí entra al menú de inicio. Y trata de plantear una
+  forma en la que la página no se sienta tan lineal ya adentro». Lo que cambió:
+  - **La puerta** (`#/`), copiada de la entrada del portafolio de Stick Industries:
+    - Fondo negro con los mismos hilos de luz (su shader `seda.js`, en tono champaña).
+    - «HUGO SÁNCHEZ» se asienta letra a letra con el eco tipográfico; debajo, el slogan sin cursiva.
+    - Abajo, el botón blanco con letra negra «Encontrar mi propiedad». Se entra con el botón, tocando
+      la pantalla o con Intro/Espacio.
+    - Al abrir, el nombre se aleja y se desenfoca mientras la capa se disuelve.
+  - **El inicio es un menú, no una página larga.** Arriba, «¿Por dónde empezamos?» y una rejilla de baldosas:
+    - Las propiedades destacadas como historias de Instagram: avanzan solas, se pasan tocando y se pausan
+      al mantener el dedo encima.
+    - Propiedades, con su cifra y un atajo por categoría.
+    - Sobre Hugo, Inversión, Vendidas y Vende tu propiedad.
+
+    Debajo siguen las destacadas con pestañas. En el teléfono el inicio pasó de 10 pantallas a 4.
+  - **Cada capítulo tiene su página** (`#/hugo`, `#/inversion`, `#/vendidas`, `#/vender`). Arriba, la vuelta
+    al inicio; al final, «Sigue explorando» con los demás capítulos. Desde cualquier página se salta a
+    cualquier otra.
+  - El catálogo tiene pestañas por categoría y cada una tiene su dirección (`#/propiedades/casas`).
+  - Se retiraron la intro blanca con la pregunta y la portada oscura del inicio (`HomeHero`).
+  - Se conservan la tipografía Mona Sans y el monograma HS de la v0.6.
+- **v0.6: intro en blanco, tipografía nueva y una primera elección** (2026-10-04). Reemplazada por la v0.7,
+  salvo la tipografía. Pedido: «al inicio la
   animación de Hugo Sánchez, quiero otras tipografías y fondo blanco, algo más moderno, no tan cursiva…
   que no se sienta tan lineal la página sino que al inicio al usuario le toque interactuar un poco».
   - Tipografía nueva en todo el sitio: Mona Sans, ancha y fina en el nombre y en los titulares, y sin
@@ -143,17 +168,24 @@ sitio/          el sitio publicado (ver sitio/README.md)
 
 ## Decisiones del sitio (2026-10-02)
 - Rutas con hash (`#/propiedad/<id>`): funcionan en GitHub Pages y cada propiedad tiene enlace propio.
-  `#/inicio/propiedades/<categoría>` abre además esa pestaña de Destacadas (`casas`, `apartamentos`, `lotes`…).
-- **La intro pregunta en vez de tener un solo botón** (v0.6). Así la visita no empieza siempre igual y quien
-  busca un apartamento llega a los apartamentos.
-  - Las respuestas están en `ENTRADA` (`sitio/src/config/marca.ts`) y las categorías del inventario en
-    `sitio/src/data/categorias.ts`.
-  - La foto de una categoría es la primera propiedad que se verá al llegar: el mismo orden de Destacadas
-    (`ordenarDestacadas`).
-  - La salida es la hoja blanca subiendo; con `prefers-reduced-motion` todo queda quieto y solo se desvanece.
-  - La intro espera a la fuente, como mucho un segundo, para que las letras no cambien de forma a medio
-    subir. La fuente se precarga en `index.html`.
-  - En pantallas de 800 px de alto o menos se aprieta con la variante `baja` (`index.css`).
+  - Los capítulos van en `#/hugo`, `#/inversion`, `#/vendidas` y `#/vender`.
+  - El catálogo de una categoría va en `#/propiedades/<categoría>` (`casas`, `apartamentos`, `lotes`…).
+  - Las direcciones viejas del inicio (`#/inicio/sobre`, `#/inicio/vender`…) llevan a su capítulo.
+- **La entrada es la de Stick Industries** (v0.7, pedido del Señor Stick):
+  - Los hilos de luz son su mismo shader, en `Estela.tsx`, en tono champaña en vez de gris.
+  - El eco de las letras es la clase `.letra` de `index.css`.
+  - El nombre espera a la fuente, como mucho un segundo, para no cambiar de forma a medio asentarse; la
+    fuente se precarga en `index.html`.
+  - Con `prefers-reduced-motion` la puerta queda quieta, con el botón, y solo se desvanece.
+  - Solo la capa lleva `exit`; el alejarse del nombre y el apagarse del botón van por estado. Si cada hijo
+    tiene su propia salida, la capa puede retirarse cuando termina la más corta.
+- **El inicio es un menú, no una página larga** (v0.7). Cada capítulo vive en su página y se llega desde su
+  baldosa, la barra o el pie; «Sigue explorando» cierra cada capítulo con los demás.
+  - Los capítulos (etiqueta, título y foto de su baldosa) están en `CAPITULOS` (`sitio/src/config/marca.ts`).
+  - Las categorías del inventario están en `sitio/src/data/categorias.ts`.
+  - Las historias muestran las destacadas en el orden de `ordenarDestacadas`, el mismo de Destacadas.
+  - La foto de Vendidas se encuadra abajo (`encuadre`): el rótulo «VENDIDO» del cuadro va a media altura y
+    chocaba con el título de la baldosa.
 - **Sin videos** (pedido del Señor Stick, v0.4): ni embeds de Instagram ni reproductores. La ficha solo
   enlaza a la publicación («Publicación» en la tarjeta de precio) y las vendidas a su reel.
 - Cada propiedad muestra sus fotos (`sitio/public/fotos/<id>/NN.webp` y `NN-800.webp`). La portada
@@ -189,7 +221,8 @@ sitio/          el sitio publicado (ver sitio/README.md)
 - El retrato de «Sobre Hugo» es la foto profesional en blanco y negro de su reel fijado (DSiET7kDs6X);
   `preparar.py` le borra la frase escrita encima. Las vendidas usan cuadros de sus reels con el rótulo
   «VENDIDO», de donde salen también los nombres (Aqua, Hispania, Germania, Buena Vista).
-- Las propiedades de la portada del inicio se eligen en `PORTADA` (`sitio/src/config/marca.ts`).
+- Las historias del inicio muestran las propiedades marcadas como destacadas (`featured`) primero; no hay
+  una lista aparte que mantener.
 
 ## Pendientes y problemas conocidos
 - Desde la nube no se puede cambiar la configuración del repositorio (visibilidad, Pages): el proxy

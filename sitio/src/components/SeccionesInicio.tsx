@@ -92,8 +92,8 @@ const botonOscuro =
 /* ------------------------------------------------------------------ */
 
 /**
- * Con pestañas por tipo de propiedad. La intro abre la que el visitante eligió
- * (#/inicio/propiedades/<categoría>); después la cambia él mismo.
+ * Con pestañas por tipo de propiedad. Va debajo del menú de inicio;
+ * #/inicio/propiedades/<categoría> baja hasta aquí con esa pestaña abierta.
  */
 export const Destacadas: React.FC<{ filtro?: string }> = ({ filtro }) => {
   const { publicProperties } = useProperties();

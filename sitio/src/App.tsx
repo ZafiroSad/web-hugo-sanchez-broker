@@ -1,13 +1,16 @@
-import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { PropertyProvider, useProperties } from './context/PropertyContext';
 import { navigate, useHashRoute, type Route } from './utils/router';
 import { titleCase } from './utils/formatters';
+import { CAPITULOS } from './config/marca';
+import { CATEGORIAS } from './data/categorias';
 import { CURVA } from './utils/motion';
 import { Intro } from './components/Intro';
 import { Navbar } from './components/Navbar';
-import { HomeHero } from './components/HomeHero';
-import { Cierres, ComoTrabajo, Destacadas, Inversion, Manifiesto, SobreHugo, VendeTuPropiedad } from './components/SeccionesInicio';
+import { MenuInicio } from './components/MenuInicio';
+import { Destacadas } from './components/SeccionesInicio';
+import { PaginaCapitulo } from './components/Capitulo';
 import { PropertyList } from './components/PropertyList';
 import { PropertyDetail } from './components/PropertyDetail';
 import { Footer } from './components/Footer';
@@ -21,18 +24,14 @@ const AdminPanel = lazy(() => import('./components/AdminPanel').then((m) => ({ d
 
 const TITULO_BASE = 'Hugo Sánchez · Broker inmobiliario en Bucaramanga';
 
-/**
- * Baja a una sección del inicio cuando exista (la vista puede estar entrando).
- * Al salir de la intro el salto es inmediato: la hoja blanca sube y debajo ya
- * está la sección elegida.
- */
-function bajarASeccion(id: string, inmediato = false) {
+/** Baja a una sección del inicio cuando exista (la vista puede estar entrando). */
+function bajarASeccion(id: string) {
   let intentos = 0;
   const buscar = () => {
     const nodo = document.getElementById(id);
     if (nodo) {
       const y = nodo.getBoundingClientRect().top + window.scrollY - 72;
-      window.scrollTo({ top: y, behavior: inmediato ? 'instant' : 'smooth' });
+      window.scrollTo({ top: y, behavior: 'smooth' });
     } else if (intentos++ < 20) {
       window.setTimeout(buscar, 80);
     }
@@ -43,6 +42,7 @@ function bajarASeccion(id: string, inmediato = false) {
 function claveDeVista(route: Route): string {
   if (route.name === 'intro' || route.name === 'inicio') return 'inicio';
   if (route.name === 'propiedad') return `propiedad-${route.id}`;
+  if (route.name === 'capitulo') return `capitulo-${route.id}`;
   return route.name;
 }
 
@@ -52,15 +52,12 @@ function AppContent() {
   const [contactoAbierto, setContactoAbierto] = useState(false);
   const [comparadorAbierto, setComparadorAbierto] = useState(false);
   const enIntro = route.name === 'intro';
-  const rutaPrevia = useRef(route.name);
 
   useEffect(() => {
-    const desdeIntro = rutaPrevia.current === 'intro';
-    rutaPrevia.current = route.name;
     if (route.name === 'inicio' && route.section) {
-      bajarASeccion(route.section, desdeIntro);
+      bajarASeccion(route.section);
     } else if (route.name !== 'intro') {
-      window.scrollTo({ top: 0, behavior: desdeIntro ? 'instant' : 'auto' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
   }, [route]);
 
@@ -69,7 +66,11 @@ function AppContent() {
       const p = getProperty(route.id);
       document.title = p ? `${titleCase(p.name)} · Hugo Sánchez` : TITULO_BASE;
     } else if (route.name === 'propiedades') {
-      document.title = 'Propiedades · Hugo Sánchez';
+      const categoria = CATEGORIAS.find((c) => c.id === route.categoria);
+      document.title = `${categoria?.nombre ?? 'Propiedades'} · Hugo Sánchez`;
+    } else if (route.name === 'capitulo') {
+      const capitulo = CAPITULOS.find((c) => c.id === route.id);
+      document.title = capitulo ? `${capitulo.pagina} · Hugo Sánchez` : TITULO_BASE;
     } else if (route.name === 'admin') {
       document.title = 'Panel · Hugo Sánchez';
     } else {
@@ -94,7 +95,7 @@ function AppContent() {
         enIntro || enFicha ? '' : 'pb-[calc(66px+env(safe-area-inset-bottom))] lg:pb-0'
       }`}
     >
-      <AnimatePresence>{enIntro && <Intro key="intro" onEnter={(destino) => navigate(destino)} />}</AnimatePresence>
+      <AnimatePresence>{enIntro && <Intro key="intro" onEnter={() => navigate('inicio')} />}</AnimatePresence>
 
       <Navbar route={route} />
 
@@ -109,17 +110,12 @@ function AppContent() {
           >
             {(route.name === 'inicio' || route.name === 'intro') && (
               <>
-                <HomeHero animar={!enIntro} />
+                <MenuInicio animar={!enIntro} />
                 <Destacadas filtro={route.name === 'inicio' ? route.filtro : undefined} />
-                <SobreHugo />
-                <ComoTrabajo />
-                <Inversion />
-                <Manifiesto />
-                <Cierres />
-                <VendeTuPropiedad onContacto={() => setContactoAbierto(true)} />
               </>
             )}
-            {route.name === 'propiedades' && <PropertyList />}
+            {route.name === 'capitulo' && <PaginaCapitulo id={route.id} onContacto={() => setContactoAbierto(true)} />}
+            {route.name === 'propiedades' && <PropertyList categoria={route.categoria} />}
             {route.name === 'propiedad' && <PropertyDetail id={route.id} />}
           </motion.div>
         </AnimatePresence>

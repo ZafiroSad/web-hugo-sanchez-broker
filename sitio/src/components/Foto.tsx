@@ -22,7 +22,8 @@ export const Foto: React.FC<{
   /** La primera foto visible al cargar: sin carga diferida. */
   prioridad?: boolean;
   draggable?: boolean;
-}> = ({ src, alt, sizes = '100vw', className = '', prioridad = false, draggable }) => (
+  style?: React.CSSProperties;
+}> = ({ src, alt, sizes = '100vw', className = '', prioridad = false, draggable, style }) => (
   <img
     src={src}
     srcSet={srcSetDe(src)}
@@ -34,5 +35,6 @@ export const Foto: React.FC<{
     referrerPolicy="no-referrer"
     draggable={draggable}
     className={className}
+    style={style}
   />
 );
