@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { PropertyProvider, useProperties } from './context/PropertyContext';
 import { navigate, useHashRoute, type Route } from './utils/router';
@@ -21,14 +21,18 @@ const AdminPanel = lazy(() => import('./components/AdminPanel').then((m) => ({ d
 
 const TITULO_BASE = 'Hugo Sánchez · Broker inmobiliario en Bucaramanga';
 
-/** Baja a una sección del inicio cuando exista (la vista puede estar entrando). */
-function bajarASeccion(id: string) {
+/**
+ * Baja a una sección del inicio cuando exista (la vista puede estar entrando).
+ * Al salir de la intro el salto es inmediato: la hoja blanca sube y debajo ya
+ * está la sección elegida.
+ */
+function bajarASeccion(id: string, inmediato = false) {
   let intentos = 0;
   const buscar = () => {
     const nodo = document.getElementById(id);
     if (nodo) {
       const y = nodo.getBoundingClientRect().top + window.scrollY - 72;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({ top: y, behavior: inmediato ? 'instant' : 'smooth' });
     } else if (intentos++ < 20) {
       window.setTimeout(buscar, 80);
     }
@@ -48,12 +52,15 @@ function AppContent() {
   const [contactoAbierto, setContactoAbierto] = useState(false);
   const [comparadorAbierto, setComparadorAbierto] = useState(false);
   const enIntro = route.name === 'intro';
+  const rutaPrevia = useRef(route.name);
 
   useEffect(() => {
+    const desdeIntro = rutaPrevia.current === 'intro';
+    rutaPrevia.current = route.name;
     if (route.name === 'inicio' && route.section) {
-      bajarASeccion(route.section);
+      bajarASeccion(route.section, desdeIntro);
     } else if (route.name !== 'intro') {
-      window.scrollTo({ top: 0, behavior: 'auto' });
+      window.scrollTo({ top: 0, behavior: desdeIntro ? 'instant' : 'auto' });
     }
   }, [route]);
 
@@ -87,7 +94,7 @@ function AppContent() {
         enIntro || enFicha ? '' : 'pb-[calc(66px+env(safe-area-inset-bottom))] lg:pb-0'
       }`}
     >
-      <AnimatePresence>{enIntro && <Intro key="intro" onEnter={() => navigate('inicio')} />}</AnimatePresence>
+      <AnimatePresence>{enIntro && <Intro key="intro" onEnter={(destino) => navigate(destino)} />}</AnimatePresence>
 
       <Navbar route={route} />
 
@@ -103,7 +110,7 @@ function AppContent() {
             {(route.name === 'inicio' || route.name === 'intro') && (
               <>
                 <HomeHero animar={!enIntro} />
-                <Destacadas />
+                <Destacadas filtro={route.name === 'inicio' ? route.filtro : undefined} />
                 <SobreHugo />
                 <ComoTrabajo />
                 <Inversion />

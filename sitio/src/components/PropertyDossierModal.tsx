@@ -67,7 +67,7 @@ export const PropertyDossierModal: React.FC<{ property: Property; isOpen: boolea
             <p className="versalitas text-[9.5px] text-taupe">
               {property.operation} · {property.propertyType} · {property.sector}
             </p>
-            <h1 className="mt-3 text-[26px] font-light uppercase tracking-[0.12em] text-negro">{property.name}</h1>
+            <h1 className="mt-3 text-[26px] font-light uppercase tracking-[0.02em] font-stretch-semi-expanded text-negro">{property.name}</h1>
             <p className="mt-2 text-[14px] text-grafito">{property.headline}</p>
           </div>
 
@@ -133,7 +133,7 @@ export const PropertyDossierModal: React.FC<{ property: Property; isOpen: boolea
             <span>{specsLine(property)}</span>
             <span className="break-all">{propertyUrl(property.id)}</span>
           </footer>
-          <p className="text-center font-script text-[22px] text-negro">{MARCA.slogan}</p>
+          <p className="titular text-center text-[16px] font-light text-negro">{MARCA.slogan}</p>
         </div>
       </div>
     </div>

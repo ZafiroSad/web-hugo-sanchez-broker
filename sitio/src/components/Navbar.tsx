@@ -159,14 +159,14 @@ export const Navbar: React.FC<{ route: Route }> = ({ route }) => {
                   initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
                   animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                   transition={{ duration: 0.7, ease: CURVA.ios, delay: 0.08 + i * 0.06 }}
-                  className="py-2.5 text-[26px] font-extralight uppercase tracking-[0.14em]"
+                  className="titular py-2 text-[30px] font-light leading-tight"
                 >
                   {enlace.etiqueta}
                 </motion.a>
               ))}
             </nav>
             <div className="relative space-y-6 px-8 pb-10">
-              <p className="font-script text-2xl text-bronce">{MARCA.slogan}</p>
+              <p className="titular text-[18px] font-light leading-snug text-bronce">{MARCA.slogan}</p>
               <a
                 href={whatsappUrl(MENSAJE_GENERAL)}
                 target="_blank"

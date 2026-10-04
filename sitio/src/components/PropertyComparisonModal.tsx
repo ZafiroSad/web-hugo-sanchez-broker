@@ -43,7 +43,7 @@ export const PropertyComparisonModal: React.FC<{
         <div className="flex items-center justify-between border-b border-negro/10 px-6 py-5">
           <div>
             <p className="versalitas text-[9.5px] text-taupe">Comparar</p>
-            <h3 className="mt-1 text-[18px] font-light uppercase tracking-[0.1em]">
+            <h3 className="titular mt-1 text-[20px] font-light leading-tight">
               {properties.length} {properties.length === 1 ? 'propiedad' : 'propiedades'}
             </h3>
           </div>

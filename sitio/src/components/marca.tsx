@@ -2,8 +2,8 @@ import React from 'react';
 
 /**
  * Iconos de redes (los de lucide no traen marcas) y la firma HS.
- * La firma es provisional: se dibuja con la cursiva del sitio hasta tener el
- * vector de la firma manuscrita real de Hugo.
+ * La firma es provisional: un monograma en la tipografía del sitio hasta tener
+ * el vector de la firma manuscrita real de Hugo.
  */
 
 type IconProps = { className?: string };
@@ -34,10 +34,19 @@ export const ThreadsIcon: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
   </svg>
 );
 
-/** Firma HS provisional. */
+/**
+ * Firma HS provisional: las iniciales anchas dentro de un círculo fino. Todo
+ * se mide en em, así que el tamaño lo da la clase de texto que reciba.
+ */
 export const FirmaHS: React.FC<{ className?: string }> = ({ className = 'text-3xl' }) => (
-  <span className={`font-script leading-none select-none ${className}`} aria-label="Hugo Sánchez">
-    HS
+  <span
+    role="img"
+    aria-label="Hugo Sánchez"
+    className={`inline-flex h-[1.3em] w-[1.3em] shrink-0 select-none items-center justify-center rounded-full border border-current/35 leading-none ${className}`}
+  >
+    <span aria-hidden="true" className="pl-[0.04em] text-[0.4em] font-medium tracking-[0.04em] [font-stretch:125%]">
+      HS
+    </span>
   </span>
 );
 
@@ -50,9 +59,9 @@ export const Logotipo: React.FC<{ tono?: 'claro' | 'oscuro'; compacto?: boolean 
   const secundario = tono === 'claro' ? 'text-arena' : 'text-taupe';
   return (
     <span className="flex items-center gap-3">
-      <FirmaHS className={`text-[30px] ${color} -mt-1`} />
+      <FirmaHS className={`text-[29px] ${color}`} />
       <span className="flex flex-col leading-none">
-        <span className={`font-light tracking-[0.3em] text-[13px] ${color}`}>HUGO SÁNCHEZ</span>
+        <span className={`text-[13px] font-light uppercase tracking-[0.08em] font-stretch-expanded ${color}`}>Hugo Sánchez</span>
         {!compacto && (
           <span className={`mt-1.5 text-[8.5px] font-semibold tracking-[0.3em] uppercase ${secundario}`}>
             Broker inmobiliario

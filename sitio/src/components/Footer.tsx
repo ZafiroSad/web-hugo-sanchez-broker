@@ -30,7 +30,7 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
         <div className="grid gap-10 border-b border-negro/[0.06] pb-10 sm:gap-14 sm:pb-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Logotipo tono="oscuro" />
-            <p className="mt-7 max-w-sm font-script text-[30px] leading-tight text-bronce">{MARCA.slogan}</p>
+            <p className="titular mt-7 max-w-sm text-[22px] font-light leading-[1.2] text-bronce">{MARCA.slogan}</p>
             <a
               href={whatsappUrl('Hola Hugo, vi tu página web y quiero coordinar una visita.')}
               target="_blank"

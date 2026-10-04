@@ -5,26 +5,27 @@ import { useEffect, useState } from 'react';
  * propiedad tiene un enlace propio que se puede mandar por WhatsApp.
  *
  *   #/                    la intro animada
- *   #/inicio              la vista principal (con #/inicio/<sección> baja a esa sección)
+ *   #/inicio              la vista principal (con #/inicio/<sección> baja a esa sección;
+ *                         #/inicio/propiedades/<categoría> abre además esa pestaña)
  *   #/propiedades         el catálogo
  *   #/propiedad/<id>      la ficha de una propiedad
  *   #/admin               el panel de administración
  */
 export type Route =
   | { name: 'intro' }
-  | { name: 'inicio'; section?: string }
+  | { name: 'inicio'; section?: string; filtro?: string }
   | { name: 'propiedades' }
   | { name: 'propiedad'; id: string }
   | { name: 'admin' };
 
 export function parseHash(hash: string): Route {
   const path = hash.replace(/^#/, '').replace(/^\/+/, '');
-  const [primero, segundo] = path.split('/');
+  const [primero, segundo, tercero] = path.split('/');
   switch (primero) {
     case '':
       return { name: 'intro' };
     case 'inicio':
-      return { name: 'inicio', section: segundo || undefined };
+      return { name: 'inicio', section: segundo || undefined, filtro: tercero || undefined };
     case 'propiedades':
       return { name: 'propiedades' };
     case 'propiedad':

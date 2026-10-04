@@ -55,7 +55,7 @@ export const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void }> = 
           <X className="h-5 w-5" />
         </button>
         <p className="versalitas text-[9.5px] text-taupe">Escríbeme</p>
-        <h3 className="mt-3 text-[24px] font-light uppercase tracking-[0.1em] text-negro">Cuéntame qué buscas</h3>
+        <h3 className="titular mt-3 text-[26px] font-light leading-tight text-negro">Cuéntame qué buscas</h3>
         <p className="mt-2 text-[13px] font-light text-grafito">
           Tu mensaje llega directo a mi WhatsApp, {MARCA.telefonoVisible}.
         </p>

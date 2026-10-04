@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
-import { motion } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import { ArrowRight, ArrowUpRight, Check, Handshake, House, KeyRound } from 'lucide-react';
 import { BIO, CONFIANZA, MARCA, PILARES, PROCESO, RETRATO } from '../config/marca';
+import { CATEGORIAS, enCategoria, esCategoria, ordenarDestacadas, type CategoriaId } from '../data/categorias';
 import { CIERRES, INVERSION, reelUrl } from '../data/contenido';
 import { useProperties } from '../context/PropertyContext';
 import { whatsappUrl } from '../utils/formatters';
 import { navigate } from '../utils/router';
-import { revelar } from '../utils/motion';
+import { CURVA, revelar } from '../utils/motion';
 import { FirmaHS, InstagramIcon, WhatsAppIcon } from './marca';
 import { Foto } from './Foto';
 import { PropertyCard } from './PropertyCard';
@@ -25,8 +26,8 @@ const Encabezado: React.FC<{
   <motion.div {...revelar()} className="max-w-3xl">
     <p className={`versalitas text-[10px] ${tono === 'oscuro' ? 'text-oro' : 'text-bronce'}`}>{antetitulo}</p>
     <h2
-      className={`mt-4 font-light uppercase leading-[1.14] tracking-[0.1em] ${
-        medio ? 'text-[clamp(1.35rem,5.4vw,2.4rem)]' : 'text-[clamp(1.5rem,6.2vw,3rem)]'
+      className={`titular mt-4 font-light leading-[1.08] ${
+        medio ? 'text-[clamp(1.5rem,5.8vw,2.55rem)]' : 'text-[clamp(1.65rem,6.6vw,3.1rem)]'
       } ${tono === 'oscuro' ? 'text-white' : 'text-negro'}`}
     >
       {titulo}
@@ -90,10 +91,23 @@ const botonOscuro =
 /* Propiedades: justo debajo de la portada                             */
 /* ------------------------------------------------------------------ */
 
-export const Destacadas: React.FC = () => {
+/**
+ * Con pestañas por tipo de propiedad. La intro abre la que el visitante eligió
+ * (#/inicio/propiedades/<categoría>); después la cambia él mismo.
+ */
+export const Destacadas: React.FC<{ filtro?: string }> = ({ filtro }) => {
   const { publicProperties } = useProperties();
-  const recientes = [...publicProperties].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));
-  const destacadas = [...recientes.filter((p) => p.featured), ...recientes.filter((p) => !p.featured)].slice(0, 6);
+  const [pestana, setPestana] = useState<CategoriaId | 'todas'>(esCategoria(filtro) ? filtro : 'todas');
+  useEffect(() => {
+    if (esCategoria(filtro)) setPestana(filtro);
+  }, [filtro]);
+
+  const pestanas = [
+    { id: 'todas' as const, nombre: 'Todas', total: publicProperties.length },
+    ...CATEGORIAS.map((c) => ({ id: c.id, nombre: c.nombre, total: publicProperties.filter((p) => enCategoria(p, c.id)).length })),
+  ].filter((t) => t.total > 0);
+  const lista = pestana === 'todas' ? publicProperties : publicProperties.filter((p) => enCategoria(p, pestana));
+  const destacadas = ordenarDestacadas(lista).slice(0, 6);
   const verTodas = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('propiedades');
@@ -102,10 +116,10 @@ export const Destacadas: React.FC = () => {
   return (
     <section id="propiedades" className="scroll-mt-16 bg-hueso pb-14 pt-7 sm:pb-28 sm:pt-14">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3 border-b border-negro/[0.08] pb-4 sm:pb-6">
+        <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
           <div>
             <p className="versalitas text-[10px] text-bronce">Book de propiedades</p>
-            <h2 className="mt-3 text-[clamp(1.2rem,5vw,2.2rem)] font-light uppercase tracking-[0.1em] text-negro">
+            <h2 className="titular mt-3 text-[clamp(1.6rem,6.6vw,2.6rem)] font-light leading-[1.05] text-negro">
               Propiedades destacadas
             </h2>
           </div>
@@ -119,11 +133,47 @@ export const Destacadas: React.FC = () => {
           </a>
         </div>
 
+        {/* Pestañas por tipo */}
+        <div
+          role="tablist"
+          aria-label="Tipo de propiedad"
+          className="sin-scroll -mx-5 mt-5 flex gap-2 overflow-x-auto border-b border-negro/[0.08] px-5 pb-4 sm:mx-0 sm:mt-7 sm:px-0 sm:pb-6"
+        >
+          {pestanas.map((t) => {
+            const activa = pestana === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={activa}
+                onClick={() => setPestana(t.id)}
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-4 py-2 text-[12px] transition-colors duration-300 ${
+                  activa ? 'border-negro bg-negro text-white' : 'border-negro/[0.1] bg-white text-grafito hover:border-negro/40'
+                }`}
+              >
+                {t.nombre}
+                <span className={`text-[10.5px] tabular-nums ${activa ? 'text-white/55' : 'text-piedra'}`}>{t.total}</span>
+              </button>
+            );
+          })}
+        </div>
+
         <div className="mt-5 sm:mt-8">
-          <Deslizable
-            rejilla="sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
-            items={destacadas.map((p, i) => <PropertyCard key={p.id} property={p} index={i} prioridad={i < 2} />)}
-          />
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={pestana}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.45, ease: CURVA.ios }}
+            >
+              <Deslizable
+                rejilla="sm:grid-cols-2 lg:grid-cols-3 lg:gap-8"
+                items={destacadas.map((p, i) => <PropertyCard key={p.id} property={p} index={i} prioridad={i < 2} />)}
+              />
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         <div className="mt-8 flex justify-center sm:mt-12">
@@ -199,7 +249,7 @@ export const SobreHugo: React.FC = () => {
           )}
 
           <motion.blockquote {...revelar(0.14)} className="mt-8 border-l-2 border-oro/60 pl-5 sm:mt-10 sm:pl-6">
-            <p className="font-script text-[clamp(1.9rem,3.2vw,2.7rem)] leading-tight text-negro">{BIO.cita}</p>
+            <p className="titular text-[clamp(1.4rem,2.6vw,2.05rem)] font-light leading-[1.15] text-negro">«{BIO.cita}»</p>
             <footer className="versalitas mt-2 text-[10px] text-taupe">{MARCA.nombre}</footer>
           </motion.blockquote>
 
@@ -229,7 +279,7 @@ export const SobreHugo: React.FC = () => {
               className="rounded-2xl border border-negro/[0.06] bg-hueso p-4 sm:p-6"
             >
               <dt className="sr-only">{item.etiqueta}</dt>
-              <dd className="text-[clamp(1.5rem,2.6vw,2.3rem)] font-light leading-none tabular-nums text-negro">{item.valor}</dd>
+              <dd className="titular text-[clamp(1.5rem,2.6vw,2.3rem)] font-light leading-none tabular-nums text-negro">{item.valor}</dd>
               <dd className="mt-2.5 text-[9px] font-semibold uppercase leading-snug tracking-[0.16em] text-bronce sm:mt-3 sm:text-[9.5px] sm:tracking-[0.24em]">
                 {item.etiqueta}
               </dd>
@@ -333,7 +383,7 @@ export const Inversion: React.FC = () => (
             )}
             <div className="p-5 sm:p-8">
               <p className="versalitas text-[10px] text-bronce">{linea.etiqueta}</p>
-              <h3 className="mt-2.5 text-[17px] font-light uppercase tracking-[0.1em] text-negro sm:mt-3 sm:text-[20px]">{linea.titulo}</h3>
+              <h3 className="titular mt-2.5 text-[21px] font-normal leading-tight text-negro sm:mt-3 sm:text-[25px]">{linea.titulo}</h3>
               <p className="mt-4 text-[14px] font-light leading-relaxed text-grafito">{linea.texto}</p>
               <ul className="mt-5 space-y-3">
                 {linea.puntos.map((punto) => (
@@ -378,11 +428,14 @@ export const Manifiesto: React.FC = () => (
       </motion.p>
       <motion.p
         {...revelar(0.1)}
-        className="mt-6 font-extralight uppercase leading-[1.25] tracking-[0.1em] text-[clamp(1.35rem,5.6vw,3.6rem)] sm:mt-8"
+        className="titular mx-auto mt-6 max-w-[22ch] text-balance font-extralight leading-[1.08] text-[clamp(1.85rem,6.6vw,4.2rem)] sm:mt-8"
       >
-        El verdadero lujo en el sector inmobiliario es el acceso
+        El verdadero lujo en el sector inmobiliario es el acceso,
       </motion.p>
-      <motion.p {...revelar(0.25)} className="mt-4 font-script text-[clamp(2rem,5vw,4rem)] text-oro sm:mt-6">
+      <motion.p
+        {...revelar(0.25)}
+        className="titular mt-2 font-extralight leading-[1.08] text-[clamp(1.85rem,6.6vw,4.2rem)] text-oro sm:mt-3"
+      >
         y no todos lo tienen.
       </motion.p>
       <motion.div {...revelar(0.35)} className="mt-8 flex justify-center sm:mt-10">
@@ -455,7 +508,7 @@ export const VendeTuPropiedad: React.FC<{ onContacto: () => void }> = ({ onConta
     <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:gap-12 sm:px-8 lg:grid-cols-12">
       <div className="lg:col-span-7">
         <Encabezado medio antetitulo="Para propietarios" titulo="¿Quieres que tu propiedad tenga alcance en venta y visual?">
-          <p className="mt-4 font-script text-[clamp(1.75rem,3.2vw,2.7rem)] leading-tight text-bronce sm:mt-6">{MARCA.captacion}</p>
+          <p className="titular mt-4 text-[clamp(1.25rem,2.4vw,1.85rem)] font-light leading-[1.2] text-bronce sm:mt-6">{MARCA.captacion}</p>
         </Encabezado>
       </div>
       <motion.div {...revelar(0.12)} className="lg:col-span-5">

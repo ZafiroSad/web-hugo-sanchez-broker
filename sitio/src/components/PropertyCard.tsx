@@ -39,7 +39,7 @@ export const PropertyCard: React.FC<{ property: Property; index?: number; priori
         etiqueta: 'px-1.5 py-0.5 text-[8px] sm:px-2.5 sm:py-1 sm:text-[9.5px]',
         cuerpo: 'p-3 sm:p-6',
         zona: 'text-[8px] sm:text-[9.5px]',
-        nombre: 'mt-1.5 line-clamp-2 text-[11.5px] leading-tight tracking-[0.06em] sm:mt-2.5 sm:line-clamp-none sm:text-[15.5px] sm:leading-snug sm:tracking-[0.12em]',
+        nombre: 'mt-1.5 line-clamp-2 text-[11.5px] leading-tight tracking-[0.02em] sm:mt-2.5 sm:line-clamp-none sm:text-[15.5px] sm:leading-snug sm:tracking-[0.03em]',
         ficha: 'hidden sm:block',
         hueco: 'min-h-2 sm:min-h-5',
         pie: 'pt-2.5 sm:pt-4',
@@ -53,7 +53,7 @@ export const PropertyCard: React.FC<{ property: Property; index?: number; priori
         etiqueta: 'px-2.5 py-1 text-[9.5px]',
         cuerpo: 'p-5 sm:p-6',
         zona: 'text-[9.5px]',
-        nombre: 'mt-2.5 text-[15.5px] leading-snug tracking-[0.12em]',
+        nombre: 'mt-2.5 text-[15.5px] leading-snug tracking-[0.03em]',
         ficha: '',
         hueco: 'min-h-5',
         pie: 'pt-4',
@@ -119,7 +119,7 @@ export const PropertyCard: React.FC<{ property: Property; index?: number; priori
         <p className={`versalitas truncate text-bronce ${c.zona}`}>
           {property.sector} · {property.propertyType}
         </p>
-        <h3 className={`font-normal uppercase text-negro ${c.nombre}`}>
+        <h3 className={`font-normal uppercase text-negro font-stretch-semi-expanded ${c.nombre}`}>
           <a
             href={`#/propiedad/${property.id}`}
             onClick={(e) => {

@@ -84,7 +84,7 @@ export const LegalModal: React.FC<{ isOpen: boolean; onClose: () => void; docTyp
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-[20px] font-light uppercase tracking-[0.1em] text-negro">{doc.titulo}</h3>
+          <h3 className="titular text-[22px] font-light leading-tight text-negro">{doc.titulo}</h3>
           <button type="button" onClick={onClose} className="p-1 text-taupe hover:text-negro" aria-label="Cerrar">
             <X className="h-5 w-5" />
           </button>

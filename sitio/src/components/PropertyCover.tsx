@@ -19,15 +19,15 @@ function semilla(texto: string): number {
 }
 
 const TAMANOS = {
-  mini: { nombre: 'text-[7px] tracking-[0.16em]', etiqueta: 'hidden', pie: 'hidden', firma: 'text-5xl' },
+  mini: { nombre: 'text-[7px] tracking-[0.06em]', etiqueta: 'hidden', pie: 'hidden', firma: 'text-5xl' },
   card: {
-    nombre: 'text-[17px] sm:text-[19px] tracking-[0.2em]',
+    nombre: 'text-[17px] sm:text-[19px] tracking-[0.08em]',
     etiqueta: 'text-[9px]',
     pie: 'text-[7.5px]',
     firma: 'text-[9rem]',
   },
   hero: {
-    nombre: 'text-[clamp(1.6rem,3.6vw,3rem)] tracking-[0.2em]',
+    nombre: 'text-[clamp(1.6rem,3.6vw,3rem)] tracking-[0.08em]',
     etiqueta: 'text-[10px]',
     pie: 'text-[8.5px]',
     firma: 'text-[15rem]',
@@ -86,7 +86,7 @@ export const PropertyCover: React.FC<{
       <div className="relative flex h-full flex-col items-center justify-center px-[9%] text-center">
         <span className={`versalitas ${t.etiqueta} text-piedra`}>{property.propertyType}</span>
         <h3
-          className={`mt-3 font-light uppercase leading-[1.3] text-white transition-[letter-spacing] duration-[1200ms] ease-ios ${t.nombre}`}
+          className={`mt-3 font-light uppercase leading-[1.3] text-white font-stretch-expanded transition-[letter-spacing] duration-[1200ms] ease-ios ${t.nombre}`}
         >
           {property.name}
         </h3>

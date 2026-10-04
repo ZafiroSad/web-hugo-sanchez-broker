@@ -1,36 +1,37 @@
 @import "tailwindcss";
 
+/* Pantallas bajas (teléfonos pequeños, portátiles de 768 px): la intro se aprieta para caber entera. */
+@custom-variant baja (@media (max-height: 800px));
+
 /*
- * Fuentes alojadas en el propio sitio (licencia OFL): no dependen de Google
- * Fonts y cargan más rápido. Solo el subconjunto latino, que cubre el español.
+ * Fuente alojada en el propio sitio: Mona Sans (licencia OFL), variable en
+ * peso (200-900) y en ancho (75-125 %). Un solo archivo da los titulares
+ * anchos y finos y el texto normal. Solo el subconjunto latino, que cubre el
+ * español. Licencia en assets/fonts/LICENSE-mona-sans.txt.
  */
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Mona Sans';
   font-style: normal;
-  font-weight: 200 600;
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
   font-display: swap;
-  src: url('./assets/fonts/montserrat-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
-  font-family: 'Pinyon Script';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('./assets/fonts/pinyon-script-latin.woff2') format('woff2');
+  src: url('./assets/fonts/mona-sans-latin.woff2') format('woff2-variations'),
+    url('./assets/fonts/mona-sans-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 /*
  * Sistema visual: la gama clara de la beta que eligió el Señor Stick. Fondo
  * casi blanco, grises piedra, texto casi negro y un dorado de acento; las
- * fotos de las propiedades ponen el color. Montserrat para todo el texto y una
- * cursiva caligráfica solo como acento.
+ * fotos de las propiedades ponen el color. Una sola familia, Mona Sans: ancha
+ * y fina en el nombre y los titulares, normal en el texto. Sin cursivas.
  */
 @theme {
-  --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-script: 'Pinyon Script', 'Snell Roundhand', 'Apple Chancery', cursive;
+  --font-sans: 'Mona Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* La «light» de Mona Sans es más fina que la de Montserrat: se sube un poco para que el texto largo se lea. */
+  --font-weight-extralight: 250;
+  --font-weight-light: 340;
 
   /* Los nombres vienen de la primera versión; los valores son los de la beta. */
   --color-tinta: #0c0a09; /* fondos oscuros: intro y velo de las fotos */
@@ -104,6 +105,23 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* El nombre de Hugo: ancho, fino y en mayúsculas, como sus portadas pero sin espaciado artificial. */
+@utility nombre-marca {
+  font-stretch: 125%;
+  font-weight: 300;
+  letter-spacing: -0.012em;
+  text-transform: uppercase;
+}
+
+/*
+ * Titulares: semiancho y apretado, en minúsculas de frase. El peso, el
+ * interlineado y el tamaño los pone cada titular (así no compiten clases).
+ */
+@utility titular {
+  font-stretch: 112.5%;
+  letter-spacing: -0.022em;
 }
 
 @utility versalitas {

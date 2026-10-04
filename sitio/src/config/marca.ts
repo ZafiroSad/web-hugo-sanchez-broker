@@ -7,6 +7,8 @@
  * confirmado queda fuera hasta que el cliente lo apruebe.
  */
 
+import type { CategoriaId } from '../data/categorias';
+
 export const MARCA = {
   nombre: 'Hugo Sánchez',
   nombreMayusculas: 'HUGO SÁNCHEZ',
@@ -48,6 +50,44 @@ export const PORTADA = {
   fondo: 'terrazas-de-menzuly',
   tarjetas: ['terrazas-de-menzuly', 'valle-de-rocas', 'edificio-la-loma'],
 } as const;
+
+/**
+ * La pregunta de la intro, «¿Qué estás buscando?». Cada respuesta lleva a un
+ * lugar distinto del inicio, así la visita no empieza siempre por el mismo
+ * sitio. Las de categoría van a «Propiedades destacadas» con esa pestaña
+ * abierta, dicen cuántas hay y muestran la foto de la primera propiedad que se
+ * verá al llegar.
+ */
+export interface OpcionEntrada {
+  id: string;
+  titulo: string;
+  categoria?: CategoriaId;
+  detalle?: string;
+  destino?: string;
+  foto?: string;
+  pie?: string;
+}
+
+export const ENTRADA: OpcionEntrada[] = [
+  { id: 'casas', titulo: 'Casas', categoria: 'casas' },
+  { id: 'apartamentos', titulo: 'Apartamentos', categoria: 'apartamentos' },
+  {
+    id: 'invertir',
+    titulo: 'Invertir',
+    detalle: 'Sobre planos y en dólares',
+    destino: 'inicio/inversion',
+    foto: './fotos/inversion/02.webp',
+    pie: 'Inversión en dólares · Panamá',
+  },
+  {
+    id: 'vender',
+    titulo: 'Vender mi propiedad',
+    detalle: 'Te ayudo a venderla',
+    destino: 'inicio/vender',
+    foto: './fotos/vendidas/01.webp',
+    pie: 'Aqua · vendida en septiembre de 2026',
+  },
+];
 
 /** Retrato de Hugo para «Sobre Hugo»: el de su reel fijado del manifiesto, sin la frase escrita encima. */
 export const RETRATO = './fotos/hugo/01.webp';

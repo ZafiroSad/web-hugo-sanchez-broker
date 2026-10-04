@@ -153,7 +153,7 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
           <div className="mx-auto mt-12 flex h-12 w-12 items-center justify-center rounded-full border border-white/15">
             <Lock className="h-5 w-5 text-arena" strokeWidth={1.5} />
           </div>
-          <h1 className="mt-6 text-[18px] font-light uppercase tracking-[0.14em]">Panel de propiedades</h1>
+          <h1 className="titular mt-6 text-[22px] font-light">Panel de propiedades</h1>
           <p className="mt-2 text-[12.5px] text-piedra">Ingresa el PIN para administrar el inventario.</p>
           <input
             type="password"
@@ -260,13 +260,13 @@ export const AdminPanel: React.FC<{ onExit: () => void }> = ({ onExit }) => {
 
         <section className="mt-10">
           <p className="versalitas text-[10px] text-taupe">Inventario</p>
-          <h1 className="mt-3 text-[clamp(1.6rem,3vw,2.3rem)] font-extralight uppercase tracking-[0.1em]">
+          <h1 className="titular mt-3 text-[clamp(1.7rem,3vw,2.4rem)] font-light leading-[1.08]">
             {formatCurrency(metrics.valorEnVenta)} <span className="text-taupe">en venta</span>
           </h1>
           <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[3px] bg-negro/10 sm:grid-cols-4 lg:grid-cols-8">
             {tarjetas.map((t) => (
               <div key={t.etiqueta} className="bg-hueso p-5">
-                <p className="text-[26px] font-extralight tabular-nums">{t.valor}</p>
+                <p className="titular text-[26px] font-light tabular-nums">{t.valor}</p>
                 <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-grafito">{t.etiqueta}</p>
                 {t.nota && <p className="mt-1 text-[10.5px] text-taupe">{t.nota}</p>}
               </div>

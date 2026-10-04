@@ -31,7 +31,7 @@ export const PropertyList: React.FC = () => {
           className="max-w-3xl"
         >
           <p className="versalitas text-[10px] text-bronce">Book de propiedades</p>
-          <h1 className="mt-3 font-light uppercase leading-[1.08] tracking-[0.1em] text-[clamp(1.9rem,8vw,4.2rem)] text-negro sm:mt-5">
+          <h1 className="titular mt-3 font-light leading-[1.04] text-[clamp(2.1rem,9vw,4.4rem)] text-negro sm:mt-5">
             Propiedades
           </h1>
           <p className="mt-3 text-[14px] font-light leading-relaxed text-grafito sm:mt-5 sm:text-[15px]">
@@ -129,7 +129,7 @@ export const PropertyList: React.FC = () => {
 
         {filteredProperties.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-negro/15 bg-white px-6 py-24 text-center">
-            <p className="text-[20px] font-light uppercase tracking-[0.1em] text-negro">Sin resultados con estos filtros</p>
+            <p className="titular text-[22px] font-light text-negro">Sin resultados con estos filtros</p>
             <p className="mx-auto mt-3 max-w-md text-[13.5px] text-grafito">
               Hugo tiene más propiedades de las que publica. Escríbele y cuéntale qué buscas.
             </p>

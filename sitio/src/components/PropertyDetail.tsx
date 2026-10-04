@@ -95,7 +95,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
     return (
       <div className="flex min-h-[80vh] flex-col items-center justify-center bg-hueso px-6 pt-24 text-center">
         <p className="versalitas text-[10px] text-taupe">Propiedad no disponible</p>
-        <h1 className="mt-5 text-[clamp(1.6rem,3vw,2.4rem)] font-extralight uppercase tracking-[0.1em]">
+        <h1 className="titular mt-5 text-[clamp(1.6rem,3vw,2.4rem)] font-light">
           Esta propiedad ya no está publicada
         </h1>
         <p className="mt-4 max-w-md text-[14px] font-light text-grafito">
@@ -192,7 +192,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
                   </span>
                 )}
               </div>
-              <h1 className="mt-3 font-light uppercase leading-[1.14] tracking-[0.1em] text-[clamp(1.5rem,6.4vw,2.9rem)] text-negro sm:mt-4">
+              <h1 className="mt-3 font-light uppercase leading-[1.1] tracking-[0.02em] font-stretch-semi-expanded text-[clamp(1.5rem,6.4vw,2.9rem)] text-negro sm:mt-4">
                 {property.name}
               </h1>
               <p className="mt-4 flex items-center gap-2 text-[13px] text-taupe">
@@ -318,7 +318,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
 
             {/* Cierre */}
             <motion.section {...revelar()} className="rounded-2xl bg-negro p-6 text-white sm:p-10">
-              <p className="font-script text-[clamp(1.7rem,3vw,2.4rem)] leading-tight text-oro">{MARCA.slogan}</p>
+              <p className="titular text-[clamp(1.3rem,2.4vw,1.8rem)] font-light leading-[1.2] text-oro">{MARCA.slogan}</p>
               <p className="mt-4 max-w-lg text-[14px] font-light leading-relaxed text-arena">
                 Escríbele a Hugo para coordinar tu visita a {titleCase(property.name)}. Te responde directamente por
                 WhatsApp.
@@ -384,7 +384,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
               </button>
 
               <div className="mt-6 flex items-center gap-3 border-t border-negro/[0.06] pt-5 text-[12px] text-taupe">
-                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-negro font-script text-[17px] text-white">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-negro pl-[0.04em] text-[11px] font-medium tracking-[0.04em] text-white font-stretch-expanded">
                   HS
                 </span>
                 <p className="min-w-0 leading-snug">
@@ -412,7 +412,7 @@ export const PropertyDetail: React.FC<{ id: string }> = ({ id }) => {
           <section className="mt-16 border-t border-negro/[0.08] pt-10 sm:mt-28 sm:pt-16">
             <motion.h2
               {...revelar()}
-              className="font-light uppercase tracking-[0.1em] text-[clamp(1.5rem,2.6vw,2.2rem)] text-negro"
+              className="titular font-light leading-[1.08] text-[clamp(1.5rem,2.6vw,2.2rem)] text-negro"
             >
               También te pueden interesar
             </motion.h2>

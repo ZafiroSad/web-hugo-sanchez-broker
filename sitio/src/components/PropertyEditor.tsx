@@ -92,7 +92,7 @@ const Bloque: React.FC<{ paso: string; titulo: string; ayuda?: string; children:
 }) => (
   <section className="rounded-[4px] border border-negro/10 bg-white p-6 sm:p-8">
     <p className="versalitas text-[9.5px] text-taupe">{paso}</p>
-    <h2 className="mt-2 text-[17px] font-light uppercase tracking-[0.1em] text-negro">{titulo}</h2>
+    <h2 className="titular mt-2 text-[19px] font-light leading-tight text-negro">{titulo}</h2>
     {ayuda && <p className="mt-2 max-w-2xl text-[12.5px] leading-relaxed text-taupe">{ayuda}</p>}
     <div className="mt-6">{children}</div>
   </section>

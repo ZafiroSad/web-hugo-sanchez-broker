@@ -52,7 +52,7 @@ const TarjetaPortada: React.FC<{ property: Property; desfase: string; retraso: n
     <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
     <div className="absolute inset-x-0 bottom-0 p-4">
       <p className="versalitas text-[8.5px] text-arena">{property.sector}</p>
-      <p className="mt-1.5 text-[12.5px] font-normal uppercase leading-snug tracking-[0.12em] text-white">
+      <p className="mt-1.5 text-[12.5px] font-normal uppercase leading-snug tracking-[0.03em] text-white font-stretch-semi-expanded">
         {property.name}
       </p>
       <p className="mt-2 flex items-center justify-between text-[12px] tabular-nums text-arena">
@@ -100,7 +100,7 @@ export const HomeHero: React.FC<{ animar?: boolean }> = ({ animar = true }) => {
           </motion.p>
 
           <motion.h1
-            className="mt-4 font-extralight uppercase leading-[0.98] tracking-[0.12em] text-[clamp(2.6rem,12vw,4.4rem)] lg:mt-5 lg:text-[clamp(3.2rem,5.4vw,5.4rem)]"
+            className="nombre-marca mt-4 text-[clamp(2.6rem,12.6vw,4.6rem)] leading-[1.03] lg:mt-5 lg:text-[clamp(3.4rem,5.6vw,5.6rem)]"
             {...entrada(0.12)}
           >
             Hugo
@@ -109,14 +109,15 @@ export const HomeHero: React.FC<{ animar?: boolean }> = ({ animar = true }) => {
           </motion.h1>
 
           <motion.p
-            className="mt-3 max-w-xl text-balance font-script text-[clamp(1.55rem,3vw,2.5rem)] leading-[1.25] text-oro lg:mt-4"
+            className="mt-4 flex max-w-md items-start gap-3 text-[15.5px] font-light leading-[1.45] text-white/90 sm:text-[17px] lg:mt-6 lg:text-[19px]"
             {...entrada(0.24)}
           >
+            <span aria-hidden="true" className="mt-[0.72em] h-px w-7 shrink-0 bg-oro" />
             {MARCA.slogan}
           </motion.p>
 
           <motion.p
-            className="mt-6 hidden max-w-md text-[14.5px] font-light leading-relaxed text-arena sm:block"
+            className="mt-5 hidden max-w-md text-[14.5px] font-light leading-relaxed text-arena sm:block"
             {...entrada(0.32)}
           >
             {BIO.corta}

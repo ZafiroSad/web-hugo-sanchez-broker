@@ -7,6 +7,22 @@ de la página; esta carpeta guarda la investigación del cliente para ajustar es
 "tal cual como él la tendría": esencia, colores, slogan, tipografías y forma de expresarse.
 
 ## Estado actual
+- **v0.6: intro en blanco, tipografía nueva y una primera elección** (2026-10-04). Pedido: «al inicio la
+  animación de Hugo Sánchez, quiero otras tipografías y fondo blanco, algo más moderno, no tan cursiva…
+  que no se sienta tan lineal la página sino que al inicio al usuario le toque interactuar un poco».
+  - Tipografía nueva en todo el sitio: Mona Sans, ancha y fina en el nombre y en los titulares, y sin
+    cursivas (ver «Decisiones tomadas»).
+  - Intro sobre blanco: el nombre sube letra a letra desde una línea, una línea dorada lo subraya y el
+    slogan entra palabra a palabra. Tarda menos de dos segundos y un toque o una tecla la completa.
+  - Al final de la intro, la pregunta «¿Qué estás buscando?»: Casas, Apartamentos, Invertir, Vender mi
+    propiedad o Ver todo. Cada respuesta lleva a un sitio distinto del inicio: la hoja blanca sube y debajo
+    ya está esa sección. Las de categoría dicen cuántas hay y muestran su foto.
+  - En el computador, la foto de la derecha cambia al pasar por cada opción y las demás se atenúan; las
+    letras del nombre engruesan cerca del cursor; las teclas 1 a 4 eligen; abajo a la izquierda está el
+    WhatsApp directo.
+  - «Propiedades destacadas» tiene pestañas por tipo (Todas, Casas, Apartamentos, Lotes y fincas), y la
+    elección de la intro abre la suya.
+  - La intro cabe entera desde teléfonos de 360×780 y 375×667 hasta portátiles de 1366×768.
 - **v0.5: vista de celular** (2026-10-02). Pedido: «haz que la vista de celular se vea mejor, más acorde».
   La auditoría a 390 px mostró que el problema era de forma, no de color:
   - Los botones flotantes tapaban textos y precios en todas las pantallas.
@@ -102,8 +118,14 @@ sitio/          el sitio publicado (ver sitio/README.md)
   escala piedra (stone) de Tailwind, texto #1C1917 y dorado #C5A059 de acento (#A07A36 para texto pequeño).
   Los nombres de color del código (`hueso`, `negro`, `taupe`…) se conservaron con los valores nuevos.
   La paleta cálida de `ADN-MARCA.md` (taupe, arena, bronce #8A6F4E) quedó descartada. Sin verde de WhatsApp.
-- Tipografía: Montserrat 300 en mayúsculas con tracking amplio (títulos), Montserrat 600 (etiquetas),
-  Montserrat 400 (cuerpo) y Playfair Display Italic como único acento.
+- **Tipografía: Mona Sans** (decisión del Señor Stick, 2026-10-04: «otras tipografías… algo más moderno,
+  no tan cursiva»). Es una sola familia variable en peso y en ancho:
+  - El nombre va ancho (125 %), en peso 300 y mayúsculas (`nombre-marca`). Sigue el espíritu de sus
+    portadas (sans fina en mayúsculas), pero ensancha la letra en vez de espaciarla.
+  - Los titulares van semianchos (112,5 %), en minúscula de frase y apretados (`titular`).
+  - Las etiquetas, en versalitas de peso 600; el texto, en ancho normal.
+  - Salieron Montserrat y la cursiva Pinyon Script, y no queda ninguna cursiva. La firma HS provisional
+    es un monograma en un círculo fino hasta tener el vector de la firma real.
 - Frases: manifiesto "El verdadero lujo… es el acceso"; lema "Como siempre, encontrando las mejores
   propiedades para ti"; CTA "Coordina tu visita" (WhatsApp).
 - El precio va visible por defecto ("Precio negociable"); "Precio a consultar" es solo una opción.
@@ -121,6 +143,17 @@ sitio/          el sitio publicado (ver sitio/README.md)
 
 ## Decisiones del sitio (2026-10-02)
 - Rutas con hash (`#/propiedad/<id>`): funcionan en GitHub Pages y cada propiedad tiene enlace propio.
+  `#/inicio/propiedades/<categoría>` abre además esa pestaña de Destacadas (`casas`, `apartamentos`, `lotes`…).
+- **La intro pregunta en vez de tener un solo botón** (v0.6). Así la visita no empieza siempre igual y quien
+  busca un apartamento llega a los apartamentos.
+  - Las respuestas están en `ENTRADA` (`sitio/src/config/marca.ts`) y las categorías del inventario en
+    `sitio/src/data/categorias.ts`.
+  - La foto de una categoría es la primera propiedad que se verá al llegar: el mismo orden de Destacadas
+    (`ordenarDestacadas`).
+  - La salida es la hoja blanca subiendo; con `prefers-reduced-motion` todo queda quieto y solo se desvanece.
+  - La intro espera a la fuente, como mucho un segundo, para que las letras no cambien de forma a medio
+    subir. La fuente se precarga en `index.html`.
+  - En pantallas de 800 px de alto o menos se aprieta con la variante `baja` (`index.css`).
 - **Sin videos** (pedido del Señor Stick, v0.4): ni embeds de Instagram ni reproductores. La ficha solo
   enlaza a la publicación («Publicación» en la tarjeta de precio) y las vendidas a su reel.
 - Cada propiedad muestra sus fotos (`sitio/public/fotos/<id>/NN.webp` y `NN-800.webp`). La portada
@@ -134,7 +167,7 @@ sitio/          el sitio publicado (ver sitio/README.md)
   deslizables (`Deslizable` en `SeccionesInicio.tsx`). El catálogo y «También te pueden interesar» son
   rejillas de dos columnas con `PropertyCard densa`. Desde tableta todo vuelve a rejilla.
 - El botón «Comparar» de las tarjetas solo aparece desde tableta; en el teléfono se compara desde la ficha.
-- Fuentes alojadas en el sitio (Montserrat y Pinyon Script, OFL); no se usa Google Fonts.
+- Fuente alojada en el sitio (Mona Sans, OFL; licencia en `sitio/src/assets/fonts/`); no se usa Google Fonts.
 - Las coordenadas del mapa son aproximadas por zona (`sitio/src/data/zonas.ts`) y se muestran como
   círculo. Montearroyo, La Gran Reserva, City Center y La Loma no tienen mapa (zona desconocida).
 - El panel guarda en el navegador; para publicar se exporta `propiedades.json` a `sitio/public/`.
@@ -163,7 +196,7 @@ sitio/          el sitio publicado (ver sitio/README.md)
   lo bloquea y lo hace el Señor Stick en Settings. Sí se puede relanzar la publicación
   (`gh api -X POST repos/ZafiroSad/web-hugo-sanchez-broker/actions/runs/<id>/rerun`) y leer su estado.
   La dirección publicada (zafirosad.github.io) tampoco se puede abrir desde la nube.
-- Pedir a Hugo: vector de la firma HS (hoy es provisional, en cursiva), las fotos originales de sus
+- Pedir a Hugo: vector de la firma HS (hoy es provisional: monograma en un círculo), las fotos originales de sus
   propiedades (las del sitio son cuadros de video a 1080 px), el retrato en alta resolución,
   confirmación de cifras y credenciales, y revisión legal de los textos de datos y términos.
 - Capturar las ~800 publicaciones anteriores a mayo de 2024 (solo desde el equipo local) y volver
