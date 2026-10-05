@@ -19,6 +19,22 @@ commits y push.
   subido a `main`.
 
 ## Estado actual
+- **v0.8: puerta en blanco con el slogan escrito a bolígrafo y la firma HS manuscrita** (2026-10-04), publicada. Pedido, con tres referencias de imagen: «al inicio el Hugo Sánchez en la mitad, de
+  ahí se mueve el texto y luego con una animación que dé la sensación de que está escribiendo con un
+  bolígrafo su slogan; el fondo no el de mi portafolio sino algo más moderno, pulcro, al estilo de Hugo;
+  y luego el botón». Sobre el logo: «antes teníamos uno más personalizado». Lo que cambió:
+  - **La puerta** (`#/`, `Intro.tsx`), en tres tiempos:
+    1. «HUGO SÁNCHEZ» macizo, grueso y ancho (Mona Sans 780, 108 %), sube letra a letra al centro, con
+       «BROKER INMOBILIARIO» debajo.
+    2. El nombre se desplaza a su sitio y se vacía: queda en contorno.
+    3. Debajo, corrido a la derecha, el slogan se escribe palabra por palabra en letra de bolígrafo
+       (Sacramento). Al terminar aparecen el botón negro «Encontrar mi propiedad» y las esquinas
+       (ciudad e Instagram).
+  - Fondo blanco con una luz cálida muy suave y grano fino. Salieron los hilos de luz de Stick Industries
+    (se borró `Estela.tsx` y el eco de letras `.letra`).
+  - Un toque o Intro/Espacio salta al final; con el botón ya fuera, Intro/Espacio entran.
+  - La firma HS vuelve a ser manuscrita (Sacramento) en la barra, las historias y las portadas.
+  - Verificado en vivo a 800 px de ancho y en teléfono de 375 px: secuencia completa, salto y entrada a `#/inicio`.
 - **v0.7: entrada como la de Stick Industries y un inicio que no es lineal** (2026-10-04). Al ver la v0.6
   el Señor Stick pidió volver a una entrada simple: «que la primera pantalla sea como de Stick Industries,
   que salga el Hugo Sánchez, como siempre, encontrando las mejores propiedades para ti, y sale el botón.
@@ -161,8 +177,10 @@ sitio/          el sitio publicado (ver sitio/README.md)
     portadas (sans fina en mayúsculas), pero ensancha la letra en vez de espaciarla.
   - Los titulares van semianchos (112,5 %), en minúscula de frase y apretados (`titular`).
   - Las etiquetas, en versalitas de peso 600; el texto, en ancho normal.
-  - Salieron Montserrat y la cursiva Pinyon Script, y no queda ninguna cursiva. La firma HS provisional
-    es un monograma en un círculo fino hasta tener el vector de la firma real.
+  - Salieron Montserrat y la cursiva Pinyon Script.
+  - **Letra de bolígrafo: Sacramento** (v0.8, OFL, alojada en `sitio/src/assets/fonts/`, clase `font-script`).
+    Es monolínea, como un bolígrafo, y solo se usa en el slogan de la puerta y en la firma HS. La firma sigue
+    siendo provisional hasta tener el vector de la firma real.
 - Frases: manifiesto "El verdadero lujo… es el acceso"; lema "Como siempre, encontrando las mejores
   propiedades para ti"; CTA "Coordina tu visita" (WhatsApp).
 - El precio va visible por defecto ("Precio negociable"); "Precio a consultar" es solo una opción.
@@ -183,14 +201,19 @@ sitio/          el sitio publicado (ver sitio/README.md)
   - Los capítulos van en `#/hugo`, `#/inversion`, `#/vendidas` y `#/vender`.
   - El catálogo de una categoría va en `#/propiedades/<categoría>` (`casas`, `apartamentos`, `lotes`…).
   - Las direcciones viejas del inicio (`#/inicio/sobre`, `#/inicio/vender`…) llevan a su capítulo.
-- **La entrada es la de Stick Industries** (v0.7, pedido del Señor Stick):
-  - Los hilos de luz son su mismo shader, en `Estela.tsx`, en tono champaña en vez de gris.
-  - El eco de las letras es la clase `.letra` de `index.css`.
-  - El nombre espera a la fuente, como mucho un segundo, para no cambiar de forma a medio asentarse; la
-    fuente se precarga en `index.html`.
-  - Con `prefers-reduced-motion` la puerta queda quieta, con el botón, y solo se desvanece.
-  - Solo la capa lleva `exit`; el alejarse del nombre y el apagarse del botón van por estado. Si cada hijo
-    tiene su propia salida, la capa puede retirarse cuando termina la más corta.
+- **La puerta es blanca y escribe el slogan** (v0.8, reemplaza la de Stick Industries de la v0.7):
+  - El contorno del nombre es un filtro SVG (se engorda la letra y se le resta la original), no
+    `-webkit-text-stroke`: con la fuente variable el trazo de CSS dibuja líneas por dentro de las letras.
+    Se cruzan dos copias del nombre, la maciza y la de contorno.
+  - La escritura es una máscara que destapa cada palabra de izquierda a derecha a ritmo lineal (`.trazo`
+    en `index.css`); los tiempos los calcula `Intro.tsx` según el largo de cada palabra. El botón sale
+    cuando termina la última palabra, con un reloj de respaldo.
+  - En pantalla ancha el ancho lo manda el nombre (`contain: inline-size` en el slogan): el slogan sobresale
+    a la derecha y el conjunto se corre a la izquierda para quedar centrado.
+  - La puerta espera a sus dos fuentes, como mucho un segundo; ambas se precargan en `index.html`.
+  - Con `prefers-reduced-motion` la puerta sale ya completa, con el botón, y solo se desvanece.
+  - Solo la capa lleva `exit`; lo demás va por estado. Si cada hijo tiene su propia salida, la capa puede
+    retirarse cuando termina la más corta.
 - **El inicio es un menú, no una página larga** (v0.7). Cada capítulo vive en su página y se llega desde su
   baldosa, la barra o el pie; «Sigue explorando» cierra cada capítulo con los demás.
   - Los capítulos (etiqueta, título y foto de su baldosa) están en `CAPITULOS` (`sitio/src/config/marca.ts`).

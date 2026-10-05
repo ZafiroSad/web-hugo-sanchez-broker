@@ -35,18 +35,12 @@ export const ThreadsIcon: React.FC<IconProps> = ({ className = 'w-4 h-4' }) => (
 );
 
 /**
- * Firma HS provisional: las iniciales anchas dentro de un círculo fino. Todo
- * se mide en em, así que el tamaño lo da la clase de texto que reciba.
+ * Firma HS provisional: las iniciales en letra de bolígrafo (Sacramento), como
+ * la firma blanca de sus portadas, hasta tener el vector de la firma real.
  */
 export const FirmaHS: React.FC<{ className?: string }> = ({ className = 'text-3xl' }) => (
-  <span
-    role="img"
-    aria-label="Hugo Sánchez"
-    className={`inline-flex h-[1.3em] w-[1.3em] shrink-0 select-none items-center justify-center rounded-full border border-current/35 leading-none ${className}`}
-  >
-    <span aria-hidden="true" className="pl-[0.04em] text-[0.4em] font-medium tracking-[0.04em] [font-stretch:125%]">
-      HS
-    </span>
+  <span role="img" aria-label="Hugo Sánchez" className={`shrink-0 select-none font-script leading-none ${className}`}>
+    <span aria-hidden="true">HS</span>
   </span>
 );
 
