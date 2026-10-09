@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { KeyRound } from 'lucide-react';
 import { MARCA } from '../config/marca';
 import { whatsappUrl } from '../utils/formatters';
 import { navigate } from '../utils/router';
@@ -117,15 +116,6 @@ export const Footer: React.FC<{ onContacto: () => void }> = ({ onContacto }) => 
           >
             <InstagramIcon className="h-3.5 w-3.5" /> @{MARCA.instagram.usuario}
           </a>
-          <button
-            type="button"
-            onClick={() => navigate('admin')}
-            className="p-1.5 opacity-40 transition-opacity hover:opacity-100"
-            aria-label="Panel de administración"
-            title="Panel de administración"
-          >
-            <KeyRound className="h-3.5 w-3.5" />
-          </button>
         </div>
       </div>
 

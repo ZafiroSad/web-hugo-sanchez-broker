@@ -26,7 +26,11 @@ commits y push.
   - **La puerta** (`#/`, `Intro.tsx`), en tres tiempos:
     1. «HUGO SÁNCHEZ» macizo, grueso y ancho (Mona Sans 780, 108 %), sube letra a letra al centro, con
        «BROKER INMOBILIARIO» debajo.
-    2. El nombre se desplaza a su sitio y se vacía: queda en contorno.
+    2. El nombre se desplaza a su sitio. Primero quedaba en contorno; el mismo día el Señor Stick pidió que se
+       quede macizo y oscuro todo el tiempo («que no cambie de color»), y el slogan más rápido.
+       El 2026-10-09 pidió toda la puerta «mucho más rápida»: ahora dura unos 2,5 s (nombre en ~0,7 s,
+       desplazamiento a los 0,95 s, slogan a 0,016 s por letra).
+  - **El panel `#/admin` ya no tiene llave en el pie** (2026-10-09): solo se entra escribiendo la dirección y el PIN.
     3. Debajo, corrido a la derecha, el slogan se escribe palabra por palabra en letra de bolígrafo
        (Sacramento). Al terminar aparecen el botón negro «Encontrar mi propiedad» y las esquinas
        (ciudad e Instagram).
@@ -202,9 +206,9 @@ sitio/          el sitio publicado (ver sitio/README.md)
   - El catálogo de una categoría va en `#/propiedades/<categoría>` (`casas`, `apartamentos`, `lotes`…).
   - Las direcciones viejas del inicio (`#/inicio/sobre`, `#/inicio/vender`…) llevan a su capítulo.
 - **La puerta es blanca y escribe el slogan** (v0.8, reemplaza la de Stick Industries de la v0.7):
-  - El contorno del nombre es un filtro SVG (se engorda la letra y se le resta la original), no
-    `-webkit-text-stroke`: con la fuente variable el trazo de CSS dibuja líneas por dentro de las letras.
-    Se cruzan dos copias del nombre, la maciza y la de contorno.
+  - El nombre va macizo y oscuro todo el tiempo (sin contorno, pedido del Señor Stick). Si algún día se
+    vuelve al contorno: con la fuente variable, `-webkit-text-stroke` dibuja líneas por dentro de las
+    letras; el que funcionó fue un filtro SVG (engordar la letra y restarle la original), en el commit ad6e03b.
   - La escritura es una máscara que destapa cada palabra de izquierda a derecha a ritmo lineal (`.trazo`
     en `index.css`); los tiempos los calcula `Intro.tsx` según el largo de cada palabra. El botón sale
     cuando termina la última palabra, con un reloj de respaldo.

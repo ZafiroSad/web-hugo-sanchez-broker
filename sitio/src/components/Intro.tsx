@@ -7,7 +7,7 @@ import { CURVA } from '../utils/motion';
  * La puerta, sobre blanco, en tres tiempos:
  *   1. «HUGO SÁNCHEZ» sube letra a letra al centro, macizo, con «Broker
  *      inmobiliario» debajo.
- *   2. El nombre se desplaza a su sitio y se vacía: queda en contorno.
+ *   2. El nombre se desplaza a su sitio, siempre macizo y oscuro.
  *   3. Debajo, el slogan se escribe como con bolígrafo, palabra por palabra,
  *      y aparece el botón «Encontrar mi propiedad», que lleva al inicio.
  * Un toque o Intro / Espacio antes de tiempo salta al final; ya con el botón,
@@ -20,8 +20,8 @@ const PALABRAS_NOMBRE = MARCA.nombreMayusculas.split(' ');
 const PALABRAS_SLOGAN = `${MARCA.slogan}.`.split(' ');
 
 /** Ritmo de la mano: segundos por letra y pausa entre palabras. */
-const POR_LETRA = 0.055;
-const ENTRE_PALABRAS = 0.07;
+const POR_LETRA = 0.016;
+const ENTRE_PALABRAS = 0.018;
 
 /** Cuándo empieza cada palabra y cuánto tarda (las largas tardan más). */
 const TRAZOS = PALABRAS_SLOGAN.reduce<{ inicio: number; dura: number }[]>((lista, palabra) => {
@@ -32,8 +32,8 @@ const TRAZOS = PALABRAS_SLOGAN.reduce<{ inicio: number; dura: number }[]>((lista
 const FIN_ESCRITURA = TRAZOS[TRAZOS.length - 1].inicio + TRAZOS[TRAZOS.length - 1].dura;
 
 /** Momentos de cada tiempo, en milisegundos desde que la letra está lista. */
-const A_ARRIBA = 1600;
-const A_ESCRIBE = A_ARRIBA + 900;
+const A_ARRIBA = 950;
+const A_ESCRIBE = A_ARRIBA + 550;
 const A_LISTA = A_ESCRIBE + FIN_ESCRITURA * 1000 + 250;
 
 function fuentesListas() {
@@ -124,15 +124,14 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
   const centrado = tiempo === 'centro';
   const conSlogan = !centrado;
   const escribiendo = tiempo === 'escribe' || tiempo === 'lista';
-  const transicionNombre = saltada ? { duration: 0.5, ease: CURVA.ios } : { duration: 1.1, ease: CURVA.expo };
+  const transicionNombre = saltada ? { duration: 0.5, ease: CURVA.ios } : { duration: 0.75, ease: CURVA.expo };
 
-  // Las letras suben desde una línea, una tras otra. Las dos copias del nombre
-  // (maciza y de contorno) usan el mismo ritmo para ir siempre a la par.
-  const nombreAnimado = (copia: string) => {
+  // Las letras suben desde una línea, una tras otra.
+  const nombreAnimado = () => {
     let indice = 0;
     return PALABRAS_NOMBRE.map((palabra, p) => (
       <span
-        key={`${copia}-${palabra}`}
+        key={palabra}
         aria-hidden="true"
         className="-mt-[0.24em] inline-block overflow-hidden pb-[0.04em] pt-[0.24em] align-bottom"
         style={{ marginRight: p < PALABRAS_NOMBRE.length - 1 ? '0.24em' : 0 }}
@@ -145,7 +144,7 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
               className="inline-block"
               initial={reducir ? false : { y: '105%' }}
               animate={{ y: '0%' }}
-              transition={{ duration: 0.95, ease: CURVA.expo, delay: 0.1 + i * 0.04 }}
+              transition={{ duration: 0.7, ease: CURVA.expo, delay: 0.05 + i * 0.025 }}
             >
               {letra}
             </motion.span>
@@ -174,25 +173,6 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
         className="absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_78%_8%,rgba(197,160,89,0.10),transparent_70%),radial-gradient(ellipse_60%_50%_at_8%_100%,rgba(120,113,108,0.07),transparent_70%)]"
       />
       <div aria-hidden="true" className="grano absolute inset-0 opacity-[0.035]" />
-
-      {/*
-        El contorno del nombre: se engorda la silueta de cada letra y se le resta
-        la letra original, así queda solo el borde. Con el trazo de CSS
-        (-webkit-text-stroke) la fuente variable muestra líneas por dentro de las letras.
-      */}
-      <svg aria-hidden="true" className="absolute h-0 w-0">
-        {[
-          ['contorno-hs', 2],
-          ['contorno-hs-fino', 1.2],
-        ].map(([id, grosor]) => (
-          <filter key={id} id={String(id)} x="-5%" y="-10%" width="110%" height="120%">
-            <feMorphology in="SourceAlpha" operator="dilate" radius={grosor} result="gruesa" />
-            <feComposite in="gruesa" in2="SourceAlpha" operator="out" result="borde" />
-            <feFlood floodColor="#1c1917" />
-            <feComposite in2="borde" operator="in" />
-          </filter>
-        ))}
-      </svg>
 
       {/* Esquinas: aparecen con el botón */}
       <motion.div
@@ -230,33 +210,18 @@ export const Intro: React.FC<{ onEnter: () => void }> = ({ onEnter }) => {
               transition={transicionNombre}
               className="text-[clamp(2.15rem,10.6vw,9.5rem)] sm:text-[clamp(3rem,7.4vw,8.4rem)]"
             >
-              {/* Dos copias del nombre, una sobre otra: la maciza se apaga y deja ver la de contorno. */}
+              {/* El nombre se queda macizo, en el negro de la marca, en los tres tiempos. */}
               <h1
                 aria-label={MARCA.nombre}
-                className="relative whitespace-nowrap text-[1em] font-[780] uppercase leading-[0.92] tracking-[-0.005em] [font-stretch:108%]"
+                className="whitespace-nowrap text-[1em] font-[780] uppercase leading-[0.92] tracking-[-0.005em] text-negro [font-stretch:108%]"
               >
-                <motion.span
-                  className="block"
-                  initial={false}
-                  animate={{ opacity: centrado ? 1 : 0 }}
-                  transition={{ ...transicionNombre, delay: saltada ? 0 : 0.15 }}
-                >
-                  {nombreAnimado('m')}
-                </motion.span>
-                <motion.span
-                  className="absolute inset-0 block [filter:url(#contorno-hs-fino)] sm:[filter:url(#contorno-hs)]"
-                  initial={false}
-                  animate={{ opacity: centrado ? 0 : 1 }}
-                  transition={{ ...transicionNombre, delay: saltada ? 0 : 0.15 }}
-                >
-                  {nombreAnimado('c')}
-                </motion.span>
+                {nombreAnimado()}
               </h1>
               <motion.p
                 className="mt-[0.12em] pl-[0.03em] text-[max(9px,0.17em)] font-bold uppercase leading-none tracking-[0.02em] [font-stretch:100%]"
                 initial={reducir ? false : { opacity: 0, y: '0.4em' }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: CURVA.ios, delay: 0.75 }}
+                transition={{ duration: 0.6, ease: CURVA.ios, delay: 0.35 }}
               >
                 {MARCA.titulo}
               </motion.p>
