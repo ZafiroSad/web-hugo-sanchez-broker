@@ -54,6 +54,36 @@ const DOTACIONES_SUGERIDAS = [
   'Seguridad 24 horas',
 ];
 
+/**
+ * Saca latitud y longitud de lo que se copia de Google Maps: el enlace largo
+ * (…/@7.07,-73.09,17z o …!3d7.07!4d-73.09 o ?q=7.07,-73.09) o los dos números
+ * sueltos. Los enlaces cortos (maps.app.goo.gl) no traen coordenadas: hay que
+ * abrirlos y copiar la dirección larga.
+ */
+function coordenadasDeMaps(texto: string): { lat: number; lng: number } | null {
+  const num = '(-?\\d{1,2}\\.\\d+)';
+  const patrones = [
+    new RegExp(`!3d${num}!4d(-?\\d{1,3}\\.\\d+)`),
+    new RegExp(`@${num},\\s*(-?\\d{1,3}\\.\\d+)`),
+    new RegExp(`[?&](?:q|ll|query|destination)=${num},\\s*(-?\\d{1,3}\\.\\d+)`),
+    new RegExp(`^\\s*${num}\\s*,\\s*(-?\\d{1,3}\\.\\d+)\\s*$`),
+  ];
+  let limpio = texto;
+  try {
+    limpio = decodeURIComponent(texto);
+  } catch {
+    /* enlace con % sueltos: se lee tal cual */
+  }
+  for (const patron of patrones) {
+    const m = limpio.match(patron);
+    if (!m) continue;
+    const lat = Number(m[1]);
+    const lng = Number(m[2]);
+    if (Math.abs(lat) <= 90 && Math.abs(lng) <= 180) return { lat, lng };
+  }
+  return null;
+}
+
 function vacia(): Datos {
   const hoy = new Date().toISOString().slice(0, 10);
   return {
@@ -233,6 +263,7 @@ export const PropertyEditor: React.FC<{
   const [importado, setImportado] = useState<string[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [nuevaFoto, setNuevaFoto] = useState('');
+  const [ubicacionPegada, setUbicacionPegada] = useState<'ok' | 'error' | null>(null);
   const [version, setVersion] = useState(0); // fuerza a recrear los campos numéricos tras importar
 
   const fijar = <K extends keyof Datos>(clave: K, valor: Datos[K]) => setD((prev) => ({ ...prev, [clave]: valor }));
@@ -653,6 +684,31 @@ export const PropertyEditor: React.FC<{
                 <input value={d.address ?? ''} onChange={(e) => fijar('address', e.target.value)} className={estiloCampo} />
               </Campo>
             </div>
+
+            <Campo
+              etiqueta="Ubicación de Google Maps"
+              nota={
+                ubicacionPegada === 'error'
+                  ? 'No encontré coordenadas. En Google Maps, clic derecho sobre el punto → copia los números (7.11, -73.12) y pégalos aquí.'
+                  : ubicacionPegada === 'ok'
+                    ? 'Listo: el punto quedó en el mapa de abajo. Puedes arrastrarlo para afinarlo.'
+                    : 'Pega el enlace largo de Google Maps o las coordenadas (clic derecho sobre el punto en Maps).'
+              }
+              className="mt-6"
+            >
+              <input
+                placeholder="https://www.google.com/maps/place/…  o  7.0712, -73.0921"
+                onChange={(e) => {
+                  const texto = e.target.value.trim();
+                  if (!texto) return setUbicacionPegada(null);
+                  const c = coordenadasDeMaps(texto);
+                  if (!c) return setUbicacionPegada('error');
+                  setD((prev) => ({ ...prev, coordinates: c }));
+                  setUbicacionPegada('ok');
+                }}
+                className={estiloCampo}
+              />
+            </Campo>
 
             <div className="mt-6 flex flex-wrap gap-x-7 gap-y-3">
               <Casilla

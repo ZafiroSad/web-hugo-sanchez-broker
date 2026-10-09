@@ -19,6 +19,17 @@ commits y push.
   subido a `main`.
 
 ## Estado actual
+- **v0.9: vendidas automáticas, ubicación desde Google Maps y ficha para el teléfono** (2026-10-09):
+  - **Vendidas:** toda propiedad marcada «Vendido» en el panel aparece primero en `#/vendidas`, con su foto,
+    el rótulo «Vendida» y enlace a su ficha; detrás siguen los cierres fijos de `contenido.ts`.
+  - **Ubicación:** en el panel (Paso 8) hay un campo para pegar el enlace largo de Google Maps o las
+    coordenadas; el punto queda en el mapa y se puede arrastrar. Los enlaces cortos (maps.app.goo.gl) no
+    traen coordenadas: hay que abrirlos y copiar el largo. El mapa público sigue en círculo por zona salvo
+    que se marque «punto exacto».
+  - **Ficha PDF:** en el teléfono ocupa la pantalla, con barra fija (Compartir, PDF, cerrar), foto 4:3 y
+    datos en dos columnas. Compartir usa el menú del teléfono; en el computador, WhatsApp o copiar enlace.
+    Se monta en `<body>` (portal): dentro de la vista animada quedaba debajo de la barra del sitio.
+  - Recordar: lo que se cambia en el panel solo se ve en ese navegador hasta exportar `propiedades.json`.
 - **v0.8: puerta en blanco con el slogan escrito a bolígrafo y la firma HS manuscrita** (2026-10-04), publicada. Pedido, con tres referencias de imagen: «al inicio el Hugo Sánchez en la mitad, de
   ahí se mueve el texto y luego con una animación que dé la sensación de que está escribiendo con un
   bolígrafo su slogan; el fondo no el de mi portafolio sino algo más moderno, pulcro, al estilo de Hugo;

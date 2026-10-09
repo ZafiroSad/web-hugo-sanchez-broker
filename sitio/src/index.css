@@ -252,6 +252,16 @@
   .no-imprimir {
     display: none !important;
   }
+  /* La ficha vive en <body>, fuera de la página: al imprimirla, la página no ocupa hojas en blanco. */
+  body:has(.zona-impresion) #root {
+    display: none !important;
+  }
+  .ficha-capa {
+    position: static !important;
+    overflow: visible !important;
+    background: none !important;
+    padding: 0 !important;
+  }
   @page {
     margin: 14mm;
   }

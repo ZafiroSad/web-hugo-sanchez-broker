@@ -5,7 +5,7 @@ import { BIO, CONFIANZA, MARCA, PILARES, PROCESO, RETRATO } from '../config/marc
 import { CATEGORIAS, enCategoria, esCategoria, ordenarDestacadas, type CategoriaId } from '../data/categorias';
 import { CIERRES, INVERSION, reelUrl } from '../data/contenido';
 import { useProperties } from '../context/PropertyContext';
-import { whatsappUrl } from '../utils/formatters';
+import { titleCase, whatsappUrl } from '../utils/formatters';
 import { navigate } from '../utils/router';
 import { CURVA, revelar } from '../utils/motion';
 import { FirmaHS, InstagramIcon, WhatsAppIcon } from './marca';
@@ -449,7 +449,52 @@ export const Manifiesto: React.FC = () => (
 /* Vendidas: cada cierre, contado por Hugo                             */
 /* ------------------------------------------------------------------ */
 
-export const Cierres: React.FC = () => (
+/**
+ * Primero las propiedades que se marcan «Vendido» en el panel (la más reciente
+ * arriba), con su foto y un enlace a su ficha; después los cierres fijos que
+ * Hugo contó en sus reels.
+ */
+export const Cierres: React.FC = () => {
+  const { publicProperties } = useProperties();
+  const vendidas = publicProperties
+    .filter((p) => p.status === 'Vendido')
+    .sort((a, b) => (b.publishedAt ?? '').localeCompare(a.publishedAt ?? ''));
+
+  const tarjetasVendidas = vendidas.map((p, i) => (
+    <motion.figure
+      key={p.id}
+      {...revelar(i * 0.08)}
+      className="flex flex-col overflow-hidden rounded-2xl border border-negro/[0.08] bg-white shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
+    >
+      <a href={`#/propiedad/${encodeURIComponent(p.id)}`} className="group relative block aspect-[4/5] overflow-hidden bg-stone-100">
+        {p.images[0] && (
+          <Foto
+            src={p.images[0]}
+            alt={`${titleCase(p.name)}, vendida`}
+            sizes="(min-width: 1024px) 300px, (min-width: 640px) 50vw, 100vw"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-ios group-hover:scale-[1.03]"
+          />
+        )}
+        <span className="absolute left-3 top-3 rounded-full bg-negro px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.22em] text-white">
+          Vendida
+        </span>
+      </a>
+      <figcaption className="flex flex-1 flex-col p-5 sm:p-6">
+        <p className="versalitas text-[9.5px] text-bronce">
+          {titleCase(p.name)} · {p.sector}
+        </p>
+        <p className="mt-3 flex-1 text-[13.5px] font-light leading-relaxed text-grafito">{p.headline}</p>
+        <a
+          href={`#/propiedad/${encodeURIComponent(p.id)}`}
+          className="mt-5 inline-flex w-fit items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] text-negro hover:text-bronce"
+        >
+          Ver la propiedad <ArrowRight className="h-3.5 w-3.5" />
+        </a>
+      </figcaption>
+    </motion.figure>
+  ));
+
+  return (
   <section id="vendidas" className="scroll-mt-20 bg-hueso py-16 sm:py-28">
     <div className="mx-auto max-w-7xl px-5 sm:px-8">
       <Encabezado antetitulo="Vendidas" titulo="Cada cierre, contado por Hugo">
@@ -462,7 +507,7 @@ export const Cierres: React.FC = () => (
         <Deslizable
           ancho="w-[80%]"
           rejilla="sm:grid-cols-2 lg:grid-cols-4"
-          items={CIERRES.map((cierre, i) => (
+          items={[...tarjetasVendidas, ...CIERRES.map((cierre, i) => (
           <motion.figure
             key={cierre.codigo}
             {...revelar(i * 0.08)}
@@ -492,12 +537,13 @@ export const Cierres: React.FC = () => (
               </a>
             </figcaption>
           </motion.figure>
-          ))}
+          ))]}
         />
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ------------------------------------------------------------------ */
 /* Vende tu propiedad                                                  */
